@@ -169,6 +169,17 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
     .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
 
+    /* PHOTO BLOCKS */
+    .photo-full { width: 100%; height: 520px; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); border: 1px solid var(--gold-line); }
+    .photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .photo-strip img { width: 100%; height: 380px; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); }
+    
+    .photo-overlay-block { position: relative; height: 500px; overflow: hidden; border: 1px solid var(--gold-line); }
+    .photo-overlay-block img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) contrast(1.05); }
+    .photo-overlay-block .overlay-text { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, transparent 100%); padding: 60px; }
+    .photo-overlay-block .overlay-text p { font-family: var(--serif); font-size: 28px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.4; max-width: 600px; }
+    .photo-overlay-block .overlay-text small { display: block; margin-top: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+
     /* STATS */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; background: var(--gold-line); }
     .stat-box { background: var(--dark); padding: 50px 40px; text-align: center; }
@@ -196,6 +207,14 @@
     .step-content h3 { font-family: var(--serif); font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #fff; }
     .step-content p { font-size: 15px; color: var(--mid); line-height: 1.7; }
 
+    /* GARANZIA */
+    .garanzia { background: var(--dark-2); padding: 80px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: center; border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+    .garanzia h3 { font-family: var(--serif); font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+    .garanzia p { font-size: 16px; color: var(--mid); line-height: 1.75; }
+    .garanzia-badge { border: 1px solid var(--gold); padding: 30px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .garanzia-badge span { font-family: var(--serif); font-size: 48px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .garanzia-badge label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; line-height: 1.4; }
+
     /* LEADMAGNET */
     .leadmagnet { background: var(--dark-2); padding: 100px; border-top: 1px solid var(--gold-line); }
     .leadmagnet-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center; }
@@ -219,7 +238,16 @@
     .lm-submit { width: 100%; padding: 18px; background: var(--gold); color: var(--dark); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: background 0.2s; }
     .lm-submit:hover { background: var(--gold-light); }
     .lm-msg { display: none; margin-top: 20px; font-size: 13px; padding: 12px; border-left: 3px solid var(--gold); background: rgba(201,168,76,0.1); }
-    .lm-msg.error { border-color: var(--red); background: rgba(226,75,74,0.1); color: #fff; }
+    .lm-msg.error { border-color: var(--gold); background: rgba(201,168,76,0.1); color: #fff; }
+
+    /* CLOSING */
+    .closing { padding: 100px; background: var(--dark); display: grid; grid-template-columns: 1fr 300px; gap: 80px; align-items: center; }
+    .closing h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 24px; }
+    .closing p { font-size: 17px; color: var(--mid); line-height: 1.75; max-width: 700px; }
+    .contact-list { list-style: none; margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .contact-list li label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 600; }
+    .contact-list li span { font-family: var(--serif); font-size: 18px; color: #fff; }
+    .closing-logo { font-family: var(--serif); font-size: 120px; font-weight: 900; color: rgba(201,168,76,0.05); text-align: right; }
 
     /* FOOTER */
     footer { background: var(--dark); padding: 80px 100px; border-top: 1px solid var(--gold-line); text-align: center; }
@@ -228,9 +256,10 @@
     .social-link:hover { background: var(--gold); color: var(--dark); }
 
     @media (max-width: 1024px) {
-      .cover, .section, .leadmagnet, footer { padding: 60px 40px; }
-      .two-col, .three-col, .leadmagnet-inner, .case-body { grid-template-columns: 1fr; gap: 40px; }
+      .cover, .section, .leadmagnet, footer, .garanzia, .closing { padding: 60px 40px; }
+      .two-col, .three-col, .leadmagnet-inner, .case-body, .garanzia, .closing { grid-template-columns: 1fr; gap: 40px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
+      .closing-logo { text-align: left; font-size: 80px; }
     }
   </style>
 </head>
@@ -310,6 +339,7 @@
   <p class="section-label">Casi Studio</p>
   <h2>Risultati <em>Misurabili</em>.</h2>
   
+  <!-- CASO 1 -->
   <div class="case-card">
     <div class="case-number">01</div>
     <p class="case-location">Salerno — Training Operativo</p>
@@ -322,7 +352,87 @@
           <div class="case-result"><span class="case-result-val">+18%</span><span class="case-result-lbl">Margine Netto</span></div>
         </div>
       </div>
-      <img class="case-photo" src="images/img_5.jpg" alt="Team Cuccurullo">
+      <div>
+        <img class="case-photo" src="images/img_5.jpg" alt="Team Cuccurullo">
+        <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Il team di Cuccurullo Acconciatori — Salerno</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 2 -->
+  <div class="case-card">
+    <div class="case-number">02</div>
+    <p class="case-location">Venezia — Apertura</p>
+    <h2 class="case-title">Infinito Parrucchieri</h2>
+    <div class="case-body">
+      <div>
+        <p class="case-desc">Giulia ci ha ingaggiato all'apertura con carta bianca. Posizionamento verticale come punto di riferimento italiano per il biondo lungo, sviluppo di una linea di prodotti a marchio proprietario (I Veneziani), introduzione precoce del sistema di card di abbonamento.</p>
+        <p class="case-desc" style="margin-top:12px;">Il risultato più straordinario: durante il lockdown covid, mentre il settore collassava, Infinito confermava i fatturati pre-pandemia.</p>
+        <div class="case-results">
+          <div class="case-result"><span class="case-result-val">€100+</span><span class="case-result-lbl">Scontrino medio</span></div>
+          <div class="case-result"><span class="case-result-val">97%</span><span class="case-result-lbl">CRR</span></div>
+          <div class="case-result"><span class="case-result-val">+300%</span><span class="case-result-lbl">Prezzo vs media</span></div>
+          <div class="case-result"><span class="case-result-val">4×</span><span class="case-result-lbl">Margini</span></div>
+        </div>
+      </div>
+      <div>
+        <img class="case-photo" src="images/img_6.jpg" alt="Infinito Parrucchieri">
+        <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Training operativo in salone — visita diretta</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASO 3 -->
+  <div class="case-card">
+    <div class="case-number">03</div>
+    <p class="case-location">Chignolo d'Isola — Salone Premium</p>
+    <h2 class="case-title">Hair Mania</h2>
+    <div class="case-body">
+      <div>
+        <p class="case-desc">Federica aveva tecnica eccellente e un potenziale superiore a quello che esprimeva. Abbiamo lavorato su tre assi: adozione della settimana corta a 4 giorni, riposizionamento di marca, e applicazione della legge di potenza su un segmento preciso di clientela. L'intervento più audace: abbonamenti VIP da €3.500 offerti a un piccolo cluster di clienti selezionati, acquistati senza esitazione.</p>
+        <div class="case-results">
+          <div class="case-result"><span class="case-result-val">€3.500</span><span class="case-result-lbl">Abbonamenti VIP</span></div>
+          <div class="case-result"><span class="case-result-val">4 gg</span><span class="case-result-lbl">Settimana lavorativa</span></div>
+          <div class="case-result"><span class="case-result-val">↑↑↑</span><span class="case-result-lbl">Margini</span></div>
+          <div class="case-result"><span class="case-result-val">Legge<br>Parkinson</span><span class="case-result-lbl">Applicata</span></div>
+        </div>
+      </div>
+      <div>
+        <img class="case-photo" src="images/img_7.jpg" alt="Hair Mania">
+        <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Training operativo in salone — visita diretta</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="garanzia">
+  <div>
+    <h3>La Garanzia Inversa</h3>
+    <p>Mettiamo la garanzia del risultato nel contratto con formula soddisfatti-o-soddisfatti. Lavoriamo ad oltranza fino al raggiungimento dell'obiettivo concordato prima di partire. Se non raggiungiamo i target misurabili e concordati, continuiamo a spese nostre. È un'esposizione che nessun consulente, agenzia o formatore nel settore può permettersi.</p>
+  </div>
+  <div class="garanzia-badge">
+    <span>G</span>
+    <label>Risultati<br>garantiti<br>per contratto</label>
+  </div>
+</div>
+
+<section class="section section--white">
+  <p class="section-label">Selezione</p>
+  <h2>Non per tutti.<br><em>Per chi è pronto.</em></h2>
+  <p class="lead">Questa trasparenza è deliberata: non cerchiamo clienti, cerchiamo partner di crescita. Il nostro approccio non funziona per tutti, e lo diciamo senza imbarazzo.</p>
+
+  <div class="three-col" style="margin-top:60px;">
+    <div>
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;">Profilo target</p>
+      <p style="font-size:15px;color:var(--mid);line-height:1.75;">Titolari con fatturati tra €100k e €350k annui, staff formato, reputazione consolidata. Chi si trova nella zona grigia della competenza e sa che potrebbe fare molto di più.</p>
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;">Prerequisiti</p>
+      <p style="font-size:15px;color:var(--mid);line-height:1.75;">Intelligenza strategica, energia sostenuta, disciplina esecutiva, ossessione per l'eccellenza, propensione al rischio calcolato, fame autentica.</p>
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;">Cosa offriamo</p>
+      <p style="font-size:15px;color:var(--mid);line-height:1.75;">Un sistema replicabile che trasforma il talento dello staff in fatturato prevedibile, con garanzia contrattuale sui risultati e skin in the game reale da parte nostra.</p>
     </div>
   </div>
 </section>
@@ -332,12 +442,13 @@
     <div>
       <div class="leadmagnet-badge">Download gratuito</div>
       <h2>7 Errori che costano <em>margine</em> al tuo salone.</h2>
-      <p class="leadmagnet-desc">Una guida diretta per titolari strutturati. I pattern sistemici che abbiamo identificato su oltre 150 saloni italiani.</p>
+      <p class="leadmagnet-desc">Una guida diretta per titolari strutturati con fatturato tra 100k e 350k annui. I pattern sistemici che abbiamo identificato su oltre 50 saloni italiani.</p>
       <ul class="leadmagnet-bullets">
         <li>Listino costruito sul costo invece che sul valore</li>
         <li>Staff che lavora bene ma non vende</li>
         <li>Nessun protocollo di rebook sistematico</li>
-        <li>CAC (Costo Acquisizione Cliente) ignoto</li>
+        <li>CAC completamente ignoto</li>
+        <li>+ 3 altri errori sistemici</li>
       </ul>
     </div>
 
@@ -370,6 +481,20 @@
       <p class="lm-privacy" style="font-size:11px; color:var(--mid); margin-top:20px;">C'è stato un imprevisto, forse dovuto al fatto che abbiamo già alcuni tuoi dati, manda direttamente una email a info@parrucchierepower.it o clicca sul pulsante whatsapp in fondo alla pagina per parlare direttamente con noi</p>
     </div>
   </div>
+</section>
+
+<section class="closing">
+  <div>
+    <h2>Il prossimo passo<br><em>è il tuo.</em></h2>
+    <p>Se quello che hai letto risuona con la tua visione imprenditoriale, il processo è semplice: una email con nome, cognome, nome del salone, partita IVA, una descrizione autentica di chi sei come imprenditore e l'obiettivo che vuoi raggiungere nei prossimi 18-24 mesi.</p>
+    <ul class="contact-list">
+      <li><label>Email</label><span>info@parrucchierepower.it</span></li>
+      <li><label>Brand</label><span>Parrucchiere Power Srl</span></li>
+      <li><label>Fondatore</label><span>Coach Masala</span></li>
+      <li><label>Mercato</label><span>Italia — Nord, Centro, Sud</span></li>
+    </ul>
+  </div>
+  <div class="closing-logo">PP</div>
 </section>
 
 <footer>
