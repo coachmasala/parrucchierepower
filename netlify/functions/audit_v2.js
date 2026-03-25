@@ -8,8 +8,8 @@ exports.handler = async function(event) {
     const body = JSON.parse(event.body);
     nome     = (body.nome     || '').trim();
     cognome  = (body.cognome  || '').trim();
-    email    = (body.email    || '').trim();
-    telefono = (body.telefono || '').trim();
+    email    = (body.email    || '').trim().toLowerCase();
+    telefono = (body.telefono || '').trim().replace(/\s+/g, ''); // Rimuovo spazi
     salone   = (body.salone   || '').trim();
   } catch(e) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Dati non validi' }) };
@@ -17,6 +17,14 @@ exports.handler = async function(event) {
 
   if (!nome || !email || !cognome || !telefono || !salone) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Tutti i campi sono obbligatori' }) };
+  }
+
+  // Pulizia e formattazione numero di telefono per Brevo (SMS richiede prefisso internazionale)
+  let formattedPhone = telefono;
+  if (formattedPhone.startsWith('3') && formattedPhone.length >= 9 && formattedPhone.length <= 10) {
+    formattedPhone = '+39' + formattedPhone;
+  } else if (formattedPhone.startsWith('0') && !formattedPhone.startsWith('00')) {
+    formattedPhone = '+39' + formattedPhone;
   }
 
   const BREVO_KEY = process.env.BREVO_API_KEY_LANDING;
@@ -29,38 +37,54 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
-  // 1. Aggiunta contatto a Brevo (Lista 6) con mappatura attributi corretta
+  // 1. Tentativo aggiunta contatto a Brevo (Lista 6)
   try {
-    const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
+    const contactPayload = {
+      email,
+      attributes: { 
+        NOME: nome, 
+        COGNOME: cognome, 
+        SMS: formattedPhone, 
+        JOB_TITLE: salone 
+      },
+      listIds: [6],
+      updateEnabled: true
+    };
+
+    let contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers,
-      body: JSON.stringify({
-        email,
-        attributes: { 
-          NOME: nome, 
-          COGNOME: cognome, 
-          SMS: telefono, 
-          JOB_TITLE: salone 
-        },
-        listIds: [6],
-        updateEnabled: true
-      })
+      body: JSON.stringify(contactPayload)
     });
     
     if (!contactRes.ok) {
       const errData = await contactRes.json();
-      // Se l'errore è che il contatto esiste già, proseguiamo comunque (Brevo aggiornerà gli attributi)
-      if (contactRes.status !== 400 || !errData.message.includes('already exists')) {
-        console.error('Brevo contact error:', errData);
-        return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo contact error: ' + (errData.message || 'Errore sconosciuto') + ' (Code: ' + (errData.code || 'N/A') + ')' }) };
+      
+      // Se l'errore è il numero di telefono (invalid_parameter), riproviamo senza il campo SMS
+      if (errData.code === 'invalid_parameter' && errData.message.toLowerCase().includes('phone')) {
+        console.warn('Brevo rejected phone number, retrying without SMS attribute...');
+        delete contactPayload.attributes.SMS;
+        contactRes = await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(contactPayload)
+        });
+      }
+
+      if (!contactRes.ok) {
+        const finalErr = await contactRes.json();
+        if (contactRes.status !== 400 || !finalErr.message.includes('already exists')) {
+          console.error('Brevo contact final error:', finalErr);
+          return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo contact error: ' + (finalErr.message || 'Errore sconosciuto') }) };
+        }
       }
     }
   } catch(e) {
     console.error('Brevo contact fetch error:', e);
-    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore di rete durante la creazione del contatto: ' + e.message }) };
+    // Proseguiamo comunque per inviare almeno la notifica via email
   }
 
-  // 2. Invio email di notifica a Coach Masala
+  // 2. Invio email di notifica a Coach Masala (QUESTA DEVE FUNZIONARE SEMPRE)
   try {
     const notifyRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -74,8 +98,10 @@ exports.handler = async function(event) {
             <h2 style="color:#C8A84B;">Nuova richiesta Audit Strategico</h2>
             <p><strong>Nome:</strong> ${nome} ${cognome}</p>
             <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Telefono:</strong> ${telefono}</p>
+            <p><strong>Telefono:</strong> ${telefono} (Formattato: ${formattedPhone})</p>
             <p><strong>Salone:</strong> ${salone}</p>
+            <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
+            <p style="font-size:12px;color:#999;">Inviato dal form Diagnosi Avanzata - parrucchierepower.it</p>
           </div>
         `
       })
