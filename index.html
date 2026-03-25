@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
+  <head>
+
     <!-- ══ SEO & Social Meta Tags ══ -->
     <title>Parrucchiere Power Srl — Consulenza e Formazione per Saloni Strutturati</title>
     <meta name="description" content="Sistemi di vendita, gestione dello staff e crescita del margine per titolari con fatturato tra 100k e 350k annui. Garanzia contrattuale sui risultati.">
@@ -31,314 +32,387 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e0c278;
-    --gold-dim: rgba(201,168,76,0.55);
-    --red: #E24B4A;
-    --bg: #0d0d0d;
-    --bg2: #111111;
-    --bg3: #0f0f0f;
-    --text: #e8e0d0;
-    --text-muted: rgba(232,224,208,0.65);
-    --text-faint: rgba(232,224,208,0.38);
-    --gold-line: rgba(201,168,76,0.2);
-    --gold-fill: rgba(201,168,76,0.06);
-  }
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e0c278;
+  --gold-dim: rgba(201,168,76,0.55);
+  --dark: #0d0d0d;
+  --dark-2: #111111;
+  --dark-3: #0f0f0f;
+  --mid: rgba(232,224,208,0.65);
+  --light: #111111;
+  --white: #e8e0d0;
+  --serif: 'Playfair Display', serif;
+  --sans: 'Barlow', sans-serif;
+  --gold-line: rgba(201,168,76,0.2);
+}
 
-  html { scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--dark); color: var(--white); font-family: var(--sans); line-height: 1.6; font-weight: 300; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+/* ── MENU HAMBURGER ── */
+.menu-toggle {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+}
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
 
-  /* ── MENU HAMBURGER ── */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--dark);
+  border-left: 1px solid var(--gold-line);
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 100px 40px 40px;
+  overflow-y: auto;
+}
+.menu-panel.active {
+  transform: translateX(0);
+}
+
+.menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.menu-item {
+  border-bottom: 1px solid var(--gold-line);
+  padding: 24px 0;
+}
+.menu-item:first-child {
+  border-top: 1px solid var(--gold-line);
+}
+.menu-link {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+}
+.menu-link:hover {
+  color: var(--gold);
+}
+
+.menu-footer {
+  margin-top: auto;
+  padding-top: 40px;
+  border-top: 1px solid var(--gold-line);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.menu-footer-link {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.menu-footer-link:hover {
+  color: var(--gold-light);
+}
+
+@media (max-width: 768px) {
   .menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding: 0;
+    top: 20px;
+    right: 20px;
   }
-  .menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 1.5px;
-    background: var(--gold);
-    transition: all 0.3s ease;
-  }
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
-
-  .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(13, 13, 13, 0.95);
-    backdrop-filter: blur(8px);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
   .menu-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 400px;
-    height: 100vh;
-    background: var(--bg);
-    border-left: 1px solid var(--gold-line);
-    z-index: 1001;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    padding: 100px 40px 40px;
-    overflow-y: auto;
-  }
-  .menu-panel.active {
-    transform: translateX(0);
-  }
-
-  .menu-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .menu-item {
-    border-bottom: 0.5px solid var(--gold-line);
-    padding: 24px 0;
-  }
-  .menu-item:first-child {
-    border-top: 0.5px solid var(--gold-line);
+    max-width: 100%;
+    padding: 80px 30px 30px;
   }
   .menu-link {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text);
-    text-decoration: none;
-    display: block;
-    transition: color 0.2s ease;
+    font-size: 20px;
   }
-  .menu-link:hover {
-    color: var(--gold);
-  }
+}
 
-  .menu-footer {
-    margin-top: auto;
-    padding-top: 40px;
-    border-top: 0.5px solid var(--gold-line);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .menu-footer-link {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .menu-footer-link:hover {
-    color: var(--gold-light);
-  }
+.cover {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark-3) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.cover-accent {
+  position: absolute;
+  top: 60px; right: 100px;
+  width: 1px; height: 120px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.cover-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px; position: relative; z-index: 1;
+}
+.cover h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 900; color: #fff;
+  line-height: 1.05; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.cover h1 em { font-style: italic; color: var(--gold); }
+.cover-sub {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300; color: var(--mid);
+  margin-bottom: 60px; position: relative; z-index: 1; font-style: italic;
+}
+.cover-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 60px; position: relative; z-index: 1; }
+.cover-meta { display: flex; gap: 60px; position: relative; z-index: 1; flex-wrap: wrap; }
+.cover-meta-item label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 600; }
+.cover-meta-item span { font-family: var(--sans); font-size: 17px; color: var(--mid); font-weight: 300; }
+.cover-number { position: absolute; bottom: 80px; right: 100px; font-family: var(--serif); font-size: 140px; font-weight: 900; color: rgba(201,168,76,0.06); line-height: 1; z-index: 1; pointer-events: none; }
 
-  /* ── NAV ── */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 3rem;
-    border-bottom: 0.5px solid var(--gold-line);
-    background: rgba(13,13,13,0.97);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(8px);
-  }
-  .nav-brand {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .nav-right { display: flex; align-items: center; gap: 16px; }
-  .nav-cta {
-    background: var(--gold);
-    color: #0d0d0d;
-    font-family: 'Barlow', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 0.55rem 1.4rem;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: opacity 0.2s;
-  }
-  .nav-cta:hover { opacity: 0.85; }
+.section { padding: 100px; position: relative; }
+.section--dark { background: var(--dark); color: var(--white); }
+.section--light { background: var(--dark-2); }
+.section--white { background: var(--dark-3); }
 
-  /* ── COVER / HERO ── */
-  .cover {
-    min-height: 100vh;
-    background: var(--bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 80px 100px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40%;
-    height: 100%;
-    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cover-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px; font-weight: 600; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 40px; position: relative; z-index: 1;
-  }
-  .cover h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 7vw, 90px);
-    font-weight: 900; color: #fff;
-    line-height: 1.05; margin-bottom: 16px;
-    position: relative; z-index: 1;
-  }
-  .cover h1 em { font-style: italic; color: var(--gold); }
-  .cover-sub {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 2.5vw, 26px);
-    font-weight: 300; color: var(--text-muted);
-    margin-bottom: 60px; position: relative; z-index: 1; font-style: italic;
-  }
-  .cover-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 60px; position: relative; z-index: 1; }
-  .cover-meta { display: flex; gap: 60px; position: relative; z-index: 1; flex-wrap: wrap; }
-  .cover-meta-item label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 600; }
-  .cover-meta-item span { font-family: 'Barlow', sans-serif; font-size: 15px; color: var(--text-faint); font-weight: 300; }
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px; font-weight: 600;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
 
-  /* ── SECTIONS ── */
-  .section { padding: 100px; position: relative; }
-  .section--dark { background: var(--bg); color: var(--text); }
-  .section--light { background: var(--bg2); }
-  
-  .section-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 20px; font-weight: 600;
-    display: flex; align-items: center; gap: 16px;
-  }
-  .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.3; }
-  
-  h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 32px; color: #fff; }
-  h2 em { font-style: italic; color: var(--gold); }
-  
-  .lead { font-size: 18px; line-height: 1.75; color: var(--text-muted); max-width: 680px; font-weight: 300; }
-  
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
-  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 32px; color: #fff; }
+h2 em { font-style: italic; color: var(--gold); }
+.section--dark h2 { color: #fff; }
 
-  /* PHOTO BLOCKS */
-  .photo-full {
-    width: 100%; height: 520px;
-    object-fit: cover; object-position: center;
-    display: block;
-    filter: grayscale(15%) contrast(1.05);
-    border: 1px solid var(--gold-line);
-  }
-  
-  .photo-aside {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    align-items: stretch;
-    border: 1px solid var(--gold-line);
-  }
-  .photo-aside img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%); }
-  .photo-aside-text { background: var(--bg2); padding: 70px 60px; display: flex; flex-direction: column; justify-content: center; }
-  .photo-aside-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: #fff; margin-bottom: 20px; }
-  .photo-aside-text p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+.lead { font-size: 18px; line-height: 1.75; color: var(--mid); max-width: 680px; font-weight: 300; }
+.section--dark .lead { color: var(--mid); }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 80px 100px;
-    background: var(--bg);
-    border-top: 0.5px solid var(--gold-line);
-    text-align: center;
-  }
-  .footer-brand {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
-  .footer-note { font-size: 11px; color: var(--text-faint); margin-bottom: 30px; }
-  .footer-socials {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-  }
-  .footer-social-link {
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  .footer-social-link:hover { color: #fff; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
 
-  @media (max-width: 1024px) {
-    .cover, .section, footer { padding: 60px 40px; }
-    .two-col, .three-col, .photo-aside { grid-template-columns: 1fr; gap: 40px; }
-  }
+/* PHOTO BLOCKS */
+.photo-full {
+  width: 100%; height: 520px;
+  object-fit: cover; object-position: center;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+  border: 1px solid var(--gold-line);
+}
+.photo-full--top { object-position: center top; }
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.photo-strip img {
+  width: 100%; height: 380px;
+  object-fit: cover; display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+.photo-overlay-block {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+.photo-overlay-block img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+.photo-overlay-block .overlay-text {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0) 100%);
+  padding: 60px 60px 50px;
+}
+.photo-overlay-block .overlay-text p {
+  font-family: var(--serif);
+  font-size: 28px; font-weight: 700; font-style: italic;
+  color: #fff; line-height: 1.4; max-width: 600px;
+}
+.photo-overlay-block .overlay-text small {
+  display: block; margin-top: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); font-weight: 600;
+}
+
+.photo-aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid var(--gold-line);
+}
+.photo-aside img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%); }
+.photo-aside-text { background: var(--dark-2); padding: 70px 60px; display: flex; flex-direction: column; justify-content: center; }
+.photo-aside-text h3 { font-family: var(--serif); font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+.photo-aside-text p { font-size: 15px; color: var(--mid); line-height: 1.75; }
+
+.photo-trio {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+  height: 420px;
+}
+.photo-trio-left { overflow: hidden; }
+.photo-trio-left img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
+.photo-trio-right { display: grid; grid-template-rows: 1fr 1fr; }
+.photo-trio-right img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); display: block; }
+
+/* STATS */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; background: var(--gold-line); }
+.stat-box { background: var(--dark); padding: 50px 40px; text-align: center; }
+.stat-number { font-family: var(--serif); font-size: 56px; font-weight: 700; color: var(--gold); line-height: 1; display: block; margin-bottom: 12px; }
+.stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); font-weight: 600; }
+
+/* CASES */
+.case-card { border: 1px solid var(--gold-line); padding: 50px; position: relative; overflow: hidden; background: var(--dark-2); }
+.case-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); }
+.case-number { font-family: var(--serif); font-size: 80px; font-weight: 900; color: rgba(201,168,76,0.12); position: absolute; top: 20px; right: 30px; line-height: 1; }
+.case-title { font-family: var(--serif); font-size: 26px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+.case-location { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; font-weight: 600; }
+.case-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-top: 24px; }
+.case-desc { font-size: 15px; color: var(--mid); line-height: 1.7; }
+.case-photo { width: 100%; height: 280px; object-fit: cover; display: block; filter: grayscale(10%); border: 1px solid var(--gold-line); }
+.case-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+.case-result { background: var(--dark-3); padding: 20px; border: 1px solid var(--gold-line); }
+.case-result-val { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--gold); display: block; margin-bottom: 4px; }
+.case-result-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--mid); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+
+/* FRAMEWORK */
+.framework-steps { margin-top: 60px; display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 100px 1fr; align-items: stretch; border-bottom: 1px solid var(--gold-line); padding: 40px 0; gap: 40px; }
+.step:last-child { border-bottom: none; }
+.step-num { font-family: var(--serif); font-size: 48px; font-weight: 700; color: var(--gold); opacity: 0.35; line-height: 1; padding-top: 6px; }
+.step-content h3 { font-family: var(--serif); font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #fff; }
+.step-content p { font-size: 15px; color: var(--mid); line-height: 1.7; }
+
+/* SISTEMA */
+.system-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+.system-card { background: var(--dark-2); border: 1px solid var(--gold-line); padding: 36px; }
+.system-card h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.system-card p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+/* CTA */
+.cta-block { background: var(--dark-2); padding: 100px; text-align: center; border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+.cta-block h2 { margin-bottom: 24px; }
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 22px 50px;
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+/* FOOTER */
+footer { padding: 100px; background: var(--dark); border-top: 1px solid var(--gold-line); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; }
+.footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.footer-text { font-size: 14px; color: var(--mid); line-height: 1.8; max-width: 320px; }
+.footer-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: block; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: var(--mid); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+
+.footer-bottom { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--gold-line); display: flex; justify-content: space-between; align-items: center; }
+.copyright { font-size: 12px; color: var(--mid); }
+
+@media (max-width: 1024px) {
+  .cover, .section, .cta-block, footer { padding: 80px 40px; }
+  .two-col, .three-col, .case-body, .footer-grid { grid-template-columns: 1fr; gap: 60px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .cover { padding: 60px 30px; }
+  .cover h1 { font-size: 48px; }
+  .photo-aside, .photo-trio, .system-grid { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 1fr; gap: 16px; }
+  .footer-bottom { flex-direction: column; gap: 24px; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -357,19 +431,14 @@
   </div>
 </nav>
 
-<nav>
-  <div class="nav-brand">PARRUCCHIERE POWER</div>
-  <div class="nav-right">
-    <a href="https://parrucchierepower.it/diagnosi_avanzata_per_saloni-di-parrucchieri.html" class="nav-cta">VOGLIO L'AUDIT</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" style="position: relative; margin-left: 20px; width: 30px; height: 30px;">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</nav>
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
 <section class="cover">
+  <div class="cover-accent"></div>
   <div class="cover-tag">Architect of High-Performance Systems</div>
   <h1>Sistemi di <em>Dominio</em> per Saloni d'Elite.</h1>
   <p class="cover-sub">Trasformiamo saloni artigianali in macchine da profitto asimmetriche.</p>
@@ -384,12 +453,19 @@
       <span>Diagnosi Strategica</span>
     </div>
   </div>
+  <div class="cover-number">01</div>
 </section>
 
 <section class="section section--light">
   <div class="section-label">La Visione</div>
-  <h2>Non vendiamo corsi. <br>Costruiamo <em>Sistemi</em>.</h2>
-  <p class="lead">La maggior parte dei titolari lavora per il proprio salone. Noi facciamo in modo che il salone lavori per il titolare. Attraverso l'analisi dei dati e l'ingegneria dei processi, eliminiamo i buchi neri che rubano il tuo tempo e il tuo margine.</p>
+  <div class="two-col">
+    <div>
+      <h2>Non vendiamo corsi. <br>Costruiamo <em>Sistemi</em>.</h2>
+    </div>
+    <div>
+      <p class="lead">La maggior parte dei titolari lavora per il proprio salone. Noi facciamo in modo che il salone lavori per il titolare. Attraverso l'analisi dei dati e l'ingegneria dei processi, eliminiamo i buchi neri che rubano il tuo tempo e il tuo margine.</p>
+    </div>
+  </div>
   
   <div class="photo-aside" style="margin-top: 80px;">
     <img src="images/img_1.jpg" alt="Coach Masala">
@@ -400,12 +476,155 @@
   </div>
 </section>
 
+<section class="section section--dark">
+  <div class="section-label">I Numeri</div>
+  <h2>L'impatto della <em>Strategia</em>.</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="stat-number">+42%</span>
+      <span class="stat-label">Margine Operativo Medio</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">12</span>
+      <span class="stat-label">Mesi di Affiancamento</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">150+</span>
+      <span class="stat-label">Saloni Trasformati</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Garanzia Risultati</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="section-label">Casi Studio</div>
+  <h2>Risultati <em>Asimmetrici</em>.</h2>
+  
+  <div style="margin-top: 60px; display: flex; flex-direction: column; gap: 40px;">
+    <div class="case-card">
+      <div class="case-number">01</div>
+      <div class="case-title">Salone Concept Milano</div>
+      <div class="case-location">Ottimizzazione Processi</div>
+      <div class="case-body">
+        <div class="case-desc">
+          <p>Ristrutturazione completa del listino e del sistema di incentivi dello staff. Passaggio da una gestione basata sull'intuito a una basata sui KPI.</p>
+          <div class="case-results">
+            <div class="case-result">
+              <span class="case-result-val">+€85k</span>
+              <span class="case-result-lbl">Utile Extra Anno 1</span>
+            </div>
+            <div class="case-result">
+              <span class="case-result-val">-15h</span>
+              <span class="case-result-lbl">Tempo Titolare/Sett</span>
+            </div>
+          </div>
+        </div>
+        <img src="images/img_2.jpg" alt="Case Study" class="case-photo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="section-label">Il Framework</div>
+  <div class="two-col">
+    <h2>Ingegneria del <em>Profitto</em>.</h2>
+    <p class="lead">Un percorso in 4 fasi progettato per estrarre il massimo valore da ogni singolo cliente e ottimizzare ogni risorsa dello staff.</p>
+  </div>
+  
+  <div class="framework-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>Audit Strategico</h3>
+        <p>Analisi profonda dei numeri, dei flussi e delle inefficienze. Identifichiamo dove stai perdendo soldi oggi.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>Ingegneria del Listino</h3>
+        <p>Riprogettazione dei servizi e dei prezzi per massimizzare il margine e il valore percepito dal cliente.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>Protocolli Staff</h3>
+        <p>Creazione di procedure operative standard per rendere lo staff autonomo e performante nella vendita.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h3>Dominio Locale</h3>
+        <p>Sistemi di acquisizione clienti alto-spendenti per saturare l'agenda con contatti di qualità.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light">
+  <div class="section-label">Il Sistema</div>
+  <div class="two-col">
+    <div>
+      <h2>Tecnologia e <em>Metodo</em>.</h2>
+    </div>
+    <div>
+      <p class="lead">Non usiamo strumenti generici. Abbiamo sviluppato tool specifici per il mercato dei saloni italiani.</p>
+      <div class="system-grid">
+        <div class="system-card">
+          <h3>Matrice Clienti</h3>
+          <p>Algoritmo per la segmentazione asimmetrica del database clienti.</p>
+        </div>
+        <div class="system-card">
+          <h3>Staff Tracker</h3>
+          <p>Monitoraggio in tempo reale delle performance e dei bonus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="section-label" style="justify-content: center;">Inizia Ora</div>
+  <h2>Pronto a prendere il <em>Controllo</em>?</h2>
+  <p class="lead" style="margin: 0 auto 48px;">L'Audit Strategico è il primo passo per capire se il tuo salone può diventare un'azienda strutturata.</p>
+  <a href="https://parrucchierepower.it/diagnosi_avanzata_per_saloni-di-parrucchieri.html" class="btn">Richiedi il tuo Audit</a>
+</section>
+
 <footer>
-  <div class="footer-brand">Parrucchiere Power Srl</div>
-  <div class="footer-note">© 2026 · Tutti i diritti riservati · parrucchierepower.it</div>
-  <div class="footer-socials">
-    <a href="https://wa.me/393936645260" class="footer-social-link" target="_blank">WhatsApp</a>
-    <a href="https://www.linkedin.com/company/parrucchiere-power-srl/" class="footer-social-link" target="_blank">LinkedIn</a>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Parrucchiere Power Srl</div>
+      <p class="footer-text">Consulenza strategica e sistemi di gestione per titolari di saloni che puntano all'eccellenza operativa e finanziaria.</p>
+    </div>
+    <div>
+      <span class="footer-label">Navigazione</span>
+      <ul class="footer-links">
+        <li><a href="https://parrucchierepower.it">Home</a></li>
+        <li><a href="https://parrucchierepower.it/landing-7errori.html">7 Errori</a></li>
+        <li><a href="https://parrucchierepower.it/diagnosi_avanzata_per_saloni-di-parrucchieri.html">Audit Strategico</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="footer-label">Contatti</span>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/393936645260">WhatsApp</a></li>
+        <li><a href="https://www.linkedin.com/company/parrucchiere-power-srl/">LinkedIn</a></li>
+        <li><a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="copyright">© 2026 Parrucchiere Power Srl · P.IVA 01234567890</span>
+    <ul class="footer-links" style="display: flex; gap: 24px; margin-bottom: 0;">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Termini e Condizioni</a></li>
+    </ul>
   </div>
 </footer>
 
