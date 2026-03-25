@@ -29,7 +29,7 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
-  // 1. Aggiunta contatto a Brevo (Lista 6) - QUESTO DEVE ESSERE BLOCCANTE PER LA DIAGNOSI
+  // 1. Aggiunta contatto a Brevo (Lista 6) con mappatura attributi corretta
   try {
     const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -37,10 +37,10 @@ exports.handler = async function(event) {
       body: JSON.stringify({
         email,
         attributes: { 
-          FIRSTNAME: nome, 
-          LASTNAME: cognome, 
+          NOME: nome, 
+          COGNOME: cognome, 
           SMS: telefono, 
-          COMPANY: salone 
+          JOB_TITLE: salone // Uso JOB_TITLE per il nome del salone come da lista attributi fornita
         },
         listIds: [6],
         updateEnabled: true
@@ -49,7 +49,7 @@ exports.handler = async function(event) {
     
     if (!contactRes.ok) {
       const errData = await contactRes.json();
-      // Se l'errore è che il contatto esiste già, proseguiamo comunque
+      // Se l'errore è che il contatto esiste già, proseguiamo comunque (Brevo aggiornerà gli attributi)
       if (contactRes.status !== 400 || !errData.message.includes('already exists')) {
         console.error('Brevo contact error:', errData);
         return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo contact error: ' + (errData.message || 'Errore sconosciuto') }) };
