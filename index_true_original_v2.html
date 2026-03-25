@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+
+    <!-- ══ SEO & Social Meta Tags ══ -->
+    <title>Parrucchiere Power Srl — Consulenza e Formazione per Saloni Strutturati</title>
+    <meta name="description" content="Sistemi di vendita, gestione dello staff e crescita del margine per titolari con fatturato tra 100k e 350k annui. Garanzia contrattuale sui risultati.">
+    <link rel="canonical" href="https://parrucchierepower.it">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parrucchierepower.it/">
+    <meta property="og:title" content="Parrucchiere Power Srl — Consulenza e Formazione per Saloni Strutturati">
+    <meta property="og:description" content="Sistemi di vendita, gestione dello staff e crescita del margine per titolari con fatturato tra 100k e 350k annui. Garanzia contrattuale sui risultati.">
+    <meta property="og:image" content="https://parrucchierepower.it/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Parrucchiere Power Srl">
+    <meta property="og:locale" content="it_IT">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://parrucchierepower.it/">
+    <meta name="twitter:title" content="Parrucchiere Power Srl — Consulenza e Formazione per Saloni Strutturati">
+    <meta name="twitter:description" content="Sistemi di vendita, gestione dello staff e crescita del margine per titolari con fatturato tra 100k e 350k annui. Garanzia contrattuale sui risultati.">
+    <meta name="twitter:image" content="https://parrucchierepower.it/og-image.jpg">
+    <!-- ══ Fine SEO & Social Meta Tags ══ -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C8A84B;
+  --gold-light: #E8D49A;
+  --gold-pale: #F7F0DC;
+  --dark: #1A1814;
+  --dark-2: #2A2620;
+  --dark-3: #3A3530;
+  --mid: #6B6257;
+  --light: #F4F1EA;
+  --white: #FDFCF8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { background: var(--white); color: var(--dark); font-family: var(--sans); line-height: 1.6; }
+
+.cover {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark-3) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.cover-accent {
+  position: absolute;
+  top: 60px; right: 100px;
+  width: 1px; height: 120px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.cover-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 40px; position: relative; z-index: 1;
+}
+.cover h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 300; color: var(--white);
+  line-height: 1.05; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.cover h1 em { font-style: italic; color: var(--gold); }
+.cover-sub {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300; color: rgba(253,252,248,0.55);
+  margin-bottom: 60px; position: relative; z-index: 1; font-style: italic;
+}
+.cover-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 60px; position: relative; z-index: 1; }
+.cover-meta { display: flex; gap: 60px; position: relative; z-index: 1; flex-wrap: wrap; }
+.cover-meta-item label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 500; }
+.cover-meta-item span { font-family: var(--serif); font-size: 17px; color: rgba(253,252,248,0.7); font-weight: 300; }
+.cover-number { position: absolute; bottom: 80px; right: 100px; font-family: var(--serif); font-size: 140px; font-weight: 300; color: rgba(200,168,75,0.06); line-height: 1; z-index: 1; pointer-events: none; }
+
+.section { padding: 100px; position: relative; }
+.section--dark { background: var(--dark); color: var(--white); }
+.section--light { background: var(--light); }
+.section--white { background: var(--white); }
+
+.section-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px; font-weight: 500;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+
+h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 58px); font-weight: 300; line-height: 1.1; margin-bottom: 32px; }
+h2 em { font-style: italic; color: var(--gold); }
+.section--dark h2 { color: var(--white); }
+
+.lead { font-size: 18px; line-height: 1.75; color: var(--mid); max-width: 680px; font-weight: 300; }
+.section--dark .lead { color: rgba(253,252,248,0.6); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+
+/* PHOTO BLOCKS */
+.photo-full {
+  width: 100%; height: 520px;
+  object-fit: cover; object-position: center;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+.photo-full--top { object-position: center top; }
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.photo-strip img {
+  width: 100%; height: 380px;
+  object-fit: cover; display: block;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+.photo-overlay-block {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+.photo-overlay-block img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: grayscale(20%) contrast(1.05);
+}
+.photo-overlay-block .overlay-text {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(26,24,20,0.92) 0%, rgba(26,24,20,0) 100%);
+  padding: 60px 60px 50px;
+}
+.photo-overlay-block .overlay-text p {
+  font-family: var(--serif);
+  font-size: 28px; font-weight: 300; font-style: italic;
+  color: var(--white); line-height: 1.4; max-width: 600px;
+}
+.photo-overlay-block .overlay-text small {
+  display: block; margin-top: 12px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+}
+
+.photo-aside {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.photo-aside img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%); }
+.photo-aside-text { background: var(--dark-2); padding: 70px 60px; display: flex; flex-direction: column; justify-content: center; }
+.photo-aside-text h3 { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--white); margin-bottom: 20px; }
+.photo-aside-text p { font-size: 15px; color: rgba(253,252,248,0.55); line-height: 1.75; }
+
+.photo-trio {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+  height: 420px;
+}
+.photo-trio-left { overflow: hidden; }
+.photo-trio-left img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
+.photo-trio-right { display: grid; grid-template-rows: 1fr 1fr; }
+.photo-trio-right img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); display: block; }
+
+/* STATS */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; background: rgba(200,168,75,0.15); }
+.stat-box { background: var(--dark); padding: 50px 40px; text-align: center; }
+.stat-number { font-family: var(--serif); font-size: 56px; font-weight: 300; color: var(--gold); line-height: 1; display: block; margin-bottom: 12px; }
+.stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(253,252,248,0.45); font-weight: 500; }
+
+/* CASES */
+.case-card { border: 1px solid rgba(200,168,75,0.2); padding: 50px; position: relative; overflow: hidden; }
+.case-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); }
+.case-number { font-family: var(--serif); font-size: 80px; font-weight: 300; color: rgba(200,168,75,0.12); position: absolute; top: 20px; right: 30px; line-height: 1; }
+.case-title { font-family: var(--serif); font-size: 26px; font-weight: 400; margin-bottom: 8px; color: var(--dark); }
+.case-location { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; font-weight: 500; }
+.case-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-top: 24px; }
+.case-desc { font-size: 15px; color: var(--mid); line-height: 1.7; }
+.case-photo { width: 100%; height: 280px; object-fit: cover; display: block; filter: grayscale(10%); }
+.case-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+.case-result { background: var(--light); padding: 20px; }
+.case-result-val { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--gold); display: block; margin-bottom: 4px; }
+.case-result-lbl { font-size: 11px; color: var(--mid); letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+
+/* FRAMEWORK */
+.framework-steps { margin-top: 60px; display: flex; flex-direction: column; }
+.step { display: grid; grid-template-columns: 100px 1fr; align-items: stretch; border-bottom: 1px solid rgba(200,168,75,0.15); padding: 40px 0; gap: 40px; }
+.step:last-child { border-bottom: none; }
+.step-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--gold); opacity: 0.35; line-height: 1; padding-top: 6px; }
+.step-content h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 10px; color: var(--white); }
+.step-content p { font-size: 15px; color: rgba(253,252,248,0.5); line-height: 1.7; }
+
+/* SISTEMA */
+.system-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+.system-card { background: rgba(200,168,75,0.06); border: 1px solid rgba(200,168,75,0.15); padding: 36px; }
+.system-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--white); margin-bottom: 12px; }
+.system-card p { font-size: 14px; color: rgba(253,252,248,0.45); line-height: 1.7; }
+
+/* GARANZIA */
+.garanzia { background: var(--dark-2); border: 1px solid var(--gold); padding: 80px; display: grid; grid-template-columns: 1fr 200px; gap: 60px; align-items: center; margin-top: 80px; }
+.garanzia h3 { font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--white); margin-bottom: 24px; }
+.garanzia p { font-size: 16px; color: rgba(253,252,248,0.6); line-height: 1.8; }
+.garanzia-badge { width: 180px; height: 180px; border: 1px solid var(--gold); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+.garanzia-badge span { font-family: var(--serif); font-size: 64px; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.garanzia-badge label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; line-height: 1.3; }
+
+/* CLOSING */
+.closing { padding: 100px; background: var(--dark); display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+.closing h2 { color: var(--white); }
+.closing p { font-size: 16px; color: rgba(253,252,248,0.5); line-height: 1.8; max-width: 480px; }
+.contact-list { list-style: none; margin-top: 60px; }
+.contact-list li { margin-bottom: 32px; }
+.contact-list label { display: block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 500; }
+.contact-list a, .contact-list span { font-family: var(--serif); font-size: 18px; font-weight: 300; color: rgba(253,252,248,0.75); text-decoration: none; }
+.contact-list a:hover { color: var(--gold); }
+.closing-logo { font-family: var(--serif); font-size: 64px; font-weight: 300; color: rgba(200,168,75,0.08); line-height: 1; text-align: right; align-self: end; }
+
+.mt-60 { margin-top: 60px; }
+
+@media (max-width: 900px) {
+  .cover, .section, .closing { padding: 60px 40px; }
+  .two-col, .three-col, .stats-grid, .closing, .photo-strip, .photo-trio, .photo-aside { grid-template-columns: 1fr; }
+  .system-grid { grid-template-columns: 1fr !important; }
+  .leadmagnet-inner { grid-template-columns: 1fr !important; }
+  .photo-trio { height: auto; }
+  .photo-trio-left, .photo-trio-right { height: 260px; }
+  .photo-trio-right { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .photo-full { height: 320px; }
+  .case-body { grid-template-columns: 1fr; }
+  .garanzia { grid-template-columns: 1fr; }
+  .bootcamp-teaser { padding: 50px 30px; }
+  .cover { padding: 60px 30px; }
+  .section { padding: 60px 30px; }
+  .bootcamp-teaser { padding: 50px 24px; }
+  .garanzia { padding: 50px 30px; }
+}
+
+@media (max-width: 768px) {
+  .three-col, .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .system-grid { grid-template-columns: 1fr !important; }
+  .cover h1 { font-size: 42px; }
+  .step { grid-template-columns: 60px 1fr; }
+  .step-num { font-size: 36px; }
+}
+@media (max-width: 480px) {
+  .three-col, .stats-grid { grid-template-columns: 1fr !important; }
+  .system-grid { grid-template-columns: 1fr !important; }
+  .cover { padding: 48px 20px; }
+  .section { padding: 48px 20px; }
+  .garanzia { padding: 40px 20px; }
+  .bootcamp-teaser { padding: 40px 20px; }
+  .closing { padding: 48px 20px; }
+  .leadmagnet { padding: 48px 20px; }
+  .leadmagnet-form-wrap { padding: 32px 20px; }
+}
+
+
+/* LEAD MAGNET */
+.leadmagnet { background: var(--dark-2); padding: 100px; position: relative; overflow: hidden; }
+.leadmagnet::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200,168,75,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.leadmagnet-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.leadmagnet-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(200,168,75,0.3); padding: 6px 16px;
+  margin-bottom: 28px;
+}
+.leadmagnet-badge span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.leadmagnet h2 { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 50px); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+.leadmagnet h2 em { font-style: italic; color: var(--gold); }
+.leadmagnet-desc { font-size: 15px; color: rgba(253,252,248,0.5); line-height: 1.8; margin-bottom: 32px; max-width: 420px; }
+.leadmagnet-bullets { list-style: none; margin-bottom: 0; }
+.leadmagnet-bullets li { display: flex; align-items: flex-start; gap: 14px; font-size: 13px; color: rgba(253,252,248,0.45); line-height: 1.6; margin-bottom: 12px; }
+.leadmagnet-bullets li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-family: var(--serif); }
+
+/* FORM */
+.leadmagnet-form-wrap { background: var(--dark); border: 1px solid rgba(200,168,75,0.15); padding: 48px; }
+.lm-form-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 6px; }
+.lm-form-sub { font-size: 13px; color: rgba(253,252,248,0.35); margin-bottom: 32px; letter-spacing: 0.3px; }
+.lm-field { margin-bottom: 20px; }
+.lm-field label { display: block; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+.lm-field input {
+  width: 100%; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,168,75,0.2); border-radius: 0;
+  padding: 14px 16px; font-size: 14px; color: var(--white);
+  font-family: var(--sans); outline: none; transition: border-color 0.2s;
+}
+.lm-field input:focus { border-color: rgba(200,168,75,0.6); }
+.lm-field input::placeholder { color: rgba(253,252,248,0.2); }
+.lm-submit {
+  width: 100%; background: var(--gold); border: none; cursor: pointer;
+  padding: 16px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 600; color: var(--dark); font-family: var(--sans);
+  margin-top: 8px; transition: opacity 0.2s;
+}
+.lm-submit:hover { opacity: 0.88; }
+.lm-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.lm-msg { display: none; margin-top: 16px; padding: 14px 16px; font-size: 13px; line-height: 1.5; }
+.lm-msg.success { background: rgba(200,168,75,0.1); border: 1px solid rgba(200,168,75,0.3); color: var(--gold); }
+.lm-msg.error { background: rgba(200,80,60,0.08); border: 1px solid rgba(200,80,60,0.25); color: #E08070; }
+.lm-privacy { font-size: 11px; color: rgba(253,252,248,0.2); margin-top: 16px; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .leadmagnet { padding: 60px 40px; }
+  .leadmagnet-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+</style>
+</head>
+
+  <body>
+
+    <!-- ══ COVER ══ -->
+    <section class="cover">
+        <div class="cover-accent"></div>
+        <p class="cover-tag">Company Profile — Riservato</p>
+      <h1>Parrucchiere<br><em>Power</em> Srl</h1>
+      <p class="cover-sub">L'unica consulenza che garantisce<br>risultati economici nel contratto.</p>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-item"><label>Settore</label><span>Consulenza &amp; Formazione</span></div>
+        <div class="cover-meta-item"><label>Mercato</label><span>Acconciatura Professionale</span></div>
+        <div class="cover-meta-item"><label>Presenza</label><span>Italia</span></div>
+        <div class="cover-meta-item"><label>Fondatore</label><span>Emanuele Masala</span></div>
+      </div>
+      <div class="cover-number">PP</div>
+    </section>
+
+    <!-- ══ PHOTO HERO — scala del metodo ══ -->
+    <div class="photo-overlay-block">
+      <img src="images/img_1.jpg" alt="Boot Camp Parrucchiere Power — sala plenaria">
+      <div class="overlay-text">
+        <p>"Non un corso. Un'immersione operativa dove titolari di tutta Italia costruiscono la propria macchina economica."</p>
+        <small>Boot Camp Parrucchiere Power</small>
+      </div>
+    </div>
+
+    <!-- ══ CHI SIAMO ══ -->
+    <section class="section section--white">
+      <p class="section-label">Identità</p>
+      <h2>Non vendiamo corsi.<br><em>Costruiamo macchine economiche.</em></h2>
+      <p class="lead">Parrucchiere Power Srl è la società di consulenza strategica e formazione commerciale che ha ridefinito gli standard di performance nel settore dell'acconciatura professionale italiana. Il nostro metodo trasforma saloni tecnicamente eccellenti ma economicamente inespressi in strutture che generano ricchezza prevedibile, misurabile e scalabile.</p>
+
+      <div class="two-col mt-60">
+        <div>
+          <div class="callout">
+            <p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p>
+          </div>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;margin-top:32px;">Operiamo esclusivamente con titolari che hanno già dimostrato di saper fare impresa — fatturati tra i 100k e i 350k annui, staff formato, clientela consolidata — ma che si trovano intrappolati in quella che definiamo <strong style="color:var(--dark);font-weight:500">la zona grigia della competenza</strong>: troppo grandi per accontentarsi, troppo piccoli per dominare.</p>
+        </div>
+        <div>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:24px;">Ciò che differenzia Parrucchiere Power da ogni altro operatore del mercato è una singola parola: <span style="color:var(--dark);font-weight:500">garanzia.</span></p>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;margin-bottom:24px;">Lavoriamo ad oltranza — a spese nostre — fino al raggiungimento dell'obiettivo concordato prima di iniziare. Nessun formatore, nessuna agenzia, nessun consulente nel settore può permettersi questo livello di esposizione, perché richiede certezza assoluta nel sistema che si propone.</p>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;">Noi quella certezza l'abbiamo costruita su oltre 50 saloni in tutta Italia, mappando i pattern ricorrenti, le sequenze strategiche, i timing critici e gli errori fatali da evitare.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PHOTO STRIP — il metodo in azione ══ -->
+    <div class="photo-strip">
+      <div style="position:relative;overflow:hidden;">
+        <img src="images/img_2.jpg" alt="Sessione Boot Camp — coaching in sala" style="width:100%;height:380px;object-fit:cover;object-position:center top;filter:grayscale(15%) contrast(1.05);display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(26,24,20,0.75) 0%,transparent 100%);padding:24px 28px;">
+          <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;">Sessione di coaching</span>
+        </div>
+      </div>
+      <div style="position:relative;overflow:hidden;">
+        <img src="images/img_3.jpg" alt="Boot Camp — sessione in sala" style="width:100%;height:380px;object-fit:cover;object-position:center;filter:grayscale(15%) contrast(1.05);display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(26,24,20,0.75) 0%,transparent 100%);padding:24px 28px;">
+          <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;">Protocolli operativi</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ IL PROBLEMA ══ -->
+    <section class="section section--dark" style="padding-top:80px;padding-bottom:0;">
+      <p class="section-label">Il Problema</p>
+      <h2>Il potenziale economico che<br><em>scompare ogni giorno</em></h2>
+      <p class="lead">In un salone medio con 3 collaboratori e 21 clienti/giorno, esistono 5 momenti commerciali critici che vengono sistematicamente sprecati. Il costo di questa inefficienza è misurabile al centesimo.</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-number">37</span>
+          <span class="stat-label">Micro-decisioni<br>commerciali per cliente</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">60%</span>
+          <span class="stat-label">Fatturato potenziale<br>non realizzato</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">90'</span>
+          <span class="stat-label">Tempo di contatto<br>esclusivo per cliente</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">€0</span>
+          <span class="stat-label">Costo marginale della<br>vendita in salone</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PHOTO ASIDE — visione ══ -->
+    <div class="photo-aside">
+      <img src="images/img_4.jpg" alt="Coach Masala — analisi strategica">
+      <div class="photo-aside-text">
+        <h3>"Il salone non è un luogo di lavoro. È un'unità di produzione di profitto che deve funzionare anche senza la tua presenza tecnica."</h3>
+        <p>Emanuele Masala — Fondatore Parrucchiere Power Srl</p>
+      </div>
+    </div>
+
+    <!-- ══ IL METODO ══ -->
+    <section class="section section--dark">
+      <p class="section-label">Il Metodo</p>
+      <h2>L'architettura della<br><em>performance</em></h2>
+      
+      <div class="framework-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Mappatura Asimmetrica</h3>
+            <p>Analisi profonda dei flussi di cassa e identificazione dei "buchi neri" dove il margine scompare. Non guardiamo solo quanto incassi, ma quanto ti costa ogni singolo euro che entra.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Protocolli di Conversione</h3>
+            <p>Installazione di script e sequenze operative che lo staff deve eseguire ad ogni contatto. Trasformiamo la "proposta" in un processo automatico e non invasivo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Ingegneria del Listino</h3>
+            <p>Ristrutturazione completa dei prezzi basata sulla psicologia del valore e sulla saturazione delle ore. Eliminiamo i servizi a basso margine che mangiano tempo prezioso.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Saturazione Prevedibile</h3>
+            <p>Sistemi di rebooking e acquisizione clienti alto-spendenti per garantire che l'agenda sia piena non di "teste", ma di margini elevati.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CASI STUDIO ══ -->
+    <section class="section section--light">
+      <p class="section-label">Risultati</p>
+      <h2>Evidenze <em>Empiriche</em></h2>
+
+      <div style="display:flex;flex-direction:column;gap:40px;margin-top:60px;">
+        
+        <!-- CASO 1 -->
+        <div class="case-card">
+          <div class="case-number">01</div>
+          <p class="case-location">Salerno — Salone Storico</p>
+          <h2 class="case-title">Cuccurullo Acconciatori</h2>
+          <div class="case-body">
+            <div>
+              <p class="case-desc">Un salone con decenni di storia e uno staff numeroso. Il problema era la stagnazione del fatturato nonostante l'altissima qualità tecnica. Abbiamo introdotto la "Matrice Clienti Asimmetrica" e riqualificato lo staff alla vendita consulenziale.</p>
+              <div class="case-results">
+                <div class="case-result"><span class="case-result-val">+42%</span><span class="case-result-lbl">Incremento scontrino medio</span></div>
+                <div class="case-result"><span class="case-result-val">+€13k</span><span class="case-result-lbl">Fatturato mensile aggiuntivo</span></div>
+              </div>
+            </div>
+            <div>
+              <img class="case-photo" src="images/img_5.jpg" alt="Team Cuccurullo Acconciatori dopo il training">
+              <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Il team di Cuccurullo Acconciatori — Salerno</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASO 2 -->
+        <div class="case-card">
+          <div class="case-number">02</div>
+          <p class="case-location">Venezia — Apertura</p>
+          <h2 class="case-title">Infinito Parrucchieri</h2>
+          <div class="case-body">
+            <div>
+              <p class="case-desc">Giulia ci ha ingaggiato all'apertura con carta bianca. Posizionamento verticale come punto di riferimento italiano per il biondo lungo, sviluppo di una linea di prodotti a marchio proprietario (I Veneziani), introduzione precoce del sistema di card di abbonamento.</p>
+              <p class="case-desc" style="margin-top:12px;">Il risultato più straordinario: durante il lockdown covid, mentre il settore collassava, Infinito confermava i fatturati pre-pandemia.</p>
+              <div class="case-results">
+                <div class="case-result"><span class="case-result-val">€100+</span><span class="case-result-lbl">Scontrino medio</span></div>
+                <div class="case-result"><span class="case-result-val">97%</span><span class="case-result-lbl">CRR (media naz. 15-20%)</span></div>
+                <div class="case-result"><span class="case-result-val">+300%</span><span class="case-result-lbl">Prezzo vs media</span></div>
+                <div class="case-result"><span class="case-result-val">4×</span><span class="case-result-lbl">Margini vs media naz.</span></div>
+              </div>
+            </div>
+            <div>
+              <img class="case-photo" src="images/img_6.jpg" alt="Visita in salone — training operativo">
+              <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Training operativo in salone — visita diretta</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASO 3 -->
+        <div class="case-card">
+          <div class="case-number">03</div>
+          <p class="case-location">Chignolo d'Isola — Salone Premium</p>
+          <h2 class="case-title">Hair Mania</h2>
+          <div class="case-body">
+            <div>
+              <p class="case-desc">Federica aveva tecnica eccellente e un potenziale superiore a quello che esprimeva. Abbiamo lavorato su tre assi: adozione della settimana corta a 4 giorni (legge di Parkinson applicata alla produttività), riposizionamento di marca, e applicazione della legge di potenza su un segmento preciso di clientela. L'intervento più audace: abbonamenti VIP da €3.500 offerti a un piccolo cluster di clienti selezionati, acquistati senza esitazione. Incassare mesi di lavoro in anticipo è una leva finanziaria che nessun corso di settore insegna.</p>
+              <div class="case-results">
+                <div class="case-result"><span class="case-result-val">€3.500</span><span class="case-result-lbl">Abbonamenti VIP venduti</span></div>
+                <div class="case-result"><span class="case-result-val">4 gg</span><span class="case-result-lbl">Settimana lavorativa</span></div>
+                <div class="case-result"><span class="case-result-val">↑↑↑</span><span class="case-result-lbl">Margini e produttività</span></div>
+                <div class="case-result"><span class="case-result-val">Legge<br>Parkinson</span><span class="case-result-lbl">Applicata al salone</span></div>
+              </div>
+            </div>
+            <div>
+              <img class="case-photo" alt="" src="images/img_7.jpg">
+              <p style="font-size:12px;color:var(--mid);margin-top:8px;letter-spacing:0.5px;">Training operativo in salone — visita diretta</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ GARANZIA ══ -->
+    <div class="garanzia">
+      <div>
+        <h3>La Garanzia Inversa</h3>
+        <p>Mettiamo la garanzia del risultato nel contratto con formula soddisfatti-o-soddisfatti. Lavoriamo ad oltranza fino al raggiungimento dell'obiettivo concordato prima di partire. Se non raggiungiamo i target misurabili e concordati, continuiamo a spese nostre. È un'esposizione che nessun consulente, agenzia o formatore nel settore può permettersi — perché richiede certezza assoluta nel sistema che si propone. Noi quella certezza l'abbiamo.</p>
+      </div>
+      <div class="garanzia-badge">
+        <span>G</span>
+        <label>Risultati<br>garantiti<br>per contratto</label>
+      </div>
+    </div>
+
+    <!-- ══ CHI SIAMO PER ══ -->
+    <section class="section section--white">
+      <p class="section-label">Selezione</p>
+      <h2>Non per tutti.<br><em>Per chi è pronto.</em></h2>
+      <p class="lead">Questa trasparenza è deliberata: non cerchiamo clienti, cerchiamo partner di crescita. Il nostro approccio non funziona per tutti, e lo diciamo senza imbarazzo.</p>
+
+      <div class="three-col" style="margin-top:60px;">
+        <div>
+          <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px;">Profilo target</p>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;">Titolari con fatturati tra €100k e €350k annui, staff formato, reputazione consolidata. Chi si trova nella zona grigia della competenza e sa che potrebbe fare molto di più.</p>
+        </div>
+        <div>
+          <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px;">Prerequisiti</p>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;">Intelligenza strategica, energia sostenuta, disciplina esecutiva, ossessione per l'eccellenza, propensione al rischio calcolato, fame autentica. Se anche uno solo di questi elementi manca, la nostra società non è per te.</p>
+        </div>
+        <div>
+          <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:12px;">Cosa offriamo</p>
+          <p style="font-size:15px;color:var(--mid);line-height:1.75;">Un sistema replicabile che trasforma il talento dello staff in fatturato prevedibile, con garanzia contrattuale sui risultati e skin in the game reale da parte nostra.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="leadmagnet" id="guida-gratuita">
+  <div class="leadmagnet-inner">
+
+    <div>
+      <div class="leadmagnet-badge">
+        <span>Download gratuito</span>
+      </div>
+      <h2>7 Errori che<br>costano <em>margine</em><br>al tuo salone.</h2>
+      <p class="leadmagnet-desc">
+        Una guida diretta per titolari strutturati con fatturato tra 100k e 350k annui.
+        Non consigli generici: i pattern sistemici che abbiamo identificato su oltre 50 saloni
+        italiani — e che si traducono in decine di migliaia di euro di margine non espresso.
+      </p>
+      <ul class="leadmagnet-bullets">
+        <li>Listino costruito sul costo invece che sul valore percepito</li>
+        <li>Staff che lavora bene ma non vende</li>
+        <li>Nessun protocollo di rebook sistematico</li>
+        <li>CAC completamente ignoto</li>
+        <li>+ 3 altri errori che il conto economico non mostra in superficie</li>
+      </ul>
+    </div>
+
+    <div class="leadmagnet-form-wrap">
+      <p class="lm-form-title">Scarica la guida gratuita</p>
+      <p class="lm-form-sub">Accesso immediato. Nessuno spam.</p>
+
+      <div class="lm-field">
+        <label for="lm-nome">Nome</label>
+        <input type="text" id="lm-nome" placeholder="Il tuo nome" autocomplete="given-name">
+      </div>
+      <div class="lm-field">
+        <label for="lm-email">Email</label>
+        <input type="email" id="lm-email" placeholder="la-tua@email.it" autocomplete="email">
+      </div>
+
+      <button class="lm-submit" id="lm-btn" onclick="lmSubmit()">
+        Scarica ora — gratis
+      </button>
+
+      <div class="lm-msg" id="lm-msg"></div>
+      <p class="lm-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl.
+      Nessun dato viene ceduto a terzi. Cancellazione immediata in qualsiasi momento.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+async function lmSubmit() {
+  const nome  = document.getElementById('lm-nome').value.trim();
+  const email = document.getElementById('lm-email').value.trim();
+  const btn   = document.getElementById('lm-btn');
+
+  if (!nome || !email) {
+    showMsg('Inserisci nome e email per continuare.', 'error');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showMsg('Indirizzo email non valido.', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso...';
+
+  try {
+    const res = await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email })
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success');
+      btn.textContent = 'Inviato ✓';
+    } else {
+      throw new Error(data.message || 'Errore');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Scarica ora — gratis';
+    showMsg('Qualcosa non ha funzionato. Riprova o scrivici a info@parrucchierepower.it', 'error');
+  }
+}
+
+function showMsg(text, type) {
+  const msg = document.getElementById('lm-msg');
+  msg.textContent = text;
+  msg.className = 'lm-msg ' + type;
+  msg.style.display = 'block';
+}
+</script>
+
+<!-- ══ CHIUSURA ══ -->
+    <section class="closing">
+      <div>
+        <h2>Il prossimo passo<br><em>è il tuo.</em></h2>
+        <p>Se quello che hai letto risuona con la tua visione imprenditoriale, il processo è semplice: una email con nome, cognome, nome del salone, partita IVA, una descrizione autentica di chi sei come imprenditore e l'obiettivo che vuoi raggiungere nei prossimi 18-24 mesi.<br><br>Non promettiamo di accettare tutti. Valutiamo la compatibilità strategica. Se non c'è, te lo diciamo con franchezza.</p>
+        <ul class="contact-list">
+          <li><label>Email</label><span>info@parrucchierepower.it</span></li>
+          <li><label>Brand</label><span>Parrucchiere Power Srl</span></li>
+          <li><label>Fondatore</label><span>Coach Masala</span></li>
+          <li><label>Mercato</label><span>Italia — Nord, Centro, Sud</span></li>
+        </ul>
+      </div>
+      <div class="closing-logo">PP</div>
+    </section>
+
+    <footer style="background: var(--dark); padding: 40px 100px; border-top: 1px solid rgba(200,168,75,0.1); text-align: center;">
+      <p style="font-size: 12px; color: rgba(253,252,248,0.3); margin-bottom: 16px; letter-spacing: 1px;">
+        Parrucchiere Power Srl - © 2026 Tutti i diritti riservati
+      </p>
+      <p style="font-size: 11px; color: rgba(253,252,248,0.2); line-height: 1.6; max-width: 800px; margin: 0 auto;">
+        È <strong>ESPRESSAMENTE PROIBITA</strong> qualsiasi riproduzione, anche parziale, dei contenuti di <strong>parrucchierepower.it</strong> e sue sottopagine. Si applicano le sanzioni ex L. 633/1941 e ss.mm.ii.
+      </p>
+    </footer>
+
+    <style>
+      @media (max-width: 900px) {
+        footer { padding: 40px 30px !important; }
+      }
+    </style>
+
+  </body>
+</html>

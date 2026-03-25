@@ -20,7 +20,6 @@
       --white: #e8e0d0;
       --serif: 'Playfair Display', serif;
       --sans: 'Barlow', sans-serif;
-      --gold-line: rgba(201,168,76,0.2);
     }
 
     html { font-size: 16px; scroll-behavior: smooth; }
@@ -87,7 +86,7 @@
       max-width: 400px;
       height: 100vh;
       background: var(--dark);
-      border-left: 1px solid var(--gold-line);
+      border-left: 1px solid rgba(201,168,76,0.2);
       z-index: 1001;
       transform: translateX(100%);
       transition: transform 0.3s ease;
@@ -107,11 +106,11 @@
       gap: 0;
     }
     .menu-item {
-      border-bottom: 1px solid var(--gold-line);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
       padding: 24px 0;
     }
     .menu-item:first-child {
-      border-top: 1px solid var(--gold-line);
+      border-top: 1px solid rgba(201,168,76,0.2);
     }
     .menu-link {
       font-family: var(--serif);
@@ -129,7 +128,7 @@
     .menu-footer {
       margin-top: auto;
       padding-top: 40px;
-      border-top: 1px solid var(--gold-line);
+      border-top: 1px solid rgba(201,168,76,0.2);
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -257,7 +256,7 @@
     /* ── FORM CARD ── */
     .form-card {
       background: var(--dark-3);
-      border: 1px solid var(--gold-line);
+      border: 1px solid rgba(201,168,76,0.2);
       padding: 52px 48px;
       width: 100%;
       max-width: 420px;
@@ -281,7 +280,7 @@
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 600;
-      border: 1px solid var(--gold-line);
+      border: 1px solid rgba(201,168,76,0.3);
       padding: 5px 12px;
       margin-bottom: 24px;
     }
@@ -317,7 +316,7 @@
     .f-field input {
       width: 100%;
       padding: 13px 16px;
-      border: 1px solid var(--gold-line);
+      border: 1px solid rgba(201,168,76,0.2);
       background: var(--dark-2);
       font-family: var(--sans);
       font-size: 14px;
@@ -408,7 +407,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
-      background: var(--gold-line);
+      background: rgba(201,168,76,0.15);
     }
 
     .errore-item {
@@ -502,7 +501,7 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
-      background: var(--gold-line);
+      background: rgba(201,168,76,0.15);
     }
 
     .stat-block {
@@ -535,7 +534,7 @@
     footer {
       padding: 100px;
       background: var(--dark);
-      border-top: 1px solid var(--gold-line);
+      border-top: 1px solid rgba(201,168,76,0.1);
       text-align: center;
     }
     .footer-brand {
