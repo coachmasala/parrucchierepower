@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Manus - Parrucchiere Power</title>
+  <style>
+    body { background: #0d0d0d; color: #e8e0d0; font-family: sans-serif; padding: 50px; text-align: center; }
+    button { background: #c9a84c; color: #000; padding: 20px 40px; border: none; cursor: pointer; font-weight: bold; }
+    #msg { margin-top: 20px; padding: 15px; display: none; border: 1px solid #c9a84c; }
+  </style>
+</head>
+<body>
+  <h1>Test di Sopravvivenza Funzione Netlify</h1>
+  <p>Se clicchi il pulsante e vedi "Successo", la funzione è viva e vegeta.</p>
+  <button onclick="test()">FAI IL TEST ORA</button>
+  <div id="msg"></div>
+
+  <script>
+    async function test() {
+      const msg = document.getElementById('msg');
+      msg.style.display = 'block';
+      msg.textContent = 'Invio in corso...';
+      
+      try {
+        const res = await fetch('/.netlify/functions/audit_v2', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome: 'Test', cognome: 'Manus', email: 'test@manus.im', telefono: '123', salone: 'Test' })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msg.textContent = 'VITTORIA: ' + data.message;
+          msg.style.borderColor = '#c9a84c';
+        } else {
+          msg.textContent = 'ERRORE: ' + (data.message || 'Errore sconosciuto');
+          msg.style.borderColor = 'red';
+        }
+      } catch (e) {
+        msg.textContent = 'ERRORE DI RETE: ' + e.message;
+        msg.style.borderColor = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
