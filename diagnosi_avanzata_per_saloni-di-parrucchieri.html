@@ -138,6 +138,19 @@
     line-height: 1.5;
   }
 
+  /* ── VIDEO SECTION ── */
+  .video-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    border: 1px solid var(--gold-line);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .video-container video {
+    width: 100%;
+    display: block;
+  }
+
   /* ── SECTIONS ── */
   section { padding: 8rem 3rem; max-width: 1200px; margin: 0 auto; }
   .section-label {
@@ -163,6 +176,17 @@
     color: var(--text-muted);
     max-width: 720px;
     margin-bottom: 4rem;
+  }
+
+  /* ── MOCKUP SECTION ── */
+  .mockup-container {
+    text-align: center;
+    margin: 4rem 0;
+  }
+  .mockup-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
   }
 
   /* ── GRIDS ── */
@@ -267,7 +291,9 @@
   #form-container { max-width: 500px; margin: 0 auto; }
   .form-group { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  input {
+  .tel-row { display: grid; grid-template-columns: 100px 1fr; gap: 1.2rem; }
+  
+  input, select {
     background: rgba(255,255,255,0.03);
     border: 0.5px solid var(--gold-line);
     padding: 1.1rem 1.5rem;
@@ -277,7 +303,12 @@
     outline: none;
     transition: border-color 0.2s;
   }
-  input:focus { border-color: var(--gold); }
+  select {
+    appearance: none;
+    cursor: pointer;
+  }
+  input:focus, select:focus { border-color: var(--gold); }
+  
   .form-submit {
     width: 100%;
     background: var(--gold);
@@ -322,7 +353,12 @@
     background: var(--bg2);
     border: 0.5px solid var(--gold-line);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold-dim);
+    overflow: hidden;
+  }
+  .author-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .author-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
   .author-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -341,7 +377,49 @@
     text-align: center;
   }
   .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
-  .footer-note { font-size: 11px; color: var(--text-faint); }
+  .footer-note { font-size: 11px; color: var(--text-faint); margin-bottom: 2rem; }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.8rem 1.5rem;
+    border: 0.5px solid var(--gold-line);
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .social-btn:hover {
+    background: var(--gold);
+    color: #0d0d0d;
+  }
+  
+  .legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    opacity: 0.5;
+  }
+  .legal-links a {
+    color: var(--text-faint);
+    font-size: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .legal-links a:hover { color: var(--gold); }
 
   /* ── UTILS ── */
   .divider { width: 100px; height: 1px; background: var(--gold-line); margin: 0 auto; }
@@ -355,7 +433,7 @@
     .score-row { grid-template-columns: 1fr; gap: 1rem; }
     .author-section { grid-template-columns: 1fr; text-align: center; }
     .author-photo { margin: 0 auto; }
-    .form-row { grid-template-columns: 1fr; }
+    .form-row, .tel-row { grid-template-columns: 1fr; }
     .guarantee-box { padding: 3rem 1.5rem; }
   }
 </style>
@@ -378,7 +456,15 @@
   <div class="hero-label">Audit Strategico · 183 Domande · Coach Masala</div>
   <h1>Il tuo salone <br>non perde clienti. <br><span class="accent">Perde controllo.</span></h1>
   <p class="hero-sub">L'Audit Parrucchiere Power diagnostica il tuo salone in 183 domande e ti dà le 3 azioni esatte da fare già lunedì mattina per smettere di indovinare e iniziare a comandare il tuo mercato.</p>
-  <a href="#acquista" class="nav-cta" style="padding: 1.4rem 3rem; font-size: 14px;">VOGLIO L'AUDIT — 137€ →</a>
+  
+  <div class="video-container">
+    <video autoplay loop muted playsinline>
+      <source src="Video Copertina Audit.mp4" type="video/mp4">
+      Il tuo browser non supporta il tag video.
+    </video>
+  </div>
+
+  <a href="#acquista" class="nav-cta" style="padding: 1.4rem 3rem; font-size: 14px; margin: 0 auto; display: table;">VOGLIO L'AUDIT — 137€ →</a>
 </section>
 
 <div class="divider"></div>
@@ -388,6 +474,10 @@
   <h2>Perché il 92% dei saloni italiani <span class="accent">sopravvive</span> invece di prosperare</h2>
   <p class="section-body">Non è colpa della crisi. Non è colpa delle tasse. È colpa della mancanza di un sistema diagnostico. La maggior parte dei titolari guida il proprio salone a 120 km/h con il parabrezza opaco: non sanno dove perdono soldi, non sanno perché le clienti non tornano, non sanno quanto valgono davvero i loro numeri.</p>
   
+  <div class="mockup-container">
+    <img src="MOCKUP.png" alt="Audit Cartaceo Parrucchiere Power">
+  </div>
+
   <div class="audit-grid">
     <div class="audit-card">
       <div class="ac-num">01</div>
@@ -413,7 +503,6 @@
   <div class="section-label">Struttura dell'audit</div>
   <h2>5 sezioni. 183 domande. <span class="accent">Zero margine di errore.</span></h2>
   <p class="section-body">Ogni domanda è chirurgica. Ogni sezione copre un'area critica che la maggior parte dei titolari non ha mai misurato. Alla fine, sai esattamente dove sei — e dove devi agire.</p>
-
   <div class="audit-grid">
     <div class="audit-card">
       <div class="ac-num">01</div>
@@ -455,7 +544,7 @@
     <div class="section-label">Ordina ora</div>
     <h2>Smetti di indovinare.<br>Inizia a sapere.</h2>
     <p class="cta-sub">Inserisci i tuoi dati. Riceverai via email il link di pagamento sicuro. Dopo la conferma, accesso immediato ai 3 video e istruzioni per prenotare la consulenza 1:1. L'audit cartaceo arriva al salone in 3 giorni lavorativi.</p>
-
+    
     <div id="form-container">
       <div class="form-group">
         <div class="form-row">
@@ -463,14 +552,22 @@
           <input type="text" id="cognome" placeholder="Cognome *">
         </div>
         <input type="email" id="email" placeholder="Indirizzo email *">
-        <input type="tel" id="telefono" placeholder="Telefono *">
+        <div class="tel-row">
+          <select id="prefisso">
+            <option value="+39">+39 (IT)</option>
+            <option value="+41">+41 (CH)</option>
+            <option value="+33">+33 (FR)</option>
+            <option value="+49">+49 (DE)</option>
+            <option value="+44">+44 (UK)</option>
+            <option value="+1">+1 (US)</option>
+          </select>
+          <input type="tel" id="telefono" placeholder="Telefono *">
+        </div>
         <input type="text" id="salone" placeholder="Nome del salone *">
       </div>
-
       <button class="form-submit" id="submit-btn" onclick="submitForm()">
         Ordina l'Audit — 137€ — Spedizione Gratis →
       </button>
-
       <div class="form-note">
         Riceverai il link di pagamento sicuro entro poche ore.<br>
         <span>✦</span> Nessuno spam. Solo l'email con le istruzioni di acquisto.<br>
@@ -487,19 +584,48 @@
   </div>
 </section>
 
+<div class="author-section">
+  <div class="author-photo">
+    <img src="Coach_Masala.jpeg" alt="Coach Masala">
+  </div>
+  <div>
+    <div class="author-tag">Chi c'è dietro</div>
+    <div class="author-name">Coach Masala</div>
+    <div class="author-role">Architect of High-Performance Systems · Parrucchiere Power Srl</div>
+    <div class="author-bio">Consulente strategico specializzato nel settore dei saloni di bellezza italiani. Ha sviluppato sistemi di crescita, posizionamento e dominio territoriale per titolari che vogliono smettere di gestire e iniziare a comandare il proprio mercato. Il suo approccio non è motivazionale — è diagnostico, operativo, misurabile. Come deve essere quando si parla di soldi veri.</div>
+  </div>
+</div>
+
 <footer>
+  <div class="social-buttons">
+    <a href="https://wa.me/393936645260" class="social-btn" target="_blank">
+      WhatsApp
+    </a>
+    <a href="https://www.linkedin.com/company/parrucchiere-power-srl/" class="social-btn" target="_blank">
+      LinkedIn
+    </a>
+  </div>
+
   <div class="footer-brand">Parrucchiere Power Srl</div>
   <div class="footer-note">© 2026 · Tutti i diritti riservati · parrucchierepower.it</div>
-  <p style="margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.5; font-size: 10px; color: var(--text-faint);">
+  
+  <p style="max-width: 600px; margin: 0 auto; opacity: 0.5; font-size: 10px; color: var(--text-faint);">
     È ESPRESSAMENTE PROIBITA qualsiasi riproduzione, anche parziale, dei contenuti di parrucchierepower.it e sue sottopagine. Si applicano le sanzioni ex L. 633/1941 e ss.mm.ii.
   </p>
+
+  <div class="legal-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Termini e Condizioni</a>
+    <a href="#">GDPR</a>
+  </div>
 </footer>
 
 <script>
-    async function submitForm() {
+  async function submitForm() {
     const nome     = document.getElementById('nome').value.trim();
     const cognome  = document.getElementById('cognome').value.trim();
     const email    = document.getElementById('email').value.trim();
+    const prefisso = document.getElementById('prefisso').value;
     let telefono   = document.getElementById('telefono').value.trim().replace(/\s+/g, '');
     const salone   = document.getElementById('salone').value.trim();
     const btn      = document.getElementById('submit-btn');
@@ -510,14 +636,8 @@
       return;
     }
 
-    // Forzatura prefisso +39 se manca
-    if (!telefono.startsWith('+')) {
-      if (telefono.startsWith('00')) {
-        telefono = '+' + telefono.substring(2);
-      } else {
-        telefono = '+39' + telefono;
-      }
-    }
+    // Unione prefisso e telefono
+    const telefonoCompleto = prefisso + telefono;
 
     btn.disabled = true;
     btn.textContent = 'INVIO IN CORSO...';
@@ -526,7 +646,7 @@
       const res = await fetch('/.netlify/functions/audit_final', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, cognome, email, telefono, salone })
+        body: JSON.stringify({ nome, cognome, email, telefono: telefonoCompleto, salone })
       });
 
       const data = await res.json();
@@ -535,13 +655,12 @@
         document.getElementById('form-container').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       } else {
-        const errorMsg = data.message || 'Errore durante l\'invio';
-        throw new Error(errorMsg);
+        throw new Error('Imprevisto');
       }
     } catch (e) {
       btn.disabled = false;
       btn.textContent = 'Ordina l\'Audit — 137€ — Spedizione Gratis →';
-      showMsg('Errore: ' + e.message, 'error');
+      showMsg('C\'è stato un imprevisto, forse dovuto al fatto che abbiamo già alcuni tuoi dati, manda direttamente una email a info@parrucchierepower.it o clicca sul pulsante whatsapp in fondo alla pagina per parlare direttamente con noi', 'error');
     }
   }
 
