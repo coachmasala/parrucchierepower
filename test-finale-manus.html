@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Finale Manus - Parrucchiere Power</title>
+  <style>
+    body { background: #0d0d0d; color: #e8e0d0; font-family: sans-serif; padding: 50px; text-align: center; }
+    input { background: transparent; border: 1px solid #c9a84c; padding: 10px; color: #fff; margin: 5px; width: 250px; }
+    button { background: #c9a84c; color: #000; padding: 20px 40px; border: none; cursor: pointer; font-weight: bold; margin-top: 20px; }
+    #msg { margin-top: 20px; padding: 15px; display: none; border: 1px solid #c9a84c; }
+  </style>
+</head>
+<body>
+  <h1>Test Finale Funzione Netlify + Brevo</h1>
+  <p>Inserisci i dati e clicca il pulsante. Se vedi "Successo", la funzione è viva e il contatto è su Brevo.</p>
+  
+  <input type="text" id="nome" placeholder="Nome" value="Test">
+  <input type="text" id="cognome" placeholder="Cognome" value="Manus">
+  <input type="email" id="email" placeholder="Email" value="test@manus.im">
+  <input type="tel" id="telefono" placeholder="Telefono" value="3331234567">
+  <input type="text" id="salone" placeholder="Salone" value="Test Salone">
+  <br>
+  <button onclick="test()">FAI IL TEST ORA</button>
+  <div id="msg"></div>
+
+  <script>
+    async function test() {
+      const msg = document.getElementById('msg');
+      msg.style.display = 'block';
+      msg.textContent = 'Invio in corso...';
+      
+      const nome = document.getElementById('nome').value;
+      const cognome = document.getElementById('cognome').value;
+      const email = document.getElementById('email').value;
+      const telefono = document.getElementById('telefono').value;
+      const salone = document.getElementById('salone').value;
+
+      try {
+        const res = await fetch('/.netlify/functions/audit_v2', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, cognome, email, telefono, salone })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          msg.textContent = 'VITTORIA: Contatto inviato con successo!';
+          msg.style.borderColor = '#c9a84c';
+          msg.style.color = '#c9a84c';
+        } else {
+          msg.textContent = 'ERRORE: ' + (data.message || 'Errore sconosciuto');
+          msg.style.borderColor = 'red';
+          msg.style.color = 'red';
+        }
+      } catch (e) {
+        msg.textContent = 'ERRORE DI RETE: ' + e.message;
+        msg.style.borderColor = 'red';
+        msg.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
