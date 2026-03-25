@@ -295,12 +295,14 @@
           showMsg('Richiesta inviata con successo. Ti contatteremo a breve.', 'success');
           btn.textContent = 'INVIATO ✓';
         } else {
-          throw new Error(data.message || 'Errore durante l\'invio');
+          // Mostro l'errore esatto che arriva dal server per diagnosi
+          const errorMsg = data.message || 'Errore sconosciuto dal server';
+          throw new Error(errorMsg);
         }
       } catch (e) {
         btn.disabled = false;
         btn.textContent = 'ORDINA L\'AUDIT — 137€ — SPEDIZIONE GRATIS →';
-        showMsg('Errore: ' + e.message, 'error');
+        showMsg('Dettaglio Errore: ' + e.message, 'error');
       }
     }
 
