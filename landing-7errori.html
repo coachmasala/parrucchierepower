@@ -746,13 +746,19 @@
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Nota: Qui andrebbe l'endpoint reale di Netlify o Brevo
-      setTimeout(() => {
+      const response = await fetch('/.netlify/functions/subscribe-audit', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+      
+      if (response.ok) {
         msg.innerText = 'Grazie! Controlla la tua email, il report è in arrivo.';
         msg.className = 'f-msg success';
         msg.style.display = 'block';
         btn.innerText = 'Inviato con Successo';
-      }, 1500);
+      } else {
+        throw new Error();
+      }
     } catch (err) {
       msg.innerText = 'C\'è stato un errore. Riprova o scrivici su WhatsApp.';
       msg.className = 'f-msg error';
