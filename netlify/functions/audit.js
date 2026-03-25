@@ -20,14 +20,19 @@ exports.handler = async function(event) {
   }
 
   const BREVO_KEY = process.env.BREVO_API_KEY;
+  if (!BREVO_KEY) {
+    console.error('ERRORE: BREVO_API_KEY non configurata su Netlify');
+    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Configurazione server mancante (API KEY)' }) };
+  }
+
   const headers = {
     'Content-Type': 'application/json',
     'api-key': BREVO_KEY
   };
 
-  // 1. Aggiunta contatto a Brevo (Lista Audit - ID da verificare, uso 4 come esempio o lascio 3 se è la stessa)
+  // 1. Tentativo aggiunta contatto a Brevo (Lista 3 - la stessa della landing principale per sicurezza)
   try {
-    await fetch('https://api.brevo.com/v3/contacts', {
+    const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -38,39 +43,53 @@ exports.handler = async function(event) {
           SMS: telefono,
           COMPANY: salone
         },
-        listIds: [4], // Assumo una lista diversa per l'audit, o aggiungi a quella esistente
+        listIds: [3], // Uso l'ID 3 che sappiamo funzionare per l'altra landing
         updateEnabled: true
       })
     });
+    if (!contactRes.ok) {
+      const errText = await contactRes.text();
+      console.warn('Brevo contact warning (non bloccante):', errText);
+    }
   } catch(e) {
-    console.error('Brevo contact error:', e);
+    console.error('Brevo contact fetch error:', e);
   }
 
-  // 2. Invio email di notifica a Coach Masala
+  // 2. Invio email di notifica a Coach Masala (QUESTA DEVE FUNZIONARE SEMPRE)
+  let notificationSent = false;
   try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
+    const notifyRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers,
       body: JSON.stringify({
         sender: { name: 'Sistema Parrucchiere Power', email: 'info@parrucchierepower.it' },
         to: [{ email: 'info@parrucchierepower.it', name: 'Coach Masala' }],
-        subject: 'Nuova Richiesta Audit Strategico: ' + salone,
+        subject: 'NUOVA RICHIESTA AUDIT: ' + salone,
         htmlContent: `
-          <h1>Nuova richiesta Audit</h1>
-          <p><strong>Nome:</strong> ${nome} ${cognome}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Telefono:</strong> ${telefono}</p>
-          <p><strong>Salone:</strong> ${salone}</p>
+          <div style="font-family:sans-serif;padding:20px;border:1px solid #C8A84B;">
+            <h2 style="color:#C8A84B;">Nuova richiesta Audit Strategico</h2>
+            <p><strong>Nome:</strong> ${nome} ${cognome}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Telefono:</strong> ${telefono}</p>
+            <p><strong>Salone:</strong> ${salone}</p>
+            <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
+            <p style="font-size:12px;color:#999;">Inviato dal form Diagnosi Avanzata - parrucchierepower.it</p>
+          </div>
         `
       })
     });
+    notificationSent = notifyRes.ok;
+    if (!notifyRes.ok) {
+      const errText = await notifyRes.text();
+      console.error('Brevo notification error:', errText);
+    }
   } catch(e) {
-    console.error('Notification email error:', e);
+    console.error('Notification fetch error:', e);
   }
 
   // 3. Invio conferma all'utente
   try {
-    const emailRes = await fetch('https://api.brevo.com/v3/smtp/email', {
+    const confirmRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -92,16 +111,20 @@ exports.handler = async function(event) {
         `
       })
     });
-
-    if (!emailRes.ok) {
-      return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore invio email' }) };
-    }
   } catch(e) {
-    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore di rete' }) };
+    console.error('Confirmation fetch error:', e);
   }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ success: true })
-  };
+  // Se almeno la notifica a te è partita, diamo successo all'utente per non farlo scappare
+  if (notificationSent) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true })
+    };
+  } else {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ success: false, message: 'Errore durante l\'invio. Riprova o scrivici a info@parrucchierepower.it' })
+    };
+  }
 };
