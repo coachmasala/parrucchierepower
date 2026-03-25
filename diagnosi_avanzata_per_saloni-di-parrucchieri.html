@@ -496,11 +496,11 @@
 </footer>
 
 <script>
-  async function submitForm() {
+    async function submitForm() {
     const nome     = document.getElementById('nome').value.trim();
     const cognome  = document.getElementById('cognome').value.trim();
     const email    = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
+    let telefono   = document.getElementById('telefono').value.trim().replace(/\s+/g, '');
     const salone   = document.getElementById('salone').value.trim();
     const btn      = document.getElementById('submit-btn');
     const msg      = document.getElementById('form-msg');
@@ -508,6 +508,15 @@
     if (!nome || !cognome || !email || !telefono || !salone) {
       showMsg('Tutti i campi sono obbligatori.', 'error');
       return;
+    }
+
+    // Forzatura prefisso +39 se manca
+    if (!telefono.startsWith('+')) {
+      if (telefono.startsWith('00')) {
+        telefono = '+' + telefono.substring(2);
+      } else {
+        telefono = '+39' + telefono;
+      }
     }
 
     btn.disabled = true;

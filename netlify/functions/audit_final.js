@@ -28,25 +28,46 @@ exports.handler = async function(event) {
   // 1. Tentativo aggiunta contatto a Brevo (Lista 6)
   if (BREVO_KEY) {
     try {
+      // Assicuriamoci che il telefono abbia il prefisso +39 se manca (doppio controllo lato server)
       let formattedPhone = telefono;
-      if (formattedPhone.startsWith('3') && formattedPhone.length >= 9) formattedPhone = '+39' + formattedPhone;
+      if (!formattedPhone.startsWith('+')) {
+        if (formattedPhone.startsWith('00')) {
+          formattedPhone = '+' + formattedPhone.substring(2);
+        } else {
+          formattedPhone = '+39' + formattedPhone;
+        }
+      }
       
-      await fetch('https://api.brevo.com/v3/contacts', {
+      const contactPayload = {
+        email,
+        attributes: { 
+          NOME: nome, 
+          COGNOME: cognome, 
+          SMS: formattedPhone, 
+          JOB_TITLE: salone 
+        },
+        listIds: [6],
+        updateEnabled: true
+      };
+
+      console.log('Sending to Brevo:', JSON.stringify(contactPayload));
+
+      const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
         method: 'POST',
         headers,
-        body: JSON.stringify({
-          email,
-          attributes: { NOME: nome, COGNOME: cognome, SMS: formattedPhone, JOB_TITLE: salone },
-          listIds: [6],
-          updateEnabled: true
-        })
+        body: JSON.stringify(contactPayload)
       });
+
+      if (!contactRes.ok) {
+        const errData = await contactRes.json();
+        console.error('Brevo contact error details:', JSON.stringify(errData));
+      }
     } catch(e) {
       console.error('Brevo contact error (silenced):', e.message);
     }
   }
 
-  // 2. Invio email di notifica a Coach Masala (Logica di fallback)
+  // 2. Invio email di notifica a Coach Masala
   if (BREVO_KEY) {
     try {
       await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -56,7 +77,15 @@ exports.handler = async function(event) {
           sender: { name: 'Sistema Parrucchiere Power', email: 'info@parrucchierepower.it' },
           to: [{ email: 'info@parrucchierepower.it', name: 'Coach Masala' }],
           subject: 'NUOVA RICHIESTA AUDIT: ' + salone,
-          htmlContent: `<h2>Nuova richiesta Audit Strategico</h2><p><strong>Nome:</strong> ${nome} ${cognome}</p><p><strong>Email:</strong> ${email}</p><p><strong>Telefono:</strong> ${telefono}</p><p><strong>Salone:</strong> ${salone}</p>`
+          htmlContent: `
+            <div style="font-family:sans-serif;padding:20px;border:1px solid #C8A84B;">
+              <h2 style="color:#C8A84B;">Nuova richiesta Audit Strategico</h2>
+              <p><strong>Nome:</strong> ${nome} ${cognome}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Telefono:</strong> ${telefono}</p>
+              <p><strong>Salone (JOB_TITLE):</strong> ${salone}</p>
+            </div>
+          `
         })
       });
     } catch(e) {
@@ -65,8 +94,6 @@ exports.handler = async function(event) {
   }
 
   // 3. RESTITUISCO SEMPRE SUCCESSO ALL'UTENTE
-  // Se Brevo fallisce, il Coach riceverà comunque i dati tramite i log di Netlify o l'email se funziona.
-  // L'importante è che l'utente non veda errori.
   return {
     statusCode: 200,
     body: JSON.stringify({ success: true, message: 'Richiesta ricevuta correttamente' })
