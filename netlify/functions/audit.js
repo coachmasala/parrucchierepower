@@ -40,7 +40,7 @@ exports.handler = async function(event) {
           NOME: nome, 
           COGNOME: cognome, 
           SMS: telefono, 
-          JOB_TITLE: salone // Uso JOB_TITLE per il nome del salone come da lista attributi fornita
+          JOB_TITLE: salone 
         },
         listIds: [6],
         updateEnabled: true
@@ -52,12 +52,13 @@ exports.handler = async function(event) {
       // Se l'errore è che il contatto esiste già, proseguiamo comunque (Brevo aggiornerà gli attributi)
       if (contactRes.status !== 400 || !errData.message.includes('already exists')) {
         console.error('Brevo contact error:', errData);
-        return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo contact error: ' + (errData.message || 'Errore sconosciuto') }) };
+        // RESTITUISCO L'ERRORE ESATTO DI BREVO PER DIAGNOSI
+        return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo contact error: ' + (errData.message || 'Errore sconosciuto') + ' (Code: ' + (errData.code || 'N/A') + ')' }) };
       }
     }
   } catch(e) {
     console.error('Brevo contact fetch error:', e);
-    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore di rete durante la creazione del contatto' }) };
+    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore di rete durante la creazione del contatto: ' + e.message }) };
   }
 
   // 2. Invio email di notifica a Coach Masala
