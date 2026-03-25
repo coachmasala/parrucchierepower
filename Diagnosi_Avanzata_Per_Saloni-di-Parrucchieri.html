@@ -34,6 +34,147 @@
     overflow-x: hidden;
   }
 
+  /* ── MENU HAMBURGER ── */
+  .menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: all 0.3s ease;
+  }
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: var(--bg);
+    border-left: 1px solid var(--gold-line);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 100px 40px 40px;
+    overflow-y: auto;
+  }
+  .menu-panel.active {
+    transform: translateX(0);
+  }
+
+  .menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .menu-item {
+    border-bottom: 0.5px solid var(--gold-line);
+    padding: 24px 0;
+  }
+  .menu-item:first-child {
+    border-top: 0.5px solid var(--gold-line);
+  }
+  .menu-link {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+  }
+  .menu-link:hover {
+    color: var(--gold);
+  }
+
+  .menu-footer {
+    margin-top: auto;
+    padding-top: 40px;
+    border-top: 0.5px solid var(--gold-line);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .menu-footer-link {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .menu-footer-link:hover {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      top: 20px;
+      right: 20px;
+    }
+    .menu-panel {
+      max-width: 100%;
+      padding: 80px 30px 30px;
+    }
+    .menu-link {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 480px) {
+    .menu-toggle {
+      top: 16px;
+      right: 16px;
+    }
+    .menu-panel {
+      padding: 70px 24px 24px;
+    }
+    .menu-link {
+      font-size: 18px;
+    }
+  }
+
   /* ── NAV ── */
   nav {
     display: flex;
@@ -767,11 +908,31 @@
 </head>
 <body>
 
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<nav class="menu-panel" id="menuPanel" style="position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100vh; background: var(--bg); border-left: 1px solid var(--gold-line); z-index: 1001; transform: translateX(100%); transition: transform 0.3s ease; display: flex; flex-direction: column; padding: 100px 40px 40px; overflow-y: auto;">
+  <ul class="menu-list">
+    <li class="menu-item"><a href="https://parrucchierepower.it" class="menu-link">Home</a></li>
+    <li class="menu-item"><a href="https://parrucchierepower.it/landing-7errori.html" class="menu-link">7 Errori</a></li>
+    <li class="menu-item"><a href="https://parrucchierepower.it/diagnosi_avanzata_per_saloni-di-parrucchieri.html" class="menu-link">Audit</a></li>
+  </ul>
+  <div class="menu-footer">
+    <a href="https://wa.me/393936645260" class="menu-footer-link" target="_blank">WhatsApp</a>
+    <a href="https://www.linkedin.com/company/parrucchiere-power-srl/" class="menu-footer-link" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
 <nav>
   <div class="nav-brand">PARRUCCHIERE POWER</div>
   <div class="nav-right">
     <div class="nav-price-tag">137€</div>
     <a href="#acquista" class="nav-cta">VOGLIO L'AUDIT</a>
+    <!-- ══ MENU HAMBURGER ══ -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" style="position: relative; top: auto; right: auto; margin-left: 20px; width: 30px; height: 30px;">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -1113,19 +1274,44 @@
   }
 
   function showMsg(text, type) {
-    const msg = document.getElementById('form-msg');
+    const msg = document.getElementById("form-msg");
     msg.textContent = text;
-    msg.style.display = 'block';
-    msg.style.borderColor = type === 'error' ? 'red' : '#c9a84c';
-    msg.style.color = type === 'error' ? 'red' : '#c9a84c';
+    msg.style.display = "block";
+    msg.style.borderColor = type === "error" ? "red" : "#c9a84c";
+    msg.style.color = type === "error" ? "red" : "#c9a84c";
   }
 
-  document.querySelectorAll('input').forEach(function(el) {
-    el.addEventListener('input', function() {
-      this.style.borderColor = 'rgba(201,168,76,0.25)';
+  // Menu Hamburger
+  const menuToggle = document.getElementById("menuToggle");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const menuPanel = document.getElementById("menuPanel");
+  const menuLinks = document.querySelectorAll(".menu-link");
+
+  function toggleMenu() {
+    menuToggle.classList.toggle("active");
+    menuOverlay.classList.toggle("active");
+    menuPanel.classList.toggle("active");
+  }
+
+  menuToggle.addEventListener("click", toggleMenu);
+  menuOverlay.addEventListener("click", toggleMenu);
+
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      menuOverlay.classList.remove("active");
+      menuPanel.classList.remove("active");
     });
   });
-</script>
 
-</body>
-</html>
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuPanel.classList.contains("active")) {
+      toggleMenu();
+    }
+  });
+
+  document.querySelectorAll("input").forEach(function(el) {
+    el.addEventListener("input", function() {
+      this.style.borderColor = "rgba(201,168,76,0.25)";
+    });
+  });
