@@ -149,24 +149,6 @@
     color: var(--gold-light);
   }
 
-  @media (max-width: 768px) {
-    .menu-panel {
-      max-width: 100%;
-      padding: 80px 30px 30px;
-    }
-    .menu-link {
-      font-size: 20px;
-    }
-  }
-  @media (max-width: 480px) {
-    .menu-panel {
-      padding: 70px 24px 24px;
-    }
-    .menu-link {
-      font-size: 18px;
-    }
-  }
-
   /* ── NAV ── */
   nav {
     display: flex;
@@ -344,38 +326,101 @@
   }
   .price-was {
     font-family: 'Barlow', sans-serif;
-    font-size: 1.1rem;
-    color: var(--text-faint);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(232,224,208,0.3);
     text-decoration: line-through;
-    margin-bottom: 1.2rem;
+    padding-bottom: 10px;
+  }
+  .price-note {
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.55;
+    max-width: 200px;
+    padding-bottom: 8px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: #0d0d0d;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.8rem 0;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .shipping-note {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.3px;
+    margin-top: 1rem;
+  }
+  .shipping-note span { color: rgba(201,168,76,0.5); }
+
+  /* ── DIVIDERS & SECTIONS ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.22), transparent);
+    margin: 0 3rem;
   }
 
-  /* ── SECTIONS ── */
-  section { padding: 8rem 3rem; max-width: 1200px; margin: 0 auto; }
+  section { padding: 5rem 3rem; }
+
   .section-label {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--gold-dim);
-    margin-bottom: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
   }
   h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 2.5rem;
-    max-width: 850px;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    max-width: 660px;
   }
-  h2 span.accent { color: var(--gold); }
+  h2 .accent { color: var(--gold); font-style: italic; }
+  h2 .accent-red { color: var(--red); }
+
   .section-body {
-    font-size: 1.15rem;
+    font-size: 15px;
     color: var(--text-muted);
-    max-width: 720px;
-    margin-bottom: 4rem;
+    line-height: 1.85;
+    max-width: 600px;
+    margin-bottom: 3rem;
   }
+  .section-body strong { color: var(--text); font-weight: 500; }
 
   /* ── MOCKUP SECTION ── */
   .mockup-container {
@@ -390,9 +435,7 @@
 
   /* ── QUOTE BLOCK ── */
   .quote-block {
-    padding: 6rem 3rem;
-    background: var(--bg2);
-    border-top: 0.5px solid var(--gold-line);
+    padding: 5rem 3rem;
     border-bottom: 0.5px solid var(--gold-line);
   }
   .quote-mark {
@@ -838,24 +881,31 @@
   </div>
 
   <div class="offer-pill">
-    <div class="offer-pill-label">Cosa ricevi:</div>
-    <div class="offer-pill-items"><strong>Audit cartaceo</strong> + <strong>Consulenza 1:1</strong> + <strong>3 Video Bonus</strong></div>
+    <div class="offer-pill-label">Include</div>
+    <div class="offer-pill-items">
+      <strong>Audit cartaceo rilegato</strong> &nbsp;·&nbsp; <strong>Consulenza 1:1 con Coach Masala</strong> &nbsp;·&nbsp; <strong>3 video esclusivi</strong>
+    </div>
   </div>
 
   <div class="price-block">
     <div class="price-main">
-      <span class="price-currency">€</span>
-      <span class="price-num">137</span>
+      <div class="price-currency">€</div>
+      <div class="price-num">137</div>
     </div>
-    <div class="price-was">€247</div>
-    <div class="price-note">Prezzo lancio per i primi 30 audit del mese. Spedizione inclusa.</div>
+    <div>
+      <div class="price-was">valore reale € 1.394</div>
+      <div class="price-note">Spedizione gratuita.<br>Pagamento sicuro.</div>
+    </div>
   </div>
 
   <div class="hero-actions">
-    <a href="#acquista" class="btn-primary">Ordina l'Audit Ora →</a>
-    <a href="#metodo" class="btn-ghost">Scopri il metodo</a>
+    <a href="#acquista" class="btn-primary">Voglio l'Audit — 137€ →</a>
+    <a href="#contenuto" class="btn-ghost">Cosa ricevo</a>
   </div>
-  <p class="shipping-note"><span>📦</span> Spedizione in 3 giorni lavorativi in tutta Italia.</p>
+
+  <div class="shipping-note">
+    <span>✦</span> Spedito al salone entro 3 giorni lavorativi &nbsp;·&nbsp; <span>✦</span> Garanzia doppio rimborso 30 giorni &nbsp;·&nbsp; <span>✦</span> Bonus attivi solo per 48 ore
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -867,7 +917,7 @@
 </div>
 
 <!-- SECTION: IL PROBLEMA REALE -->
-<section id="metodo">
+<section>
   <div class="section-label">La diagnosi che nessuno fa</div>
   <h2>Ti svegli ogni mattina con l'agenda piena. E con il conto che non torna.</h2>
 
@@ -894,16 +944,130 @@
         <div class="pain-desc">Non perché siano insoddisfatte. Perché nessuno le richiama. Nessuno prenota il prossimo appuntamento prima che escano. Nessuno fa il follow-up. Spariscono nel silenzio — e tu te ne accorgi solo quando l'agenda ha un buco.</div>
       </div>
     </div>
+    <div class="pain-item">
+      <div class="pain-num">03</div>
+      <div class="pain-content">
+        <div class="pain-title">I collaboratori lavorano, ma non performano</div>
+        <div class="pain-desc">Nessun obiettivo giornaliero scritto. Nessun sistema di incentivi legato ai numeri reali. Nessuna riunione che conti qualcosa. Risultato: lavorano per lo stipendio, non per il salone. E i buchi in agenda li paghi tu.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">04</div>
+      <div class="pain-content">
+        <div class="pain-title">Non sai cosa guadagni davvero — né dove perdi</div>
+        <div class="pain-desc">Fatturato sì. Ma ticket medio per servizio? LTV per cliente? CAC reale? Tasso di ritorno entro 8 settimane? Se non conosci questi numeri, non gestisci un salone. Gestisci l'umore del giorno — e presto o tardi quell'umore ti tradisce.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">05</div>
+      <div class="pain-content">
+        <div class="pain-title">Il tuo posizionamento è invisibile — e i competitor ne approfittano</div>
+        <div class="pain-desc">Non hai un'identità chiara. Non hai partnership attive. Non hai micro-influencer locali che ti portano clienti nuove. Non hai mappato i tuoi competitor nei 300 metri. Sei un salone tra tanti — e "tra tanti" significa guerra sul prezzo.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">06</div>
+      <div class="pain-content">
+        <div class="pain-title">Hai investito in formazione. E i problemi sono rimasti</div>
+        <div class="pain-desc">Corsi su tagli, colori, social media, gestione team. Migliaia di euro. Ma senza una diagnosi precisa di dove sono i buchi, la formazione è come riparare un motore senza sapere qual è il guasto. Spreco di tempo e denaro garantito.</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ... (Resto della pagina lunga ripristinata) ... -->
-<!-- Per brevità e sicurezza, qui reintegro la struttura completa del form e del footer -->
+<div class="divider"></div>
 
+<!-- SECTION: COSTI INVISIBILI -->
+<section>
+  <div class="section-label">Il conto che non vedi</div>
+  <h2>I 5 costi <span class="accent-red">invisibili</span> che ti rubano fatturato ogni settimana</h2>
+  <p class="section-body">Non sono uscite in bilancio. Non le vedi nel gestionale. Ma esistono, sono misurabili, e si sommano ogni settimana senza che tu te ne accorga.</p>
+
+  <div class="costs-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(201,168,76,0.1); border: 0.5px solid rgba(201,168,76,0.12);">
+    <div style="background: var(--bg3); padding: 2.5rem;">
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 1rem;">Costo 01</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">Il costo del "Silenzio Post-Servizio"</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7;">Ogni cliente che esce senza aver prenotato il prossimo appuntamento ha il 60% di probabilità in più di allungare i tempi di ritorno o sparire. Se il tuo tasso di rebooking è sotto l'85%, stai perdendo migliaia di euro di fatturato prevedibile ogni mese.</p>
+    </div>
+    <div style="background: var(--bg3); padding: 2.5rem;">
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 1rem;">Costo 02</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">Il costo della "Consulenza Inesistente"</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7;">Se lo staff si limita a eseguire quello che la cliente chiede, sei un esecutore, non un professionista. La mancata proposta di servizi complementari (cross-sell) pesa per circa il 30% del tuo potenziale scontrino medio.</p>
+    </div>
+    <div style="background: var(--bg3); padding: 2.5rem;">
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 1rem;">Costo 03</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">Il costo dell'Agenda "A Caso"</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7;">Buchi di 15-30 minuti tra un servizio e l'altro. Tempi morti non fatturati. Se non ottimizzi la saturazione delle ore, paghi costi fissi (affitto, staff, utenze) per produrre zero. È il costo più subdolo e letale.</p>
+    </div>
+    <div style="background: var(--bg3); padding: 2.5rem;">
+      <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 1rem;">Costo 04</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem;">Il costo dello Staff "Passivo"</h3>
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.7;">Collaboratori che aspettano ordini invece di prendere iniziativa commerciale. Ogni ora di un collaboratore non saturata o saturata con servizi a basso margine è una perdita netta che ricade interamente sulle tue spalle.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: COSA RICEVI -->
+<section id="contenuto">
+  <div class="section-label">L'anatomia dell'Audit</div>
+  <h2>183 Domande. 12 Aree Strategiche. <span class="accent">Zero Alibi.</span></h2>
+  <p class="section-body">L'Audit Strategico di Parrucchiere Power non è un test online. È un protocollo di analisi profonda che ricevi in formato cartaceo e che compileremo insieme durante la consulenza 1:1.</p>
+
+  <div class="audit-grid">
+    <div class="audit-card">
+      <div class="ac-num">01</div>
+      <div class="ac-title">Analisi Flussi</div>
+      <div class="ac-desc">Mappatura reale di dove entrano e dove escono i soldi.</div>
+      <div class="ac-score">15 Domande</div>
+    </div>
+    <div class="audit-card">
+      <div class="ac-num">02</div>
+      <div class="ac-title">Staff & Performance</div>
+      <div class="ac-desc">Valutazione oggettiva della resa commerciale di ogni collaboratore.</div>
+      <div class="ac-score">22 Domande</div>
+    </div>
+    <div class="audit-card">
+      <div class="ac-num">03</div>
+      <div class="ac-title">Client LTV</div>
+      <div class="ac-desc">Quanto vale davvero una cliente per il tuo salone in 12 mesi.</div>
+      <div class="ac-score">18 Domande</div>
+    </div>
+    <div class="audit-card">
+      <div class="ac-num">04</div>
+      <div class="ac-title">Marketing Locale</div>
+      <div class="ac-desc">Analisi del tuo dominio territoriale e della concorrenza.</div>
+      <div class="ac-score">20 Domande</div>
+    </div>
+    <div class="audit-card">
+      <div class="ac-num">05</div>
+      <div class="ac-title">Protocolli Vendita</div>
+      <div class="ac-desc">Verifica degli script e delle sequenze usate in salone.</div>
+      <div class="ac-score">25 Domande</div>
+    </div>
+  </div>
+
+  <div class="va-box">
+    <div class="va-title">Il valore totale del pacchetto</div>
+    <div class="va-row"><div class="va-item">Audit Strategico Cartaceo (183 domande)</div><div class="va-price">€ 247</div></div>
+    <div class="va-row"><div class="va-item">Consulenza 1:1 con Coach Masala (60 min)</div><div class="va-price">€ 850</div></div>
+    <div class="va-row"><div class="va-item">Video Corso "I 3 Pilastri del Margine"</div><div class="va-price">€ 197</div></div>
+    <div class="va-row"><div class="va-item">Template "Matrice Clienti Asimmetrica"</div><div class="va-price">€ 100</div></div>
+    <div class="va-total-row">
+      <div class="va-total-label">Prezzo Lancio</div>
+      <div class="va-total-price">€ 137</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: FORM -->
 <section id="acquista">
-  <div class="section-label">Inizia ora</div>
-  <h2>Ottieni la tua <span class="accent">Diagnosi Avanzata</span></h2>
-  <p class="section-body">Compila il form qui sotto. Riceverai l'audit cartaceo direttamente in salone e potrai prenotare la tua consulenza strategica con Coach Masala.</p>
+  <div class="section-label">Prendi il controllo</div>
+  <h2>Ordina il tuo Audit Strategico</h2>
+  <p class="section-body">Compila il form con i dati reali del tuo salone. Riceverai l'audit cartaceo e le istruzioni per prenotare la consulenza privata con Coach Masala.</p>
 
   <div class="form-wrap" id="form-container">
     <div class="form-group">
@@ -936,15 +1100,16 @@
     </div>
     <button class="form-submit" onclick="submitForm()">Ordina l'Audit — 137€ — Spedizione Gratis →</button>
     <div id="form-msg" style="display:none; margin-top:1.5rem; padding:1rem; border:1px solid; font-size:13px; line-height:1.6;"></div>
-    <p class="cta-sub">Inserisci i tuoi dati. Riceverai via email il link di pagamento sicuro. Dopo la conferma, accesso immediato ai 3 video e istruzioni per prenotare la consulenza 1:1. L'audit cartaceo arriva al salone in 3 giorni lavorativi.</p>
+    <p class="cta-sub">Riceverai via email il link di pagamento sicuro. Dopo la conferma, accesso immediato ai video e istruzioni per la consulenza 1:1. L'audit cartaceo arriva in 3 giorni.</p>
   </div>
 
   <div id="form-success" style="display:none; background:var(--bg2); border:1px solid var(--gold); padding:4rem 3rem; text-align:center; max-width:600px; margin-top:3rem;">
     <h3 style="font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold); margin-bottom:1.5rem;">Richiesta Inviata.</h3>
-    <p style="color:var(--text-muted); line-height:1.8;">Controlla la tua email (anche in spam). Ti abbiamo inviato il link per completare l'ordine e accedere ai bonus immediati.</p>
+    <p style="color:var(--text-muted); line-height:1.8;">Controlla la tua email. Ti abbiamo inviato il link per completare l'ordine.</p>
   </div>
 </section>
 
+<!-- AUTHOR -->
 <div class="author-section">
   <div class="author-photo">
     <img src="Coach_Masala.jpeg" alt="Coach Masala">
@@ -955,6 +1120,14 @@
     <div class="author-role">Architect of High-Performance Systems · Parrucchiere Power Srl</div>
     <div class="author-bio">Consulente strategico specializzato nel settore dei saloni di bellezza italiani. Ha sviluppato sistemi di crescita, posizionamento e dominio territoriale per titolari che vogliono smettere di gestire e iniziare a comandare il proprio mercato. Il suo approccio non è motivazionale — è diagnostico, operativo, misurabile. Come deve essere quando si parla di soldi veri.</div>
   </div>
+</div>
+
+<!-- PS BLOCK -->
+<div class="ps-block">
+  <div class="ps-label">P.S.</div>
+  <p class="ps-text">
+    <strong>Dopo i primi 30 il prezzo passa a 247€ — e perdi i bonus.</strong> No, non è una tattica di vendita: è la realtà dei costi operativi. I bonus sono limitati perché la consulenza 1:1 con Coach Masala richiede tempo reale, non infinito. Se stai leggendo questo venerdì sera — o sabato mattina in pausa caffè tra un cliente e l'altro — hai ancora il tempo per ordinare e ricevere l'audit prima del fine settimana prossimo. <em>La prossima settimana puoi iniziare a sapere dove perdi. Oppure puoi continuare a indovinare.</em>
+  </p>
 </div>
 
 <footer>
