@@ -19,11 +19,9 @@ exports.handler = async function(event) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Tutti i campi sono obbligatori' }) };
   }
 
-  // Uso la variabile d'ambiente corretta indicata dal Coach
   const BREVO_KEY = process.env.BREVO_API_KEY_LANDING;
   if (!BREVO_KEY) {
-    console.error('ERRORE: BREVO_API_KEY_LANDING non configurata su Netlify');
-    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Configurazione server mancante (API KEY)' }) };
+    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Configurazione server mancante (BREVO_API_KEY_LANDING non trovata su Netlify)' }) };
   }
 
   const headers = {
@@ -31,33 +29,27 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
-  // 1. Tentativo aggiunta contatto a Brevo (Lista 6 - Audit Strategico)
+  // 1. Tentativo aggiunta contatto a Brevo (Lista 6)
   try {
     const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers,
       body: JSON.stringify({
         email,
-        attributes: { 
-          FIRSTNAME: nome, 
-          LASTNAME: cognome,
-          SMS: telefono,
-          COMPANY: salone
-        },
-        listIds: [6], // ID Lista 6 indicato dal Coach
+        attributes: { FIRSTNAME: nome, LASTNAME: cognome, SMS: telefono, COMPANY: salone },
+        listIds: [6],
         updateEnabled: true
       })
     });
     if (!contactRes.ok) {
       const errText = await contactRes.text();
-      console.warn('Brevo contact warning (non bloccante):', errText);
+      console.warn('Brevo contact warning:', errText);
     }
   } catch(e) {
     console.error('Brevo contact fetch error:', e);
   }
 
   // 2. Invio email di notifica a Coach Masala
-  let notificationSent = false;
   try {
     const notifyRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
@@ -73,58 +65,19 @@ exports.handler = async function(event) {
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Telefono:</strong> ${telefono}</p>
             <p><strong>Salone:</strong> ${salone}</p>
-            <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
-            <p style="font-size:12px;color:#999;">Inviato dal form Diagnosi Avanzata - parrucchierepower.it</p>
           </div>
         `
       })
     });
-    notificationSent = notifyRes.ok;
-    if (!notifyRes.ok) {
-      const errText = await notifyRes.text();
-      console.error('Brevo notification error:', errText);
+
+    if (notifyRes.ok) {
+      return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    } else {
+      const errData = await notifyRes.json();
+      const errMsg = errData.message || 'Errore sconosciuto Brevo';
+      return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Brevo error: ' + errMsg }) };
     }
   } catch(e) {
-    console.error('Notification fetch error:', e);
-  }
-
-  // 3. Invio conferma all'utente
-  try {
-    await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        sender: { name: 'Coach Masala', email: 'info@parrucchierepower.it' },
-        to: [{ email, name: nome }],
-        subject: 'Ricevuto: La tua richiesta per l\'Audit Strategico',
-        htmlContent: `
-          <div style="background:#1A1814;padding:48px 40px;font-family:Georgia,serif;max-width:560px;margin:0 auto;">
-            <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#C8A84B;margin-bottom:32px;">PARRUCCHIERE POWER SRL</p>
-            <h1 style="font-size:28px;font-weight:300;color:#FDFCF8;line-height:1.2;margin-bottom:16px;">Ciao ${nome},</h1>
-            <p style="font-size:15px;color:rgba(253,252,248,0.55);line-height:1.8;margin-bottom:32px;">
-              Ho ricevuto la tua richiesta per l'<strong>Audit Strategico</strong> per il salone <strong>${salone}</strong>.
-              Ti contatteremo a breve al numero ${telefono} per definire i prossimi passi.
-            </p>
-            <p style="font-size:12px;color:rgba(253,252,248,0.2);margin-top:40px;line-height:1.6;font-family:sans-serif;">
-              Parrucchiere Power Srl — parrucchierepower.it
-            </p>
-          </div>
-        `
-      })
-    });
-  } catch(e) {
-    console.error('Confirmation fetch error:', e);
-  }
-
-  if (notificationSent) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true })
-    };
-  } else {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ success: false, message: 'Errore durante l\'invio. Riprova o scrivici a info@parrucchierepower.it' })
-    };
+    return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Errore di rete: ' + e.message }) };
   }
 };
