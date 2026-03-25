@@ -115,20 +115,6 @@
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
 
-    .hero-num {
-      font-family: var(--serif);
-      font-size: clamp(100px, 14vw, 180px);
-      font-weight: 900;
-      color: rgba(201,168,76,0.05);
-      line-height: 1;
-      position: absolute;
-      top: 50%;
-      left: 80px;
-      transform: translateY(-60%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
     .hero-desc {
       font-size: 17px;
       line-height: 1.8;
@@ -487,23 +473,25 @@
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-num">07</div>
-    <div class="hero-tag">Report Gratuito</div>
+    <div class="hero-tag">PARRUCCHIERE POWER SRL</div>
     <h1>7 Errori che costano <em>margine</em> al tuo salone.</h1>
-    <p class="hero-desc">Una guida diretta per titolari strutturati con fatturato tra 100k e 350k annui. I pattern sistemici che abbiamo identificato su oltre 50 saloni italiani.</p>
+    <p class="hero-desc">Una guida diretta per titolari strutturati con fatturato tra 100k e 300k annui. Non consigli generici: i pattern sistemici identificati su oltre 50 saloni italiani — che si traducono in decine di migliaia di euro di margine non espresso.</p>
     <ul class="hero-bullets">
       <li>Listino costruito sul costo invece che sul valore percepito</li>
+      <li>Nessuna distinzione tra clienti ad alto e basso impatto</li>
       <li>Staff che lavora bene ma non vende</li>
-      <li>Nessun protocollo di rebook sistematico</li>
+      <li>Assenza di un protocollo di rebook sistematico</li>
       <li>CAC completamente ignoto</li>
+      <li>Dipendenza dal passaparola senza sistema di amplificazione</li>
+      <li>Nessuna garanzia che crei asimmetria competitiva</li>
     </ul>
   </div>
 
   <div class="hero-right">
     <div class="form-card">
-      <div class="form-badge">Download Immediato</div>
+      <div class="form-badge">Download Gratuito</div>
       <h2>Scarica la <em>Guida</em></h2>
-      <p class="form-sub">Inserisci i tuoi dati per ricevere il PDF gratuito via email.</p>
+      <p class="form-sub">Accesso immediato. Nessuno spam. Cancellazione in qualsiasi momento.</p>
       
       <form id="landingForm">
         <div class="f-field">
@@ -511,7 +499,7 @@
           <input type="text" id="nome" placeholder="Il tuo nome" required>
         </div>
         <div class="f-field">
-          <label>Email Professionale</label>
+          <label>Email</label>
           <input type="email" id="email" placeholder="la-tua@email.it" required>
         </div>
         <div class="f-field">
@@ -525,34 +513,54 @@
             <input type="tel" id="tel" placeholder="Numero" required>
           </div>
         </div>
-        <button type="submit" class="f-submit">Scarica ora — gratis</button>
+        <button type="submit" class="f-submit">Scarica ora — è gratis</button>
       </form>
       <div id="formMsg" class="f-msg"></div>
-      <p class="f-privacy">C'è stato un imprevisto, forse dovuto al fatto che abbiamo già alcuni tuoi dati, manda direttamente una email a info@parrucchierepower.it o clicca sul pulsante whatsapp in fondo alla pagina per parlare direttamente con noi</p>
+      <p class="f-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato ceduto a terzi.</p>
     </div>
   </div>
 </section>
 
 <section class="errori">
-  <p class="section-label">Il Report</p>
-  <h2>Cosa troverai <em>all'interno</em>.</h2>
-  <p class="errori-intro">Non consigli generici, ma analisi millimetrica dei blocchi che impediscono a un salone di superare il soffitto di cristallo del fatturato.</p>
+  <p class="section-label">I 7 Errori</p>
+  <h2>Quello che il conto economico <em>non mostra</em> in superficie.</h2>
+  <p class="errori-intro">Non sono errori tecnici. Non si vedono guardando il lavoro quotidiano. Si sentono ogni mese nel margine — e spesso vengono scambiati per problemi di mercato o di concorrenza.</p>
 
   <div class="errori-grid">
     <div class="errore-item">
       <div class="errore-num">01</div>
-      <h3 class="errore-title">L'illusione del listino pieno</h3>
-      <p class="errore-desc">Perché basare i prezzi sulla concorrenza è il modo più veloce per erodere il tuo margine netto.</p>
+      <h3 class="errore-title">Listino costruito sul costo, non sul valore percepito</h3>
+      <p class="errore-desc">Il prezzo che i tuoi clienti accettano non dipende dai tuoi costi. Dipende da quanto vale, nella loro testa, stare seduti su quella poltrona.</p>
     </div>
     <div class="errore-item">
       <div class="errore-num">02</div>
-      <h3 class="errore-title">Il buco nero del database</h3>
-      <p class="errore-desc">Il costo reale di un cliente che non torna e perché il tuo staff non sta facendo rebook.</p>
+      <h3 class="errore-title">Nessuna distinzione tra clienti ad alto e basso impatto</h3>
+      <p class="errore-desc">Nel tuo salone ci sono clienti che valgono 5 volte gli altri. Li stai trattando allo stesso modo — e stai allocando il tuo tempo in modo perfettamente casuale.</p>
     </div>
     <div class="errore-item">
       <div class="errore-num">03</div>
-      <h3 class="errore-title">Staff vs Consulenti</h3>
-      <p class="errore-desc">La differenza tra un collaboratore che "esegue" e uno che "vende valore" senza sembrare un venditore.</p>
+      <h3 class="errore-title">Staff che lavora bene ma non vende</h3>
+      <p class="errore-desc">Retail a zero, rebook lasciato al caso, upselling mai tentato. Non è colpa dello staff: manca il sistema, non la persona.</p>
+    </div>
+    <div class="errore-item">
+      <div class="errore-num">04</div>
+      <h3 class="errore-title">Assenza di un protocollo di rebook sistematico</h3>
+      <p class="errore-desc">Il cliente che non fissa il prossimo appuntamento prima di uscire ha alta probabilità di non tornare entro 60 giorni. Ogni appuntamento chiuso senza rebook è un buco nel fatturato futuro.</p>
+    </div>
+    <div class="errore-item">
+      <div class="errore-num">05</div>
+      <h3 class="errore-title">Costo di acquisizione cliente completamente ignoto</h3>
+      <p class="errore-desc">Quanto ti costa portare un cliente nuovo in salone? Se non lo sai con precisione, stai operando alla cieca su una delle leve più critiche della tua economia.</p>
+    </div>
+    <div class="errore-item">
+      <div class="errore-num">06</div>
+      <h3 class="errore-title">Dipendenza dal passaparola senza sistema di amplificazione</h3>
+      <p class="errore-desc">Il passaparola funziona, ma funziona per caso. I saloni strutturati hanno protocolli precisi per attivarlo, tempistiche per chiederlo, meccanismi per misurarlo.</p>
+    </div>
+    <div class="errore-item">
+      <div class="errore-num">07</div>
+      <h3 class="errore-title">Nessuna garanzia che crei asimmetria competitiva</h3>
+      <p class="errore-desc">Nel mercato dell'acconciatura professionale tutti promettono qualità. Nessuno garantisce i risultati economici nel contratto. Questo è il vuoto che separa un salone da un asset finanziario.</p>
     </div>
   </div>
 </section>
@@ -560,30 +568,35 @@
 <section class="chisiamo">
   <div class="chisiamo-left">
     <p class="section-label">Chi Siamo</p>
-    <h2>Parrucchiere <em>Power</em>.</h2>
-    <p>Siamo la società di consulenza strategica che ha ridefinito gli standard di performance nel settore dell'acconciatura professionale italiana.</p>
-    <p>Il nostro metodo trasforma saloni tecnicamente eccellenti ma economicamente inespressi in strutture che generano ricchezza prevedibile.</p>
+    <h2>Non vendiamo <em>corsi</em>. Lavoriamo con chi è già strutturato.</h2>
+    <p>Parrucchiere Power Srl lavora esclusivamente con titolari che hanno già dimostrato di saper fare impresa. Non partiamo da zero: lavoriamo con chi si trova nella zona grigia della competenza — troppo grande per accontentarsi, troppo piccolo per dominare.</p>
+    <p>Questo documento non è materiale di marketing. È la mappa degli errori sistemici che abbiamo identificato su oltre 50 saloni in tutta Italia, costruita osservando i conti economici, non ascoltando le percezioni.</p>
     
     <div class="chisiamo-quote">
       <p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p>
-      <small>Coach Masala — Fondatore</small>
+      <small>Coach Masala — Parrucchiere Power Srl</small>
     </div>
   </div>
 
   <div class="chisiamo-right">
     <div class="stat-block">
-      <div class="stat-num">150+</div>
-      <div class="stat-lbl">Saloni Analizzati</div>
+      <div class="stat-num">50+</div>
+      <div class="stat-lbl">Saloni analizzati in tutta Italia con audit economico diretto</div>
     </div>
     <div class="stat-block">
-      <div class="stat-num">€12M+</div>
-      <div class="stat-lbl">Fatturato Gestito</div>
+      <div class="stat-num">100k–300k</div>
+      <div class="stat-lbl">Fascia di fatturato dei titolari con cui lavoriamo — già strutturati, non ancora dominanti</div>
     </div>
     <div class="stat-block">
-      <div class="stat-num">100%</div>
-      <div class="stat-lbl">Garanzia Risultati</div>
+      <div class="stat-num">Garanzia</div>
+      <div class="stat-lbl">Risultati garantiti per contratto. Se non raggiungiamo i target concordati, continuiamo a spese nostre</div>
     </div>
   </div>
+</section>
+
+<section style="background: var(--dark-2); padding: 120px 100px; text-align: center;">
+  <p style="font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 20px;">Hai riconosciuto almeno 3 errori?</p>
+  <p style="font-size: 17px; color: var(--mid); max-width: 620px; margin: 0 auto;">Il tuo salone ha margine non espresso.</p>
 </section>
 
 <footer>
