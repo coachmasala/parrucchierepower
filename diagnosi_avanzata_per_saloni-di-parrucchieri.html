@@ -1280,42 +1280,44 @@
   }
 
   function showMsg(text, type) {
-    const msg = document.getElementById('form-msg');
+    const msg = document.getElementById("form-msg");
     msg.textContent = text;
-    msg.style.display = 'block';
-    msg.style.borderColor = type === 'error' ? 'red' : '#c9a84c';
-    msg.style.color = type === 'error' ? 'red' : '#c9a84c';
+    msg.style.display = "block";
+    msg.style.borderColor = type === "error" ? "red" : "#c9a84c";
+    msg.style.color = type === "error" ? "red" : "#c9a84c";
   }
 
   // Menu Hamburger
-  const menuToggle = document.getElementById('menuToggle');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuPanel = document.getElementById('menuPanel');
-  const menuLinks = document.querySelectorAll('.menu-link');
+  const menuToggle = document.getElementById("menuToggle");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const menuPanel = document.getElementById("menuPanel");
+  const menuLinks = document.querySelectorAll(".menu-link");
 
   function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    menuPanel.classList.toggle('active');
+    menuToggle.classList.toggle("active");
+    menuOverlay.classList.toggle("active");
+    menuPanel.classList.toggle("active");
   }
 
-  menuToggle.addEventListener('click', toggleMenu);
-  menuOverlay.addEventListener('click', toggleMenu);
+  menuToggle.addEventListener("click", toggleMenu);
+  menuOverlay.addEventListener("click", toggleMenu);
 
   menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      menuPanel.classList.remove('active');
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      menuOverlay.classList.remove("active");
+      menuPanel.classList.remove("active");
     });
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuPanel.classList.contains('active')) {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuPanel.classList.contains("active")) {
       toggleMenu();
     }
   });
-</script>
 
-</body>
-</html>
+  document.querySelectorAll("input").forEach(function(el) {
+    el.addEventListener("input", function() {
+      this.style.borderColor = "rgba(201,168,76,0.25)";
+    });
+  });
