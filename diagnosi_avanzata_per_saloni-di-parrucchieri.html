@@ -283,7 +283,7 @@
       btn.textContent = 'INVIO IN CORSO...';
 
       try {
-        const res = await fetch('/.netlify/functions/audit', {
+        const res = await fetch('/.netlify/functions/audit_v2', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ nome, cognome, email, telefono, salone })
