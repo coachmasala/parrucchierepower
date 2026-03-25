@@ -101,408 +101,1047 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4rem 3rem;
+    padding: 5rem 3rem 4rem;
     position: relative;
     overflow: hidden;
   }
-  .hero-label {
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 60% at 78% 45%, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .eyebrow {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 14px;
   }
-  .hero-label::before { content: ''; width: 40px; height: 1px; background: var(--gold-line); }
-  
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    font-size: clamp(3rem, 8vw, 6.2rem);
     font-weight: 900;
-    line-height: 0.92;
-    margin-bottom: 2.5rem;
-    max-width: 1100px;
-    letter-spacing: -2px;
+    line-height: 0.97;
+    color: #fff;
+    letter-spacing: -1.5px;
+    margin-bottom: 0.5rem;
   }
-  h1 span.accent { color: var(--gold); font-style: italic; font-weight: 700; }
+  h1 .accent { color: var(--gold); font-style: italic; }
+  h1 .accent-red { color: var(--red); }
 
   .hero-sub {
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    font-weight: 300;
     color: var(--text-muted);
-    max-width: 680px;
-    margin-bottom: 4rem;
-    line-height: 1.5;
+    margin: 2rem 0 2rem;
+    max-width: 540px;
+    line-height: 1.8;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .offer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0.5px solid rgba(201,168,76,0.3);
+    padding: 0.55rem 1.1rem;
+    margin-bottom: 2rem;
+    max-width: fit-content;
+  }
+  .offer-pill-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.55);
+  }
+  .offer-pill-items { font-size: 12px; color: var(--text-muted); }
+  .offer-pill-items strong { color: var(--gold-light); font-weight: 500; }
+
+  .price-block {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .price-main { display: flex; align-items: flex-start; gap: 4px; }
+  .price-currency {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 8px;
+  }
+  .price-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  .price-was {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(232,224,208,0.3);
+    text-decoration: line-through;
+    padding-bottom: 10px;
+  }
+  .price-note {
+    font-size: 12px;
+    color: var(--text-faint);
+    line-height: 1.55;
+    max-width: 200px;
+    padding-bottom: 8px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: #0d0d0d;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0.8rem 0;
+    border: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .shipping-note {
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.3px;
+    margin-top: 1rem;
+  }
+  .shipping-note span { color: rgba(201,168,76,0.5); }
+
+  /* ── DIVIDERS & SECTIONS ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.22), transparent);
+    margin: 0 3rem;
   }
 
-  /* ── VIDEO SECTION ── */
-  .video-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 4rem;
-    border: 1px solid var(--gold-line);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  }
-  .video-container video {
-    width: 100%;
-    display: block;
-  }
+  section { padding: 5rem 3rem; }
 
-  /* ── SECTIONS ── */
-  section { padding: 8rem 3rem; max-width: 1200px; margin: 0 auto; }
   .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    max-width: 660px;
+  }
+  h2 .accent { color: var(--gold); font-style: italic; }
+  h2 .accent-red { color: var(--red); }
+
+  .section-body {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.85;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+  .section-body strong { color: var(--text); font-weight: 500; }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    padding: 5rem 3rem;
+    border-bottom: 0.5px solid var(--gold-line);
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: rgba(201,168,76,0.14);
+    line-height: 0.4;
+    margin-bottom: 2rem;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.9rem);
+    color: rgba(232,224,208,0.88);
+    line-height: 1.55;
+    font-style: italic;
+    max-width: 680px;
+  }
+  .quote-text strong { color: var(--gold); font-style: normal; }
+
+  /* ── PAIN SECTION ── */
+  .pain-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2vw, 1.22rem);
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid rgba(201,168,76,0.25);
+  }
+  .pain-intro strong { color: var(--text); font-style: normal; }
+
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 0.5px solid rgba(201,168,76,0.12);
+    margin-bottom: 3rem;
+    max-width: 780px;
+  }
+  .pain-item {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    align-items: stretch;
+    border-bottom: 0.5px solid rgba(201,168,76,0.08);
+  }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-num {
+    background: rgba(226,75,74,0.07);
+    border-right: 0.5px solid rgba(226,75,74,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(226,75,74,0.55);
+  }
+  .pain-content { padding: 1.1rem 1.5rem; }
+  .pain-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .pain-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── OBJECTION CRUSHER ── */
+  .objections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.12);
+    margin-top: 2.5rem;
+    max-width: 900px;
+  }
+  .obj-card { background: var(--bg3); padding: 2rem 1.8rem; }
+  .obj-lie {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(226,75,74,0.6);
+    margin-bottom: 0.6rem;
+  }
+  .obj-claim {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(232,224,208,0.55);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .obj-truth { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  .obj-truth strong { color: var(--text); font-weight: 500; }
+
+  /* ── INVISIBLE COSTS ── */
+  .costs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.12);
+    max-width: 820px;
+    margin-bottom: 2.5rem;
+  }
+  .cost-card { background: var(--bg2); padding: 2rem; }
+  .cost-card.dark { background: #0a0a0a; }
+  .cost-icon {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(226,75,74,0.5);
+    margin-bottom: 0.7rem;
+  }
+  .cost-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .cost-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── PROBLEM GRID ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.12);
+  }
+  .problem-item { background: var(--bg2); padding: 2rem; }
+  .problem-item.highlight { background: var(--gold-fill); }
+  .problem-item.full { grid-column: 1 / -1; background: #0a0a0a; }
+  .problem-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 0.8rem;
+  }
+  .problem-text { font-size: 14px; color: rgba(232,224,208,0.72); line-height: 1.7; }
+
+  /* ── WHAT YOU GET ── */
+  .package-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.15);
+    margin-bottom: 3rem;
+  }
+  .package-card { background: var(--bg3); padding: 2.5rem 2rem; }
+  .package-card.featured {
+    background: rgba(201,168,76,0.05);
+    border-left: 2px solid var(--gold);
+  }
+  .pkg-icon {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 1rem;
+  }
+  .pkg-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .pkg-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  .pkg-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    padding: 3px 10px;
+  }
+
+  /* ── VALUE TABLE ── */
+  .value-anchor {
+    border: 0.5px solid rgba(201,168,76,0.18);
+    padding: 2.5rem;
+    background: rgba(201,168,76,0.03);
+    margin-bottom: 0;
+    max-width: 700px;
+  }
+  .va-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 1.5rem;
+  }
+  .va-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 0.5px solid rgba(201,168,76,0.07);
+    gap: 1rem;
+  }
+  .va-row:last-of-type { border-bottom: none; }
+  .va-item { font-size: 14px; color: var(--text-muted); }
+  .va-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(232,224,208,0.4);
+    flex-shrink: 0;
+    text-decoration: line-through;
+    text-decoration-color: rgba(201,168,76,0.25);
+  }
+  .va-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.2rem;
+    margin-top: 0.8rem;
+    border-top: 1px solid rgba(201,168,76,0.18);
+  }
+  .va-total-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.55);
+  }
+  .va-total-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* ── AUDIT GRID ── */
+  .audit-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.12);
+    margin-bottom: 2.5rem;
+  }
+  .audit-card { background: var(--bg3); padding: 1.8rem 1.5rem; transition: background 0.2s; }
+  .audit-card:hover { background: #161616; }
+  .ac-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(201,168,76,0.1);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .ac-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .ac-desc { font-size: 12px; color: var(--text-faint); line-height: 1.6; margin-bottom: 0.8rem; }
+  .ac-score { font-size: 11px; color: rgba(201,168,76,0.5); font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── SCORE TABLE ── */
+  .score-table { border: 0.5px solid rgba(201,168,76,0.15); max-width: 780px; }
+  .score-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 0.5px solid rgba(201,168,76,0.07);
+  }
+  .score-row:last-child { border-bottom: none; }
+  .score-range {
+    background: rgba(201,168,76,0.06);
+    padding: 1rem 1.4rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    border-right: 0.5px solid rgba(201,168,76,0.1);
+  }
+  .score-info { padding: 0.9rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
+  .score-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin-bottom: 3px;
+  }
+  .score-desc { font-size: 12px; color: var(--text-faint); line-height: 1.5; }
+
+  /* ── SOCIAL PROOF ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.12);
+    max-width: 840px;
+    margin-top: 3rem;
+  }
+  .testi-card { background: var(--bg2); padding: 2.2rem 2rem; }
+  .testi-result {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+  .testi-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+  .testi-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+  }
+
+  /* ── GUARANTEE ── */
+  .guarantee-box {
+    border: 0.5px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.04);
+    padding: 3rem;
+    max-width: 760px;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+  .guarantee-box::before {
+    content: 'GARANZIA';
+    position: absolute;
+    top: -9px;
+    left: 2rem;
+    background: var(--bg);
+    padding: 0 0.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold-dim);
+  }
+  .guarantee-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .guarantee-title .accent { color: var(--gold); font-style: italic; }
+  .guarantee-body { font-size: 14px; color: var(--text-muted); line-height: 1.85; max-width: 580px; }
+  .guarantee-body strong { color: var(--text); font-weight: 500; }
+
+  /* ── CTA FORM ── */
+  .cta-section {
+    background: rgba(201,168,76,0.04);
+    border-top: 0.5px solid rgba(201,168,76,0.15);
+    border-bottom: 0.5px solid rgba(201,168,76,0.15);
+    padding: 7rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner { max-width: 580px; position: relative; }
+  .cta-section h2 { max-width: 100%; margin-bottom: 0.5rem; }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 1rem 0 2.5rem;
+    line-height: 1.8;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(201,168,76,0.25);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0.9rem 1.1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input::placeholder { color: var(--text-faint); }
+  input:focus { border-color: rgba(201,168,76,0.55); }
+  .form-submit {
+    background: var(--gold);
+    color: #0d0d0d;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1.25rem 2.4rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s;
+    margin-top: 4px;
+  }
+  .form-submit:hover { opacity: 0.88; }
+  .form-note {
+    font-size: 11px;
+    color: var(--text-faint);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.7;
+  }
+  .form-note span { color: rgba(201,168,76,0.5); }
+  .form-success { display: none; text-align: center; padding: 2.5rem 0; }
+  .success-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+  .success-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── PS BLOCK ── */
+  .ps-block {
+    padding: 3.5rem 3rem;
+    border-top: 0.5px solid rgba(201,168,76,0.1);
+    max-width: 720px;
+  }
+  .ps-label {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--gold-dim);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 2.5rem;
-    max-width: 850px;
-  }
-  h2 span.accent { color: var(--gold); }
-  .section-body {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 720px;
-    margin-bottom: 4rem;
-  }
-
-  /* ── MOCKUP SECTION ── */
-  .mockup-container {
-    text-align: center;
-    margin: 4rem 0;
-  }
-  .mockup-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
-
-  /* ── GRIDS ── */
-  .audit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
-  }
-  .audit-card {
-    background: var(--bg2);
-    padding: 3rem;
-    border: 0.5px solid var(--gold-line);
-    transition: border-color 0.3s;
-  }
-  .audit-card:hover { border-color: var(--gold-dim); }
-  .ac-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1.5rem; }
-  .ac-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
-  .ac-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; }
-  .ac-score { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; color: var(--text-faint); }
-
-  /* ── SCORE TABLE ── */
-  .score-table { margin-top: 6rem; border-top: 0.5px solid var(--gold-line); }
-  .score-row {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    padding: 2.5rem 0;
-    border-bottom: 0.5px solid var(--gold-line);
-    gap: 3rem;
-  }
-  .score-range { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); }
-  .score-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .score-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 600px; }
-
-  /* ── PACKAGE ── */
-  .package-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 4rem;
-  }
-  .package-card {
-    padding: 3.5rem;
-    border: 0.5px solid var(--gold-line);
-    background: var(--bg3);
-    position: relative;
-  }
-  .package-card.featured { border: 1px solid var(--gold); background: var(--gold-fill); }
-  .pkg-icon { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; color: var(--gold); margin-bottom: 2rem; }
-  .pkg-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; }
-  .pkg-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-  .pkg-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
-
-  /* ── VALUE ANCHOR ── */
-  .value-anchor {
-    margin-top: 6rem;
-    background: var(--bg2);
-    padding: 4rem;
-    border: 0.5px solid var(--gold-line);
-  }
-  .va-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; }
-  .va-row { display: flex; justify-content: space-between; padding: 1.2rem 0; border-bottom: 0.5px solid var(--gold-line); font-size: 0.95rem; }
-  .va-price { font-family: 'Playfair Display', serif; font-weight: 700; }
-  .va-total-row { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--gold); }
-  .va-total-label { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
-  .va-total-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--gold); }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
-  }
-  .testi-card { padding: 2.5rem; background: var(--bg3); border: 0.5px solid var(--gold-line); }
-  .testi-result { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); margin-bottom: 1.5rem; }
-  .testi-text { font-size: 0.95rem; font-style: italic; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
-  .testi-name { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
-
-  /* ── GUARANTEE ── */
-  .guarantee-box {
-    margin-top: 4rem;
-    padding: 5rem;
-    border: 1px solid var(--red);
-    background: rgba(226,75,74,0.03);
-    text-align: center;
-  }
-  .guarantee-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 2rem; }
-  .guarantee-body { font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; line-height: 1.8; }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    background: var(--bg2);
-    padding: 10rem 3rem;
-    border-top: 0.5px solid var(--gold-line);
-    border-bottom: 0.5px solid var(--gold-line);
-    text-align: center;
-  }
-  .cta-inner { max-width: 800px; margin: 0 auto; }
-  .cta-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 4rem; line-height: 1.7; }
-
-  #form-container { max-width: 500px; margin: 0 auto; }
-  .form-group { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .tel-row { display: grid; grid-template-columns: 100px 1fr; gap: 1.2rem; }
-  
-  input, select {
-    background: rgba(255,255,255,0.03);
-    border: 0.5px solid var(--gold-line);
-    padding: 1.1rem 1.5rem;
-    color: #fff;
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  select {
-    appearance: none;
-    cursor: pointer;
-  }
-  input:focus, select:focus { border-color: var(--gold); }
-  
-  .form-submit {
-    width: 100%;
-    background: var(--gold);
-    color: #0d0d0d;
-    padding: 1.4rem;
-    border: none;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-  .form-submit:hover { transform: translateY(-2px); opacity: 0.9; }
-  .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  .form-note { font-size: 11px; color: var(--text-faint); margin-top: 1.5rem; line-height: 1.6; }
-  .form-note span { color: var(--gold-dim); }
-
-  .form-success {
-    display: none;
-    padding: 4rem;
-    border: 1px solid var(--gold);
-    background: var(--gold-fill);
-  }
-  .success-icon { font-size: 3rem; color: var(--gold); margin-bottom: 1.5rem; }
-  .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
-  .success-text { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+  .ps-text { font-size: 14px; color: var(--text-muted); line-height: 1.85; }
+  .ps-text strong { color: var(--text); font-weight: 500; }
+  .ps-text em { color: var(--gold); font-style: normal; }
 
   /* ── AUTHOR ── */
   .author-section {
-    padding: 8rem 3rem;
-    max-width: 900px;
-    margin: 0 auto;
+    padding: 4rem 3rem;
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 4rem;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
     align-items: center;
+    border-top: 0.5px solid rgba(201,168,76,0.1);
   }
   .author-photo {
-    width: 180px; height: 180px;
-    background: var(--bg2);
-    border: 0.5px solid var(--gold-line);
-    display: flex; align-items: center; justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
     overflow: hidden;
   }
-  .author-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .author-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .author-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 0.5rem;
   }
-  .author-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .author-name { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .author-role { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 2rem; }
-  .author-bio { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
-
-  /* ── PS BLOCK ── */
-  .ps-block { padding: 4rem 3rem 8rem; max-width: 800px; margin: 0 auto; }
-  .ps-label { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--gold); margin-bottom: 1rem; }
-  .ps-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; }
+  .author-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .author-role { font-size: 12px; color: var(--text-faint); margin-bottom: 0.8rem; }
+  .author-bio { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 540px; }
 
   /* ── FOOTER ── */
   footer {
-    padding: 5rem 3rem;
-    border-top: 0.5px solid var(--gold-line);
-    text-align: center;
-  }
-  .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
-  .footer-note { font-size: 11px; color: var(--text-faint); margin-bottom: 2rem; }
-  
-  .social-buttons {
+    padding: 1.5rem 3rem;
+    border-top: 0.5px solid rgba(201,168,76,0.08);
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-  .social-btn {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    padding: 0.8rem 1.5rem;
-    border: 0.5px solid var(--gold-line);
-    color: var(--gold);
-    text-decoration: none;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: background 0.2s, color 0.2s;
-  }
-  .social-btn:hover {
-    background: var(--gold);
-    color: #0d0d0d;
-  }
-  
-  .legal-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
     flex-wrap: wrap;
-    margin-top: 2rem;
-    opacity: 0.5;
+    gap: 0.5rem;
   }
-  .legal-links a {
-    color: var(--text-faint);
-    font-size: 10px;
-    text-decoration: none;
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: rgba(201,168,76,0.35);
   }
-  .legal-links a:hover { color: var(--gold); }
+  .footer-note { font-size: 11px; color: var(--text-faint); }
 
-  /* ── UTILS ── */
-  .divider { width: 100px; height: 1px; background: var(--gold-line); margin: 0 auto; }
-  .accent { color: var(--gold); }
-
-  @media (max-width: 768px) {
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .audit-grid { grid-template-columns: repeat(3, 1fr); }
+    .package-grid { grid-template-columns: 1fr; }
+    .objections-grid { grid-template-columns: 1fr; }
+    .costs-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav, .hero, section, .quote-block, .cta-section, footer, .author-section, .ps-block { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .divider { margin: 0 1.5rem; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    h1 { letter-spacing: -0.5px; }
     nav { padding: 1rem 1.5rem; }
-    .nav-right { display: none; }
-    section { padding: 5rem 1.5rem; }
-    .hero { padding: 2rem 1.5rem; }
-    .score-row { grid-template-columns: 1fr; gap: 1rem; }
-    .author-section { grid-template-columns: 1fr; text-align: center; }
-    .author-photo { margin: 0 auto; }
-    .form-row, .tel-row { grid-template-columns: 1fr; }
-    .guarantee-box { padding: 3rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .author-section { grid-template-columns: 1fr; }
+    .nav-right .nav-price-tag { display: none; }
+    .urgency-bar { padding: 0.6rem 1.5rem; }
+  }
+  @media (max-width: 400px) {
+    .audit-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-brand">PARRUCCHIERE POWER</div>
+  <div class="nav-brand">Parrucchiere Power</div>
   <div class="nav-right">
     <div class="nav-price-tag">137€</div>
-    <a href="#acquista" class="nav-cta">VOGLIO L'AUDIT</a>
+    <a href="#acquista" class="nav-cta">Voglio l'Audit</a>
   </div>
 </nav>
 
+<!-- URGENCY BAR -->
 <div class="urgency-bar">
-  <div class="urgency-bar-text">Disponibilità limitata: Solo 30 audit al mese per garantire la qualità della consulenza 1:1</div>
+  <div class="urgency-bar-text">⚠ La consulenza 1:1 con Coach Masala è limitata — disponibile solo con i prossimi ordini</div>
 </div>
 
-<section class="hero">
-  <div class="hero-label">Audit Strategico · 183 Domande · Coach Masala</div>
-  <h1>Il tuo salone <br>non perde clienti. <br><span class="accent">Perde controllo.</span></h1>
-  <p class="hero-sub">L'Audit Parrucchiere Power diagnostica il tuo salone in 183 domande e ti dà le 3 azioni esatte da fare già lunedì mattina per smettere di indovinare e iniziare a comandare il tuo mercato.</p>
-  
-  <div class="video-container">
-    <video autoplay loop muted playsinline>
-      <source src="Video Copertina Audit.mp4" type="video/mp4">
-      Il tuo browser non supporta il tag video.
-    </video>
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Audit Strategico · 183 Domande · Coach Masala</div>
+  <h1>
+    Il tuo salone<br>
+    non perde clienti.<br>
+    Perde <span class="accent">controllo.</span>
+  </h1>
+  <p class="hero-sub">
+    Lavori 10-12 ore al giorno. Agenda piena. Staff che "funziona". Eppure a fine mese i numeri non tornano. <strong>Non è colpa tua. È che non sai dove esattamente stai perdendo soldi — e nessuno te l'ha mai detto.</strong> L'Audit Parrucchiere Power diagnostica il tuo salone in 183 domande e ti dà le 3 azioni esatte da fare già lunedì.
+  </p>
+
+  <div class="offer-pill">
+    <div class="offer-pill-label">Include</div>
+    <div class="offer-pill-items">
+      <strong>Audit cartaceo rilegato</strong> &nbsp;·&nbsp; <strong>Consulenza 1:1 con Coach Masala</strong> &nbsp;·&nbsp; <strong>3 video esclusivi</strong>
+    </div>
   </div>
 
-  <a href="#acquista" class="nav-cta" style="padding: 1.4rem 3rem; font-size: 14px; margin: 0 auto; display: table;">VOGLIO L'AUDIT — 137€ →</a>
-</section>
+  <div class="price-block">
+    <div class="price-main">
+      <div class="price-currency">€</div>
+      <div class="price-num">137</div>
+    </div>
+    <div>
+      <div class="price-was">valore reale € 1.394</div>
+      <div class="price-note">Spedizione gratuita.<br>Pagamento sicuro.</div>
+    </div>
+  </div>
 
-<div class="divider"></div>
+  <div class="hero-actions">
+    <a href="#acquista" class="btn-primary">Voglio l'Audit — 137€ →</a>
+    <a href="#contenuto" class="btn-ghost">Cosa ricevo</a>
+  </div>
 
+  <div class="shipping-note">
+    <span>✦</span> Spedito al salone entro 3 giorni lavorativi &nbsp;·&nbsp; <span>✦</span> Garanzia doppio rimborso 30 giorni &nbsp;·&nbsp; <span>✦</span> Bonus attivi solo per 48 ore
+  </div>
+</div>
+
+<!-- QUOTE BLOCK 1 -->
+<div class="quote-block">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">Il problema non è che non hai clienti.<br><strong>È che non controlli il sistema che li genera, li trattiene e li fa spendere di più.</strong><br>E intanto ogni settimana quella perdita si accumula — silenziosamente.</p>
+</div>
+
+<!-- SECTION: IL PROBLEMA REALE -->
 <section>
-  <div class="section-label">La dura realtà</div>
-  <h2>Perché il 92% dei saloni italiani <span class="accent">sopravvive</span> invece di prosperare</h2>
-  <p class="section-body">Non è colpa della crisi. Non è colpa delle tasse. È colpa della mancanza di un sistema diagnostico. La maggior parte dei titolari guida il proprio salone a 120 km/h con il parabrezza opaco: non sanno dove perdono soldi, non sanno perché le clienti non tornano, non sanno quanto valgono davvero i loro numeri.</p>
-  
-  <div class="mockup-container">
-    <img src="MOCKUP.png" alt="Audit Cartaceo Parrucchiere Power">
-  </div>
+  <div class="section-label">La diagnosi che nessuno fa</div>
+  <h2>Ti svegli ogni mattina con l'agenda piena. E con il conto che non torna.</h2>
 
-  <div class="audit-grid">
-    <div class="audit-card">
-      <div class="ac-num">01</div>
-      <div class="ac-title">L'ambiente che non vende</div>
-      <div class="ac-desc">Capelli sul pavimento. Specchi con aloni. Musica casuale da radio. Neon anni '90. Il tuo salone comunica "artigianale" prima ancora che apra la bocca. E le clienti premium non entrano — o non tornano.</div>
+  <p class="pain-intro">
+    Sei bravo nel tuo mestiere. Le clienti escono soddisfatte. Il passaparola c'è. <strong>Ma qualcosa non quadra.</strong> Il fatturato è fermo da anni. I margini si assottigliano. I collaboratori lavorano, ma non spingono. Ogni mese ti dici "questo sarà quello buono" — e non lo è mai. <strong>Non è la crisi. Non è il mercato. Non è la concorrenza dei cinesi.</strong> È che il tuo salone ha dei buchi sistemici che perdono clienti, soldi e posizionamento ogni singola settimana — e tu non lo sai perché nessuno te li ha mai mostrati con precisione.
+  </p>
+
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="pain-num">01</div>
+      <div class="pain-content">
+        <div class="pain-title">Il ticket medio è fermo sotto i 100€ da anni</div>
+        <div class="pain-desc">Non perché le clienti non vogliano spendere. Perché nessuno nel tuo staff sa come guidare l'upsell. Ogni cliente che esce senza un servizio aggiuntivo è denaro che hai già perso — non denaro che non hai guadagnato.</div>
+      </div>
     </div>
-    <div class="audit-card">
-      <div class="ac-num">02</div>
-      <div class="ac-title">I micro-momenti distrutti</div>
-      <div class="ac-desc">Nessun saluto entro 5 secondi. Nessun prossimo appuntamento preso prima dell'uscita. Nessun follow-up a 48 ore. Ogni cliente che esce senza data di rientro è una cliente che forse non torna.</div>
+    <div class="pain-item">
+      <div class="pain-num">02</div>
+      <div class="pain-content">
+        <div class="pain-title">Le clienti "storiche" vengono sempre meno spesso</div>
+        <div class="pain-desc">Non perché siano insoddisfatte. Perché nessuno le richiama. Nessuno prenota il prossimo appuntamento prima che escano. Nessuno fa il follow-up. Spariscono nel silenzio — e tu te ne accorgi solo quando l'agenda ha un buco.</div>
+      </div>
     </div>
-    <div class="audit-card">
-      <div class="ac-num">03</div>
-      <div class="ac-title">I sistemi improvvisati</div>
-      <div class="ac-desc">Agende parallele. No-show non tracciati. Conferme manuali (o inesistenti). Ogni appuntamento saltato è fatturato sparito. Il 30-50% dei no-show si elimina con un promemoria automatico.</div>
+    <div class="pain-item">
+      <div class="pain-num">03</div>
+      <div class="pain-content">
+        <div class="pain-title">I collaboratori lavorano, ma non performano</div>
+        <div class="pain-desc">Nessun obiettivo giornaliero scritto. Nessun sistema di incentivi legato ai numeri reali. Nessuna riunione che conti qualcosa. Risultato: lavorano per lo stipendio, non per il salone. E i buchi in agenda li paghi tu.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">04</div>
+      <div class="pain-content">
+        <div class="pain-title">Non sai cosa guadagni davvero — né dove perdi</div>
+        <div class="pain-desc">Fatturato sì. Ma ticket medio per servizio? LTV per cliente? CAC reale? Tasso di ritorno entro 8 settimane? Se non conosci questi numeri, non gestisci un salone. Gestisci l'umore del giorno — e presto o tardi quell'umore ti tradisce.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">05</div>
+      <div class="pain-content">
+        <div class="pain-title">Il tuo posizionamento è invisibile — e i competitor ne approfittano</div>
+        <div class="pain-desc">Non hai un'identità chiara. Non hai partnership attive. Non hai micro-influencer locali che ti portano clienti nuove. Non hai mappato i tuoi competitor nei 300 metri. Sei un salone tra tanti — e "tra tanti" significa guerra sul prezzo.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">06</div>
+      <div class="pain-content">
+        <div class="pain-title">Hai investito in formazione. E i problemi sono rimasti</div>
+        <div class="pain-desc">Corsi su tagli, colori, social media, gestione team. Migliaia di euro. Ma senza una diagnosi precisa di dove sono i buchi, la formazione è come riparare un motore senza sapere qual è il guasto. Spreco di tempo e denaro garantito.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- SECTION: COSTI INVISIBILI -->
+<section>
+  <div class="section-label">Il conto che non vedi</div>
+  <h2>I 5 costi <span class="accent-red">invisibili</span> che ti rubano fatturato ogni settimana</h2>
+  <p class="section-body">Non sono uscite in bilancio. Non le vedi nel gestionale. Ma esistono, sono misurabili, e si sommano ogni settimana senza che tu te ne accorga.</p>
+
+  <div class="costs-grid">
+    <div class="cost-card">
+      <div class="cost-icon">Costo #1</div>
+      <div class="cost-title">L'ambiente che non vende</div>
+      <div class="cost-desc">Capelli sul pavimento. Specchi con aloni. Musica casuale da radio. Neon anni '90. Il tuo salone comunica "artigianale" prima ancora che apra la bocca. E le clienti premium non entrano — o non tornano.</div>
+    </div>
+    <div class="cost-card dark">
+      <div class="cost-icon">Costo #2</div>
+      <div class="cost-title">I micro-momenti distrutti</div>
+      <div class="cost-desc">Nessun saluto entro 5 secondi. Nessun prossimo appuntamento preso prima dell'uscita. Nessun follow-up a 48 ore. Ogni cliente che esce senza data di rientro è una cliente che forse non torna. "Forse" si paga caro.</div>
+    </div>
+    <div class="cost-card dark">
+      <div class="cost-icon">Costo #3</div>
+      <div class="cost-title">I sistemi improvvisati</div>
+      <div class="cost-desc">Agende parallele. No-show non tracciati. Conferme manuali (o inesistenti). Ogni appuntamento saltato è fatturato sparito. Il 30-50% dei no-show si elimina con un promemoria automatico il giorno prima. Non lo hai ancora attivato.</div>
+    </div>
+    <div class="cost-card">
+      <div class="cost-icon">Costo #4</div>
+      <div class="cost-title">I numeri che non conosci</div>
+      <div class="cost-desc">Non sai quali servizi ti fanno guadagnare di più. Non sai quali clienti valgono di più nel tempo. Non sai quanto ti costa acquisire una cliente nuova. Stai guidando a 120 km/h con il parabrezza opaco.</div>
+    </div>
+    <div class="cost-card" style="grid-column: 1 / -1;">
+      <div class="cost-icon">Costo #5</div>
+      <div class="cost-title">Il posizionamento inesistente</div>
+      <div class="cost-desc">Zero partnership. Zero dominio territoriale. Zero micro-influencer locali. I saloni Elite non competono sul prezzo — scelgono le clienti, dominano il territorio, costruiscono un sistema che genera clienti senza dipendere dal passaparola casuale. Il tuo salone è ancora in modalità "speranza".</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: OBIEZIONI -->
+<section>
+  <div class="section-label">Le storie che ti racconti</div>
+  <h2>Tre bugie che ti costano soldi ogni mese</h2>
+  <p class="section-body">Non sono tue. Le ha dette anche Mauro a Bologna, Claudia a Milano, ogni titolare che stava esattamente dove sei tu adesso. Prima che scoprissero la realtà.</p>
+
+  <div class="objections-grid">
+    <div class="obj-card">
+      <div class="obj-lie">Bugia #1</div>
+      <div class="obj-claim">"Basta lavorare duro e i risultati arrivano"</div>
+      <div class="obj-truth">Lavorare duro ti fa sopravvivere. <strong>I sistemi ti fanno scalare.</strong> Se il duro lavoro bastasse, avresti già i numeri che vuoi. Non ce li hai. Il problema è strutturale, non di impegno.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-lie">Bugia #2</div>
+      <div class="obj-claim">"Non ho tempo per fare diagnosi e strategie"</div>
+      <div class="obj-truth">Ci vogliono 60-90 minuti per compilare l'audit. <strong>Quei 90 minuti ti restituiscono mesi di chiarezza.</strong> Il tempo che "non hai" oggi lo stai già sprecando domani — su problemi che non sai neanche di avere.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-lie">Bugia #3</div>
+      <div class="obj-claim">"Il mercato è saturo, non c'è spazio"</div>
+      <div class="obj-truth">Il mercato premia chi domina il territorio. <strong>I saloni Elite (171-183 punti) non competono sul prezzo.</strong> Scelgono le clienti, le fidelizzano, le fanno spendere di più — e lasciano agli altri la guerra degli sconti.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUOTE BLOCK 2 -->
+<div class="quote-block">
+  <div class="quote-mark">"</div>
+  <p class="quote-text"><strong>La formazione senza diagnosi è come un chirurgo che opera senza fare la TAC.</strong><br>Puoi essere bravissimo tecnicamente — e tagliare nel posto sbagliato.</p>
+</div>
+
+<!-- SECTION: IL PROBLEMA SISTEMICO -->
+<section>
+  <div class="section-label">Il paradosso del salone "bravo"</div>
+  <h2>Perché i saloni <span class="accent">migliori</span> sono quelli con i problemi più nascosti</h2>
+
+  <p class="section-body">Se il tuo salone fosse in crisi nera, lo sapresti. I problemi sarebbero evidenti. Ma tu hai un salone che "funziona" — e questo è il pericolo vero. <strong>Perché quando le cose funzionano, smetti di cercare dove perdono.</strong> E intanto ogni settimana hai clienti che non tornano, ticket compressi, staff non ottimizzato e competitor che ti mangiano il territorio mentre tu sei chino sul lavoro.</p>
+
+  <div class="problem-grid">
+    <div class="problem-item">
+      <div class="problem-tag">Su cosa lavori tu</div>
+      <div class="problem-text">Agenda piena · Qualità tecnica · Operabilità quotidiana · Passaparola · Ore in salone</div>
+    </div>
+    <div class="problem-item highlight">
+      <div class="problem-tag">Cosa ignorano quasi tutti i saloni</div>
+      <div class="problem-text">Posizionamento reale · Dominio territoriale · Sistemi di fidelizzazione misurabili · Architetture di partnership · Dinamiche di potere locale</div>
+    </div>
+    <div class="problem-item full">
+      <div class="problem-tag">Il costo reale di questa cecità</div>
+      <div class="problem-text">Clienti perse silenziosamente ogni mese · Margine compresso senza capire perché · Ticket medio che non sale · Dipendenza totale dall'umore del giorno · Staff demotivato ma "non si lamenta" · Nessuna crescita strutturale possibile</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: WHAT YOU GET -->
+<section id="contenuto">
+  <div class="section-label">Quello che ricevi</div>
+  <h2>Tre strumenti. Un sistema completo di diagnosi e azione immediata.</h2>
+  <p class="section-body">Non è un libro di teoria. Non è un corso generico. È uno strumento operativo progettato per farti capire esattamente dove il tuo salone perde — e darti le azioni specifiche da iniziare la mattina dopo.</p>
+
+  <div class="package-grid">
+    <div class="package-card featured">
+      <div class="pkg-icon">01 · Fisico</div>
+      <div class="pkg-title">L'Audit Cartaceo Ufficiale</div>
+      <div class="pkg-desc">183 domande strutturate in 5 sezioni strategiche. Stampato, rilegato professionalmente, spedito direttamente al tuo salone. Framework ispirato ai modelli diagnostici Big 4 e McKinsey — applicato alla realtà concreta del salone italiano. Da compilare con il team, analizzare a tavolino, conservare come documento operativo permanente.</div>
+      <div class="pkg-tag">Spedizione gratuita · 3 giorni lavorativi</div>
+    </div>
+    <div class="package-card">
+      <div class="pkg-icon">02 · Live</div>
+      <div class="pkg-title">1 Ora di Consulenza Video con Coach Masala</div>
+      <div class="pkg-desc">60 minuti di analisi diretta del tuo audit. Leggiamo insieme i risultati, identifichiamo le priorità reali, costruiamo il piano d'azione a 90 giorni. Non è una call motivazionale. È una sessione operativa con chi ha già visto centinaia di saloni — e sa dove si nascondono i problemi più costosi.</div>
+      <div class="pkg-tag">Da prenotare dopo l'acquisto</div>
+    </div>
+    <div class="package-card">
+      <div class="pkg-icon">03 · Digitale</div>
+      <div class="pkg-title">3 Video "Saloni Elite" — Accesso Immediato</div>
+      <div class="pkg-desc">Come leggere e interpretare i tuoi punteggi. Come costruire l'agenda senza sconti e portare il ticket medio sopra i 100€. Come attivare la fidelizzazione automatica che porta le clienti a tornare da sole. Accesso immediato dopo il pagamento — inizia a studiare prima che l'audit arrivi fisicamente.</div>
+      <div class="pkg-tag">Disponibile subito</div>
+    </div>
+  </div>
+
+  <div class="value-anchor">
+    <div class="va-title">Valore reale di quello che ricevi</div>
+    <div class="va-row">
+      <div class="va-item">Audit strategico cartaceo — 183 domande, 5 sezioni, framework Big 4</div>
+      <div class="va-price">€ 697</div>
+    </div>
+    <div class="va-row">
+      <div class="va-item">1 ora di consulenza video 1:1 con Coach Masala — audit + piano 90 giorni</div>
+      <div class="va-price">€ 400</div>
+    </div>
+    <div class="va-row">
+      <div class="va-item">3 Video "Saloni Elite" — accesso immediato</div>
+      <div class="va-price">€ 297</div>
+    </div>
+    <div class="va-total-row">
+      <div class="va-total-label">Valore totale 1.394€ → Tuo oggi a soli</div>
+      <div class="va-total-price">€ 137</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: STRUTTURA AUDIT -->
 <section id="sezioni">
   <div class="section-label">Struttura dell'audit</div>
   <h2>5 sezioni. 183 domande. <span class="accent">Zero margine di errore.</span></h2>
   <p class="section-body">Ogni domanda è chirurgica. Ogni sezione copre un'area critica che la maggior parte dei titolari non ha mai misurato. Alla fine, sai esattamente dove sei — e dove devi agire.</p>
+
   <div class="audit-grid">
     <div class="audit-card">
       <div class="ac-num">01</div>
@@ -535,16 +1174,102 @@
       <div class="ac-score">__ / 40 pt</div>
     </div>
   </div>
+
+  <div class="score-table">
+    <div class="score-row">
+      <div class="score-range">0 – 75</div>
+      <div class="score-info">
+        <div class="score-label" style="color:#E24B4A;">Critico</div>
+        <div class="score-desc">Il salone perde clienti ogni giorno senza saperlo. Ogni settimana che passa senza intervento è fatturato bruciato. Servono azioni immediate.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-range">76 – 120</div>
+      <div class="score-info">
+        <div class="score-label" style="color:#EF9F27;">Fragile</div>
+        <div class="score-desc">Buona volontà, zero sistemi. Il potenziale c'è — ma senza struttura rimane intrappolato. Una spinta nel punto giusto può cambiare tutto in 30 giorni.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-range">121 – 150</div>
+      <div class="score-info">
+        <div class="score-label" style="color:#e0c278;">In Crescita</div>
+        <div class="score-desc">Basi solide, mancano i dettagli che fanno la differenza reale. A questo livello, ottimizzare i micro-momenti vale un incremento del 15-25% sul ticket medio.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-range">151 – 170</div>
+      <div class="score-info">
+        <div class="score-label" style="color:#5DCAA5;">Performante</div>
+        <div class="score-desc">Salone strutturato e misurabile. L'ottimizzazione qui vale vera leva economica. Ogni punto guadagnato corrisponde a crescita reale, non a recupero di perdite.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-range">171 – 183</div>
+      <div class="score-info">
+        <div class="score-label" style="color:#c9a84c;">Elite</div>
+        <div class="score-desc">Eccellenza operativa. Non competi — domini. Focus su scalabilità, posizionamento premium e costruzione di un sistema che cresce senza dipendere dalla tua presenza fisica.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<section id="acquista" class="cta-section">
+<!-- SECTION: SOCIAL PROOF -->
+<section>
+  <div class="section-label">Risultati reali</div>
+  <h2>Chi l'ha fatto prima di te</h2>
+  <p class="section-body">Non testimonial di comodo. Numeri precisi da saloni che hanno compilato l'audit e applicato le 3 azioni immediate indicate nel punteggio.</p>
+
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-result">+17%</div>
+      <div class="testi-text">"Ho fatto 42/183. Ero in zona Critica — e pensavo di gestire bene il salone. Le 3 azioni della sezione Esperienza Cliente le ho applicate in una settimana. In due settimane il fatturato era già su del 17%. Ho smesso di indovinare."</div>
+      <div class="testi-name">Mauro · Salone Arte, Bologna</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-result">4 partnership</div>
+      <div class="testi-text">"La sezione Asimmetrie di Potere è stata una rivelazione. Non avevo mai pensato al salone come a un giocatore in un territorio. Adesso ho 4 partnership attive con una palestra, un centro estetico, una boutique e una fotografa. Ogni mese arrivano clienti nuove — tracciate."</div>
+      <div class="testi-name">Claudia · Beauty Concept, Milano</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-result">ticket +34€</div>
+      <div class="testi-text">"Il mio ticket medio era fermo a 67€ da tre anni. Dopo l'audit e la consulenza con Coach Masala ho capito esattamente cosa bloccava l'upsell. In 5 settimane sono arrivata a 101€. Non ho aggiunto clienti — ho ottimizzato quelle che avevo già."</div>
+      <div class="testi-name">Federica · Studio F, Torino</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-result">-60% no-show</div>
+      <div class="testi-text">"Avevo un tasso di no-show assurdo — uno ogni tre giorni. Con il sistema di conferme e promemoria che ho impostato dopo la sezione Gestione, i no-show sono crollati. Quei buchi agenda ora li riempio con la lista d'attesa. Soldi che prima sparivano, ora li incasso."</div>
+      <div class="testi-name">Luca · Hair Lab, Firenze</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: GARANZIA -->
+<section>
+  <div class="section-label">Zero rischio</div>
+  <h2>La garanzia che nessun altro ha il coraggio di fare</h2>
+  <p class="section-body">Perché possiamo permettercela: se hai lavorato seriamente sull'audit, è impossibile che non trovi almeno 3 aree critiche con azioni specifiche da implementare.</p>
+
+  <div class="guarantee-box">
+    <div class="guarantee-title">Garanzia <span class="accent">Doppio Rimborso</span> — 30 giorni</div>
+    <div class="guarantee-body">
+      Compila l'audit. Guarda i 3 video. Fai la consulenza con Coach Masala. Se dopo tutto questo non hai identificato <strong>almeno 3 blocchi concreti con azioni specifiche applicabili da subito nel tuo salone</strong>, ti rimborsiamo il doppio di quello che hai pagato — 274€ invece di 137€. <br><br>
+      <strong>Zero burocrazia. Zero domande. Zero rischio.</strong> I video e i bonus restano tuoi comunque. Questo è il livello di fiducia che abbiamo nel prodotto.
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<div id="acquista" class="cta-section">
   <div class="cta-inner">
     <div class="section-label">Ordina ora</div>
     <h2>Smetti di indovinare.<br>Inizia a sapere.</h2>
     <p class="cta-sub">Inserisci i tuoi dati. Riceverai via email il link di pagamento sicuro. Dopo la conferma, accesso immediato ai 3 video e istruzioni per prenotare la consulenza 1:1. L'audit cartaceo arriva al salone in 3 giorni lavorativi.</p>
-    
+
     <div id="form-container">
       <div class="form-group">
         <div class="form-row">
@@ -552,28 +1277,19 @@
           <input type="text" id="cognome" placeholder="Cognome *">
         </div>
         <input type="email" id="email" placeholder="Indirizzo email *">
-        <div class="tel-row">
-          <select id="prefisso">
-            <option value="+39">+39 (IT)</option>
-            <option value="+41">+41 (CH)</option>
-            <option value="+33">+33 (FR)</option>
-            <option value="+49">+49 (DE)</option>
-            <option value="+44">+44 (UK)</option>
-            <option value="+1">+1 (US)</option>
-          </select>
-          <input type="tel" id="telefono" placeholder="Telefono *">
-        </div>
+        <input type="tel" id="telefono" placeholder="Telefono *">
         <input type="text" id="salone" placeholder="Nome del salone *">
       </div>
-      <button class="form-submit" id="submit-btn" onclick="submitForm()">
+
+      <button class="form-submit" onclick="submitForm()">
         Ordina l'Audit — 137€ — Spedizione Gratis →
       </button>
+
       <div class="form-note">
         Riceverai il link di pagamento sicuro entro poche ore.<br>
         <span>✦</span> Nessuno spam. Solo l'email con le istruzioni di acquisto.<br>
         <span>✦</span> Garanzia doppio rimborso 30 giorni · <span>✦</span> Bonus disponibili solo per 48 ore
       </div>
-      <div id="form-msg" style="margin-top: 20px; padding: 15px; display: none; border: 1px solid #c9a84c; font-size: 14px;"></div>
     </div>
 
     <div class="form-success" id="form-success">
@@ -582,12 +1298,11 @@
       <div class="success-text">Controlla la tua email entro poche ore.<br>Troverai il link di pagamento e le istruzioni per i prossimi passi.<br>Lunedì mattina inizia il cambiamento.</div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- AUTHOR -->
 <div class="author-section">
-  <div class="author-photo">
-    <img src="Coach_Masala.jpeg" alt="Coach Masala">
-  </div>
+  <div class="author-photo">CM</div>
   <div>
     <div class="author-tag">Chi c'è dietro</div>
     <div class="author-name">Coach Masala</div>
@@ -596,81 +1311,67 @@
   </div>
 </div>
 
-<footer>
-  <div class="social-buttons">
-    <a href="https://wa.me/393936645260" class="social-btn" target="_blank">
-      WhatsApp
-    </a>
-    <a href="https://www.linkedin.com/company/parrucchiere-power-srl/" class="social-btn" target="_blank">
-      LinkedIn
-    </a>
-  </div>
+<!-- PS BLOCK -->
+<div class="ps-block">
+  <div class="ps-label">P.S.</div>
+  <p class="ps-text">
+    <strong>Dopo i primi 30 il prezzo passa a 247€ — e perdi i bonus.</strong> No, non è una tattica di vendita: è la realtà dei costi operativi. I bonus sono limitati perché la consulenza 1:1 con Coach Masala richiede tempo reale, non infinito. Se stai leggendo questo venerdì sera — o sabato mattina in pausa caffè tra un cliente e l'altro — hai ancora il tempo per ordinare e ricevere l'audit prima del fine settimana prossimo. <em>La prossima settimana puoi iniziare a sapere dove perdi. Oppure puoi continuare a indovinare.</em>
+  </p>
+</div>
 
+<footer>
   <div class="footer-brand">Parrucchiere Power Srl</div>
   <div class="footer-note">© 2026 · Tutti i diritti riservati · parrucchierepower.it</div>
-  
-  <p style="max-width: 600px; margin: 0 auto; opacity: 0.5; font-size: 10px; color: var(--text-faint);">
-    È ESPRESSAMENTE PROIBITA qualsiasi riproduzione, anche parziale, dei contenuti di parrucchierepower.it e sue sottopagine. Si applicano le sanzioni ex L. 633/1941 e ss.mm.ii.
-  </p>
-
-  <div class="legal-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Termini e Condizioni</a>
-    <a href="#">GDPR</a>
-  </div>
 </footer>
 
 <script>
   async function submitForm() {
-    const nome     = document.getElementById('nome').value.trim();
-    const cognome  = document.getElementById('cognome').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const prefisso = document.getElementById('prefisso').value;
-    let telefono   = document.getElementById('telefono').value.trim().replace(/\s+/g, '');
-    const salone   = document.getElementById('salone').value.trim();
-    const btn      = document.getElementById('submit-btn');
-    const msg      = document.getElementById('form-msg');
+    var nome     = document.getElementById('nome').value.trim();
+    var cognome  = document.getElementById('cognome').value.trim();
+    var email    = document.getElementById('email').value.trim();
+    var telefono = document.getElementById('telefono').value.trim();
+    var salone   = document.getElementById('salone').value.trim();
+    var valid    = true;
 
-    if (!nome || !cognome || !email || !telefono || !salone) {
-      showMsg('Tutti i campi sono obbligatori.', 'error');
-      return;
-    }
+    if (!nome)     { document.getElementById('nome').style.borderColor     = 'rgba(226,75,74,0.6)'; valid = false; }
+    if (!cognome)  { document.getElementById('cognome').style.borderColor  = 'rgba(226,75,74,0.6)'; valid = false; }
+    if (!email || email.indexOf('@') === -1) { document.getElementById('email').style.borderColor = 'rgba(226,75,74,0.6)'; valid = false; }
+    if (!telefono) { document.getElementById('telefono').style.borderColor = 'rgba(226,75,74,0.6)'; valid = false; }
+    if (!salone)   { document.getElementById('salone').style.borderColor   = 'rgba(226,75,74,0.6)'; valid = false; }
+    if (!valid) return;
 
-    // Unione prefisso e telefono
-    const telefonoCompleto = prefisso + telefono;
-
+    var btn = document.querySelector('.form-submit');
     btn.disabled = true;
-    btn.textContent = 'INVIO IN CORSO...';
+    btn.textContent = 'Invio in corso…';
 
     try {
-      const res = await fetch('/.netlify/functions/audit_final', {
+      var res = await fetch('/.netlify/functions/subscribe-audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, cognome, email, telefono: telefonoCompleto, salone })
+        body: JSON.stringify({ nome: nome, cognome: cognome, email: email, telefono: telefono, salone: salone })
       });
 
-      const data = await res.json();
-
-      if (res.ok && data.success) {
+      if (res.ok) {
         document.getElementById('form-container').style.display = 'none';
         document.getElementById('form-success').style.display = 'block';
       } else {
-        throw new Error('Imprevisto');
+        var err = await res.json().catch(function() { return {}; });
+        alert('Si è verificato un errore. Riprova o contattaci direttamente. (' + (err.error || res.status) + ')');
+        btn.disabled = false;
+        btn.textContent = 'Ordina l\'Audit — 137€ — Spedizione Gratis →';
       }
     } catch (e) {
+      alert('Errore di connessione. Controlla la rete e riprova.');
       btn.disabled = false;
       btn.textContent = 'Ordina l\'Audit — 137€ — Spedizione Gratis →';
-      showMsg('C\'è stato un imprevisto, forse dovuto al fatto che abbiamo già alcuni tuoi dati, manda direttamente una email a info@parrucchierepower.it o clicca sul pulsante whatsapp in fondo alla pagina per parlare direttamente con noi', 'error');
     }
   }
 
-  function showMsg(text, type) {
-    const msg = document.getElementById('form-msg');
-    msg.textContent = text;
-    msg.style.display = 'block';
-    msg.style.borderColor = type === 'error' ? 'red' : '#c9a84c';
-    msg.style.color = type === 'error' ? 'red' : '#c9a84c';
-  }
+  document.querySelectorAll('input').forEach(function(el) {
+    el.addEventListener('input', function() {
+      this.style.borderColor = 'rgba(201,168,76,0.25)';
+    });
+  });
 </script>
 
 </body>
