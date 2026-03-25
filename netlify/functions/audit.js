@@ -19,9 +19,10 @@ exports.handler = async function(event) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Tutti i campi sono obbligatori' }) };
   }
 
-  const BREVO_KEY = process.env.BREVO_API_KEY;
+  // Uso la variabile d'ambiente corretta indicata dal Coach
+  const BREVO_KEY = process.env.BREVO_API_KEY_LANDING;
   if (!BREVO_KEY) {
-    console.error('ERRORE: BREVO_API_KEY non configurata su Netlify');
+    console.error('ERRORE: BREVO_API_KEY_LANDING non configurata su Netlify');
     return { statusCode: 500, body: JSON.stringify({ success: false, message: 'Configurazione server mancante (API KEY)' }) };
   }
 
@@ -30,7 +31,7 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
-  // 1. Tentativo aggiunta contatto a Brevo (Lista 3 - la stessa della landing principale per sicurezza)
+  // 1. Tentativo aggiunta contatto a Brevo (Lista 6 - Audit Strategico)
   try {
     const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -43,7 +44,7 @@ exports.handler = async function(event) {
           SMS: telefono,
           COMPANY: salone
         },
-        listIds: [3], // Uso l'ID 3 che sappiamo funzionare per l'altra landing
+        listIds: [6], // ID Lista 6 indicato dal Coach
         updateEnabled: true
       })
     });
@@ -55,7 +56,7 @@ exports.handler = async function(event) {
     console.error('Brevo contact fetch error:', e);
   }
 
-  // 2. Invio email di notifica a Coach Masala (QUESTA DEVE FUNZIONARE SEMPRE)
+  // 2. Invio email di notifica a Coach Masala
   let notificationSent = false;
   try {
     const notifyRes = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -89,7 +90,7 @@ exports.handler = async function(event) {
 
   // 3. Invio conferma all'utente
   try {
-    const confirmRes = await fetch('https://api.brevo.com/v3/smtp/email', {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers,
       body: JSON.stringify({
@@ -115,7 +116,6 @@ exports.handler = async function(event) {
     console.error('Confirmation fetch error:', e);
   }
 
-  // Se almeno la notifica a te è partita, diamo successo all'utente per non farlo scappare
   if (notificationSent) {
     return {
       statusCode: 200,
