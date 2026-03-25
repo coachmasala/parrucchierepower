@@ -169,17 +169,6 @@
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
     .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
 
-    /* PHOTO BLOCKS */
-    .photo-full { width: 100%; height: 520px; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); border: 1px solid var(--gold-line); }
-    .photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .photo-strip img { width: 100%; height: 380px; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); }
-    
-    .photo-overlay-block { position: relative; height: 500px; overflow: hidden; border: 1px solid var(--gold-line); }
-    .photo-overlay-block img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) contrast(1.05); }
-    .photo-overlay-block .overlay-text { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, transparent 100%); padding: 60px; }
-    .photo-overlay-block .overlay-text p { font-family: var(--serif); font-size: 28px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.4; max-width: 600px; }
-    .photo-overlay-block .overlay-text small { display: block; margin-top: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-
     /* STATS */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 60px; background: var(--gold-line); }
     .stat-box { background: var(--dark); padding: 50px 40px; text-align: center; }
