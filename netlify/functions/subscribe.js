@@ -8,7 +8,7 @@ exports.handler = async function(event) {
     const body = JSON.parse(event.body);
     nome     = (body.nome     || '').trim();
     email    = (body.email    || '').trim();
-    telefono = (body.telefono || '').trim();
+    telefono = (body.telefono || '').trim().replace(/\s+/g, '');
   } catch(e) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Dati non validi' }) };
   }
@@ -25,8 +25,20 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
-  const attributes = { FIRSTNAME: nome };
-  if (telefono) attributes.SMS = telefono;
+  // Normalizza telefono: assicura prefisso + senza duplicati
+  let formattedPhone = telefono;
+  if (formattedPhone) {
+    if (!formattedPhone.startsWith('+')) {
+      if (formattedPhone.startsWith('00')) {
+        formattedPhone = '+' + formattedPhone.substring(2);
+      } else {
+        formattedPhone = '+39' + formattedPhone;
+      }
+    }
+  }
+
+  const attributes = { NOME: nome };
+  if (formattedPhone) attributes.SMS = formattedPhone;
 
   try {
     const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
