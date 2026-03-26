@@ -3,11 +3,12 @@ exports.handler = async function(event) {
     return { statusCode: 405, body: JSON.stringify({ success: false, message: 'Method not allowed' }) };
   }
 
-  let nome, email;
+  let nome, email, telefono;
   try {
     const body = JSON.parse(event.body);
-    nome  = (body.nome  || '').trim();
-    email = (body.email || '').trim();
+    nome     = (body.nome     || '').trim();
+    email    = (body.email    || '').trim();
+    telefono = (body.telefono || '').trim();
   } catch(e) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Dati non validi' }) };
   }
@@ -24,13 +25,16 @@ exports.handler = async function(event) {
     'api-key': BREVO_KEY
   };
 
+  const attributes = { FIRSTNAME: nome };
+  if (telefono) attributes.SMS = telefono;
+
   try {
     const contactRes = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers,
       body: JSON.stringify({
         email,
-        attributes: { FIRSTNAME: nome },
+        attributes,
         listIds: [3],
         updateEnabled: true
       })
