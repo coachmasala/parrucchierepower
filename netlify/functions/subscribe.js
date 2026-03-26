@@ -18,6 +18,7 @@ exports.handler = async function(event) {
   }
 
   const BREVO_KEY = process.env.BREVO_API_KEY;
+  const LIST_ID   = parseInt(process.env.BREVO_LIST_ID, 10) || 3;
   const PDF_URL   = 'https://parrucchierepower.it/7_Errori_Margine_ParrucchierePower.pdf';
 
   const headers = {
@@ -47,7 +48,7 @@ exports.handler = async function(event) {
       body: JSON.stringify({
         email,
         attributes,
-        listIds: [3],
+        listIds: [LIST_ID],
         updateEnabled: true
       })
     });
