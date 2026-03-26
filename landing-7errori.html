@@ -97,57 +97,16 @@
       align-items: center;
       gap: 14px;
     }
-    .hero-tag::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-    }
+    .hero-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
 
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(44px, 5.5vw, 76px);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 12px;
-    }
+    .hero h1 { font-family: var(--serif); font-size: clamp(44px, 5.5vw, 76px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 12px; }
     .hero h1 em { font-style: italic; color: var(--gold); }
 
-    .hero-desc {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--mid);
-      max-width: 520px;
-      margin-top: 24px;
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
+    .hero-desc { font-size: 17px; line-height: 1.8; color: var(--mid); max-width: 520px; margin-top: 24px; margin-bottom: 48px; font-weight: 300; }
 
-    .hero-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .hero-bullets li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 14px;
-      color: var(--white);
-      line-height: 1.5;
-    }
-    .hero-bullets li::before {
-      content: '';
-      flex-shrink: 0;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-top: 7px;
-    }
+    .hero-bullets { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .hero-bullets li { display: flex; align-items: flex-start; gap: 14px; font-size: 14px; color: var(--white); line-height: 1.5; }
+    .hero-bullets li::before { content: ''; flex-shrink: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); margin-top: 7px; }
 
     /* ── FORM CARD ── */
     .form-card {
@@ -159,298 +118,112 @@
       position: relative;
       z-index: 2;
     }
-    .form-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gold);
-    }
+    .form-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gold); }
 
-    .form-badge {
-      display: inline-block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 9px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      border: 1px solid var(--gold-line);
-      padding: 5px 12px;
-      margin-bottom: 24px;
-    }
+    .form-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; border: 1px solid var(--gold-line); padding: 5px 12px; margin-bottom: 24px; }
 
-    .form-card h2 {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
+    .form-card h2 { font-family: var(--serif); font-size: 28px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 8px; }
     .form-card h2 em { color: var(--gold); font-style: italic; }
 
-    .form-sub {
-      font-size: 13px;
-      color: var(--mid);
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
+    .form-sub { font-size: 13px; color: var(--mid); margin-bottom: 32px; line-height: 1.6; }
 
     .f-field { margin-bottom: 16px; }
-    .f-field label {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .f-field input, .prefix-select {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1px solid var(--gold-line);
-      background: var(--dark);
-      font-family: var(--sans);
-      font-size: 14px;
-      color: #fff;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+    .f-field label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+    .f-field input, .prefix-select { width: 100%; padding: 13px 16px; border: 1px solid var(--gold-line); background: var(--dark); font-family: var(--sans); font-size: 14px; color: #fff; outline: none; transition: border-color 0.2s; }
     .f-field input:focus { border-color: var(--gold); }
     .f-field input::placeholder { color: rgba(232,224,208,0.3); }
 
-    .f-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--gold);
-      color: var(--dark);
-      border: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: background 0.2s;
-    }
+    .f-submit { width: 100%; padding: 16px; background: var(--gold); color: var(--dark); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
     .f-submit:hover { background: var(--gold-light); }
     .f-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .f-msg {
-      display: none;
-      margin-top: 16px;
-      font-size: 13px;
-      line-height: 1.5;
-      padding: 12px 16px;
-    }
-    .f-msg.success {
-      border-left: 3px solid var(--gold);
-      background: rgba(201,168,76,0.1);
-      color: #fff;
-    }
-    .f-msg.error {
-      border-left: 3px solid #E24B4A;
-      background: rgba(226,75,74,0.08);
-      color: #E08070;
-      font-size: 12px;
-    }
+    .f-msg { display: none; margin-top: 16px; font-size: 13px; line-height: 1.5; padding: 12px 16px; }
+    .f-msg.success { border-left: 3px solid var(--gold); background: rgba(201,168,76,0.1); color: #fff; }
+    .f-msg.error { border-left: 3px solid #E24B4A; background: rgba(226,75,74,0.08); color: #E08070; font-size: 12px; }
 
-    .f-privacy {
-      font-size: 11px;
-      color: var(--mid);
-      margin-top: 16px;
-      line-height: 1.6;
-    }
+    .f-privacy { font-size: 11px; color: var(--mid); margin-top: 16px; line-height: 1.6; }
 
     /* ── ERRORI ── */
-    .errori {
-      padding: 120px 100px;
-      background: var(--dark-2);
-    }
+    .errori { padding: 120px 100px; background: var(--dark-2); }
 
-    .section-label {
+    .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
+
+    .errori h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; color: #fff; }
+    .errori h2 em { color: var(--gold); font-style: italic; }
+
+    .errori-intro { font-size: 17px; color: var(--mid); max-width: 620px; line-height: 1.75; margin-bottom: 72px; font-weight: 300; }
+
+    .errori-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gold-line); }
+
+    .errore-item { background: var(--dark); padding: 48px 40px; position: relative; transition: background 0.2s; }
+    .errore-item:hover { background: var(--dark-3); }
+
+    .errore-num { font-family: var(--serif); font-size: 64px; font-weight: 900; color: rgba(201,168,76,0.1); line-height: 1; margin-bottom: 20px; }
+    .errore-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 14px; }
+    .errore-desc { font-size: 13px; color: var(--mid); line-height: 1.75; }
+
+    /* ── CHI SIAMO ── */
+    .chisiamo { background: var(--dark); padding: 120px 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+
+    .chisiamo h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 54px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 32px; }
+    .chisiamo h2 em { color: var(--gold); font-style: italic; }
+    .chisiamo p { font-size: 15px; color: var(--mid); line-height: 1.85; margin-bottom: 20px; font-weight: 300; }
+
+    .chisiamo-quote { border-left: 2px solid var(--gold); padding-left: 28px; margin-top: 40px; }
+    .chisiamo-quote p { font-family: var(--serif); font-size: 22px; font-style: italic; color: #fff; line-height: 1.5; margin-bottom: 12px; }
+    .chisiamo-quote small { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+
+    .chisiamo-right { display: flex; flex-direction: column; gap: 2px; background: var(--gold-line); }
+    .stat-block { background: var(--dark-2); padding: 40px 44px; border-left: 3px solid transparent; transition: border-color 0.2s; }
+    .stat-block:hover { border-color: var(--gold); }
+    .stat-num { font-family: var(--serif); font-size: 52px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .stat-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); font-weight: 600; }
+
+    /* ── CLOSING CTA ── */
+    .closing-cta {
+      background: var(--dark-2);
+      padding: 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      border-top: 1px solid var(--gold-line);
+    }
+    .closing-cta-left { }
+    .closing-cta-left p.eyebrow {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 600;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 20px;
     }
-    .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
-
-    .errori h2 {
+    .closing-cta-left p.eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .closing-cta-left h2 {
       font-family: var(--serif);
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-    .errori h2 em { color: var(--gold); font-style: italic; }
-
-    .errori-intro {
-      font-size: 17px;
-      color: var(--mid);
-      max-width: 620px;
-      line-height: 1.75;
-      margin-bottom: 72px;
-      font-weight: 300;
-    }
-
-    .errori-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--gold-line);
-    }
-
-    .errore-item {
-      background: var(--dark);
-      padding: 48px 40px;
-      position: relative;
-      transition: background 0.2s;
-    }
-    .errore-item:hover { background: var(--dark-3); }
-
-    .errore-num {
-      font-family: var(--serif);
-      font-size: 64px;
+      font-size: clamp(32px, 3.5vw, 52px);
       font-weight: 900;
-      color: rgba(201,168,76,0.1);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-
-    .errore-title {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
-
-    .errore-desc {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.75;
-    }
-
-    /* ── CHI SIAMO ── */
-    .chisiamo {
-      background: var(--dark);
-      padding: 120px 100px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
-    }
-
-    .chisiamo h2 {
-      font-family: var(--serif);
-      font-size: clamp(36px, 4vw, 54px);
-      font-weight: 700;
       color: #fff;
       line-height: 1.1;
-      margin-bottom: 32px;
-    }
-    .chisiamo h2 em { color: var(--gold); font-style: italic; }
-
-    .chisiamo p {
-      font-size: 15px;
-      color: var(--mid);
-      line-height: 1.85;
       margin-bottom: 20px;
-      font-weight: 300;
     }
-
-    .chisiamo-quote {
-      border-left: 2px solid var(--gold);
-      padding-left: 28px;
-      margin-top: 40px;
-    }
-    .chisiamo-quote p {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-    .chisiamo-quote small {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .chisiamo-right {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      background: var(--gold-line);
-    }
-
-    .stat-block {
-      background: var(--dark-2);
-      padding: 40px 44px;
-      border-left: 3px solid transparent;
-      transition: border-color 0.2s;
-    }
-    .stat-block:hover { border-color: var(--gold); }
-
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 52px;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .stat-lbl {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .closing-cta-left h2 em { color: var(--gold); font-style: italic; }
+    .closing-cta-left p.body {
+      font-size: 16px;
       color: var(--mid);
-      font-weight: 600;
+      line-height: 1.8;
+      max-width: 460px;
     }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      padding: 80px 100px;
-      border-top: 1px solid var(--gold-line);
-      text-align: center;
-    }
-    .footer-social {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-    .social-link {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      border: 1px solid var(--gold-line);
-      padding: 10px 20px;
-      transition: all 0.2s;
-    }
+    footer { background: var(--dark); padding: 80px 100px; border-top: 1px solid var(--gold-line); text-align: center; }
+    .footer-social { display: flex; justify-content: center; gap: 24px; margin-bottom: 40px; }
+    .social-link { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--gold-line); padding: 10px 20px; transition: all 0.2s; }
     .social-link:hover { background: var(--gold); color: var(--dark); }
 
     @media (max-width: 1024px) {
@@ -460,6 +233,7 @@
       .errori, .chisiamo, footer { padding: 80px 40px; }
       .errori-grid { grid-template-columns: 1fr; }
       .chisiamo { grid-template-columns: 1fr; gap: 60px; }
+      .closing-cta { grid-template-columns: 1fr; padding: 80px 40px; gap: 60px; }
     }
   </style>
 </head>
@@ -580,13 +354,11 @@
     <h2>Non vendiamo <em>corsi</em>. Lavoriamo con chi è già strutturato.</h2>
     <p>Parrucchiere Power Srl lavora esclusivamente con titolari che hanno già dimostrato di saper fare impresa. Non partiamo da zero: lavoriamo con chi si trova nella zona grigia della competenza — troppo grande per accontentarsi, troppo piccolo per dominare.</p>
     <p>Questo documento non è materiale di marketing. È la mappa degli errori sistemici che abbiamo identificato su oltre 50 saloni in tutta Italia, costruita osservando i conti economici, non ascoltando le percezioni.</p>
-
     <div class="chisiamo-quote">
       <p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p>
       <small>Coach Masala — Parrucchiere Power Srl</small>
     </div>
   </div>
-
   <div class="chisiamo-right">
     <div class="stat-block">
       <div class="stat-num">50+</div>
@@ -603,9 +375,44 @@
   </div>
 </section>
 
-<section style="background: var(--dark-2); padding: 120px 100px; text-align: center;">
-  <p style="font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 20px;">Hai riconosciuto almeno 3 errori?</p>
-  <p style="font-size: 17px; color: var(--mid); max-width: 620px; margin: 0 auto;">Il tuo salone ha margine non espresso.</p>
+<!-- ── CLOSING CTA ── -->
+<section class="closing-cta">
+  <div class="closing-cta-left">
+    <p class="eyebrow">Il passo successivo</p>
+    <h2>Hai riconosciuto almeno 3 errori?</h2>
+    <p class="body">Il tuo salone ha margine non espresso. La guida ti mostra dove si nasconde — e le azioni concrete per recuperarlo. Accesso immediato, nessuno spam.</p>
+  </div>
+  <div>
+    <div class="form-card">
+      <div class="form-badge">Download Gratuito</div>
+      <h2>Scarica la <em>Guida</em></h2>
+      <p class="form-sub">Accesso immediato. Nessuno spam. Cancellazione in qualsiasi momento.</p>
+      <form id="landingForm2">
+        <div class="f-field">
+          <label for="nome2">Nome</label>
+          <input type="text" id="nome2" placeholder="Il tuo nome" required autocomplete="given-name">
+        </div>
+        <div class="f-field">
+          <label for="email2">Email</label>
+          <input type="email" id="email2" placeholder="la-tua@email.it" required autocomplete="email">
+        </div>
+        <div class="f-field">
+          <label>Telefono</label>
+          <div style="display:grid; grid-template-columns: 100px 1fr; gap:10px;">
+            <select id="prefix2" class="prefix-select">
+              <option value="+39" selected>+39 (IT)</option>
+              <option value="+41">+41 (CH)</option>
+              <option value="+378">+378 (SM)</option>
+            </select>
+            <input type="tel" id="tel2" placeholder="Numero" required autocomplete="tel-national">
+          </div>
+        </div>
+        <button type="submit" class="f-submit" id="f-btn2">Scarica ora — è gratis</button>
+      </form>
+      <div id="formMsg2" class="f-msg"></div>
+      <p class="f-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato ceduto a terzi.</p>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -631,24 +438,21 @@
     menuOverlay.classList.toggle('active');
     menuPanel.classList.toggle('active');
   });
-
   menuOverlay.addEventListener('click', () => {
     menuToggle.classList.remove('active');
     menuOverlay.classList.remove('active');
     menuPanel.classList.remove('active');
   });
 
-  document.getElementById('landingForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const nome     = document.getElementById('nome').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const prefix   = document.getElementById('prefix').value;
-    const tel      = document.getElementById('tel').value.trim();
-    const btn      = document.getElementById('f-btn');
-    const msg      = document.getElementById('formMsg');
+  async function submitForm(formId, nomeId, emailId, prefixId, telId, btnId, msgId) {
+    const nome   = document.getElementById(nomeId).value.trim();
+    const email  = document.getElementById(emailId).value.trim();
+    const prefix = document.getElementById(prefixId).value;
+    const tel    = document.getElementById(telId).value.trim();
+    const btn    = document.getElementById(btnId);
 
-    if (!nome || !email) { showMsg('Inserisci nome e email per continuare.', 'error'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Indirizzo email non valido.', 'error'); return; }
+    if (!nome || !email) { showMsg(msgId, 'Inserisci nome e email per continuare.', 'error'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg(msgId, 'Indirizzo email non valido.', 'error'); return; }
 
     btn.disabled = true;
     btn.textContent = 'Invio in corso...';
@@ -660,9 +464,8 @@
         body: JSON.stringify({ nome, email, telefono: prefix + tel })
       });
       const data = await res.json();
-
       if (res.ok && data.success) {
-        showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success');
+        showMsg(msgId, 'Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success');
         btn.textContent = 'Inviato ✓';
       } else {
         throw new Error(data.message || 'Errore');
@@ -670,16 +473,26 @@
     } catch(err) {
       btn.disabled = false;
       btn.textContent = 'Scarica ora — è gratis';
-      showMsg("C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error');
+      showMsg(msgId, "C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error');
     }
-  });
+  }
 
-  function showMsg(text, type) {
-    const msg = document.getElementById('formMsg');
+  function showMsg(msgId, text, type) {
+    const msg = document.getElementById(msgId);
     msg.textContent = text;
     msg.className = 'f-msg ' + type;
     msg.style.display = 'block';
   }
+
+  document.getElementById('landingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm('landingForm', 'nome', 'email', 'prefix', 'tel', 'f-btn', 'formMsg');
+  });
+
+  document.getElementById('landingForm2').addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitForm('landingForm2', 'nome2', 'email2', 'prefix2', 'tel2', 'f-btn2', 'formMsg2');
+  });
 </script>
 
 </body>
