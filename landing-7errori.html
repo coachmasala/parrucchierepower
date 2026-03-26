@@ -27,7 +27,7 @@
     /* ── MENU HAMBURGER ── */
     .menu-toggle {
       position: fixed; top: 40px; right: 40px; width: 44px; height: 44px;
-      background: none; border: none; cursor: pointer; z-index: 1000;
+      background: none; border: none; cursor: pointer; z-index: 1200;
       display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px;
     }
     .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s ease; }
@@ -38,13 +38,13 @@
     .menu-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(8px);
-      z-index: 999; opacity: 1; visibility: hidden; transition: all 0.3s ease;
+      z-index: 1099; opacity: 1; visibility: hidden; transition: all 0.3s ease;
     }
     .menu-overlay.active { visibility: visible; }
 
     .menu-panel {
       position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100vh;
-      background: var(--dark); border-left: 1px solid var(--gold-line); z-index: 1001;
+      background: var(--dark); border-left: 1px solid var(--gold-line); z-index: 1200;
       transform: translateX(100%); transition: transform 0.3s ease;
       display: flex; flex-direction: column; padding: 100px 40px 40px;
     }
@@ -239,6 +239,7 @@
       transition: background 0.2s;
     }
     .f-submit:hover { background: var(--gold-light); }
+    .f-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .f-msg {
       display: none;
@@ -246,9 +247,17 @@
       font-size: 13px;
       line-height: 1.5;
       padding: 12px 16px;
+    }
+    .f-msg.success {
       border-left: 3px solid var(--gold);
       background: rgba(201,168,76,0.1);
       color: #fff;
+    }
+    .f-msg.error {
+      border-left: 3px solid #E24B4A;
+      background: rgba(226,75,74,0.08);
+      color: #E08070;
+      font-size: 12px;
     }
 
     .f-privacy {
@@ -492,15 +501,15 @@
       <div class="form-badge">Download Gratuito</div>
       <h2>Scarica la <em>Guida</em></h2>
       <p class="form-sub">Accesso immediato. Nessuno spam. Cancellazione in qualsiasi momento.</p>
-      
+
       <form id="landingForm">
         <div class="f-field">
-          <label>Nome</label>
-          <input type="text" id="nome" placeholder="Il tuo nome" required>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Il tuo nome" required autocomplete="given-name">
         </div>
         <div class="f-field">
-          <label>Email</label>
-          <input type="email" id="email" placeholder="la-tua@email.it" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="la-tua@email.it" required autocomplete="email">
         </div>
         <div class="f-field">
           <label>Telefono</label>
@@ -510,10 +519,10 @@
               <option value="+41">+41 (CH)</option>
               <option value="+378">+378 (SM)</option>
             </select>
-            <input type="tel" id="tel" placeholder="Numero" required>
+            <input type="tel" id="tel" placeholder="Numero" required autocomplete="tel-national">
           </div>
         </div>
-        <button type="submit" class="f-submit">Scarica ora — è gratis</button>
+        <button type="submit" class="f-submit" id="f-btn">Scarica ora — è gratis</button>
       </form>
       <div id="formMsg" class="f-msg"></div>
       <p class="f-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato ceduto a terzi.</p>
@@ -571,7 +580,7 @@
     <h2>Non vendiamo <em>corsi</em>. Lavoriamo con chi è già strutturato.</h2>
     <p>Parrucchiere Power Srl lavora esclusivamente con titolari che hanno già dimostrato di saper fare impresa. Non partiamo da zero: lavoriamo con chi si trova nella zona grigia della competenza — troppo grande per accontentarsi, troppo piccolo per dominare.</p>
     <p>Questo documento non è materiale di marketing. È la mappa degli errori sistemici che abbiamo identificato su oltre 50 saloni in tutta Italia, costruita osservando i conti economici, non ascoltando le percezioni.</p>
-    
+
     <div class="chisiamo-quote">
       <p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p>
       <small>Coach Masala — Parrucchiere Power Srl</small>
@@ -606,9 +615,9 @@
   </div>
   <p style="font-size: 12px; color: var(--mid); margin-bottom: 16px;">Parrucchiere Power Srl - © 2026 Tutti i diritti riservati</p>
   <div style="display:flex; justify-content:center; gap:30px; font-size:10px; text-transform:uppercase; letter-spacing:1px;">
-    <a href="#" style="color:var(--gold); text-decoration:none;">PRIVACY POLICY</a>
-    <a href="#" style="color:var(--gold); text-decoration:none;">TERMINI E CONDIZIONI</a>
-    <a href="#" style="color:var(--gold); text-decoration:none;">GDPR</a>
+    <a href="/privacy-policy.html" style="color:var(--gold); text-decoration:none;">PRIVACY POLICY</a>
+    <a href="/termini-e-condizioni.html" style="color:var(--gold); text-decoration:none;">TERMINI E CONDIZIONI</a>
+    <a href="/gdpr.html" style="color:var(--gold); text-decoration:none;">GDPR</a>
   </div>
 </footer>
 
@@ -629,12 +638,48 @@
     menuPanel.classList.remove('active');
   });
 
-  document.getElementById('landingForm').addEventListener('submit', function(e) {
+  document.getElementById('landingForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const msg = document.getElementById('formMsg');
-    msg.textContent = "C'è stato un imprevisto, forse dovuto al fatto che abbiamo già alcuni tuoi dati, manda direttamente una email a info@parrucchierepower.it o clicca sul pulsante whatsapp in fondo alla pagina per parlare direttamente con noi";
-    msg.style.display = 'block';
+    const nome     = document.getElementById('nome').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const prefix   = document.getElementById('prefix').value;
+    const tel      = document.getElementById('tel').value.trim();
+    const btn      = document.getElementById('f-btn');
+    const msg      = document.getElementById('formMsg');
+
+    if (!nome || !email) { showMsg('Inserisci nome e email per continuare.', 'error'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Indirizzo email non valido.', 'error'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Invio in corso...';
+
+    try {
+      const res = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, telefono: prefix + tel })
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success');
+        btn.textContent = 'Inviato ✓';
+      } else {
+        throw new Error(data.message || 'Errore');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Scarica ora — è gratis';
+      showMsg("C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error');
+    }
   });
+
+  function showMsg(text, type) {
+    const msg = document.getElementById('formMsg');
+    msg.textContent = text;
+    msg.className = 'f-msg ' + type;
+    msg.style.display = 'block';
+  }
 </script>
 
 </body>
