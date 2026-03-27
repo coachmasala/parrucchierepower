@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Parrucchiere Power Srl</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e0c278;
+    --gold-line: rgba(201,168,76,0.2);
+    --bg: #0d0d0d;
+    --bg2: #111111;
+    --text: #e8e0d0;
+    --mid: rgba(232,224,208,0.65);
+    --faint: rgba(232,224,208,0.38);
+    --serif: 'Playfair Display', serif;
+    --sans: 'Barlow', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; border-bottom: 0.5px solid var(--gold-line); background: rgba(13,13,13,0.97); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .topbar-brand { font-family: var(--condensed); font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+  .topbar-back { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); text-decoration: none; transition: color 0.2s; }
+  .topbar-back:hover { color: var(--gold); }
+  .doc-hero { padding: 5rem 3rem 3rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-eyebrow { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .doc-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+  .doc-meta { font-size: 12px; color: var(--faint); letter-spacing: 0.5px; }
+  .doc-body { max-width: 820px; margin: 0 auto; padding: 4rem 3rem 6rem; }
+  .doc-section { margin-bottom: 3.5rem; }
+  .doc-section h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-section h3 { font-family: var(--condensed); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin: 1.8rem 0 0.8rem; }
+  .doc-section p { font-size: 14px; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
+  .doc-section p strong { color: var(--text); font-weight: 500; }
+  .doc-section ul { list-style: none; margin: 0.5rem 0 1rem 0; }
+  .doc-section ul li { font-size: 14px; color: var(--mid); line-height: 1.8; padding: 0.3rem 0 0.3rem 1.4rem; position: relative; }
+  .doc-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; }
+  .doc-section a { color: var(--gold); text-decoration: none; border-bottom: 0.5px solid rgba(201,168,76,0.3); transition: border-color 0.2s; }
+  .doc-section a:hover { border-color: var(--gold); }
+  .highlight-box { border-left: 2px solid var(--gold); padding: 1rem 1.5rem; background: rgba(201,168,76,0.04); margin: 1.5rem 0; }
+  .highlight-box p { margin-bottom: 0; }
+
+  /* TABELLA COOKIE */
+  .cookie-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 13px; }
+  .cookie-table th { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding: 0.8rem 1rem; border-bottom: 1px solid var(--gold-line); text-align: left; }
+  .cookie-table td { padding: 0.8rem 1rem; border-bottom: 0.5px solid rgba(201,168,76,0.07); color: var(--mid); vertical-align: top; }
+  .cookie-table tr:last-child td { border-bottom: none; }
+  .cookie-table td:first-child { color: var(--text); font-weight: 400; font-family: 'Courier New', monospace; font-size: 12px; }
+  .badge { display: inline-block; font-family: var(--condensed); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 0; }
+  .badge-green { background: rgba(93,202,165,0.12); color: #5DCAA5; }
+  .badge-yellow { background: rgba(224,194,120,0.12); color: var(--gold); }
+  .badge-red { background: rgba(226,75,74,0.1); color: #E24B4A; }
+
+  .doc-footer { border-top: 0.5px solid var(--gold-line); padding: 3rem; text-align: center; }
+  .doc-footer p { font-size: 11px; color: var(--faint); margin-bottom: 0.5rem; }
+  .doc-footer a { color: var(--gold); text-decoration: none; font-family: var(--condensed); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 12px; }
+  @media (max-width: 640px) {
+    .topbar { padding: 1rem 1.5rem; }
+    .doc-hero, .doc-body, .doc-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cookie-table { font-size: 12px; }
+    .cookie-table th, .cookie-table td { padding: 0.6rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://parrucchierepower.it" class="topbar-brand">Parrucchiere Power</a>
+  <a href="https://parrucchierepower.it" class="topbar-back">← Home</a>
+</div>
+
+<div class="doc-hero">
+  <div class="doc-eyebrow">Ai sensi dell'art. 13 GDPR e Linee Guida Garante 10 giugno 2021</div>
+  <h1 class="doc-title">Cookie Policy</h1>
+  <p class="doc-meta">Parrucchiere Power Srl &nbsp;·&nbsp; Ultimo aggiornamento: 25 marzo 2026</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <h2>1. Cosa sono i Cookie</h2>
+    <p>I cookie sono piccoli file di testo che i siti web visitati dall'utente inviano al terminale (computer, tablet, smartphone), dove vengono memorizzati e poi ritrasmessi agli stessi siti alla visita successiva. I cookie permettono al sito di ricordare le azioni e preferenze dell'utente in modo da non doverle reinserire ad ogni visita.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Tipologie di Cookie Utilizzati</h2>
+    <h3>2.1 Cookie Tecnici — non richiedono consenso</h3>
+    <p>Necessari al corretto funzionamento del sito.</p>
+    <ul>
+      <li><strong>Cookie di sessione:</strong> mantengono la sessione attiva durante la navigazione. Cancellati alla chiusura del browser</li>
+      <li><strong>Cookie funzionali:</strong> ricordano le preferenze dell'utente (lingua, impostazioni)</li>
+      <li><strong>Cookie di sicurezza:</strong> proteggono il sito da attacchi (CSRF token, protezione da bot)</li>
+      <li><strong>Cookie di load balancing:</strong> distribuiscono il traffico per garantire le prestazioni</li>
+    </ul>
+    <h3>2.2 Cookie Analitici — richiedono consenso</h3>
+    <ul>
+      <li><strong>Google Analytics 4 (_ga, _ga_*, _gid):</strong> misurano sessioni di navigazione, pagine visitate, fonti di traffico. IP anonimizzato. Durata: fino a 26 mesi. Provider: Google LLC (USA)</li>
+    </ul>
+    <h3>2.3 Cookie di Profilazione e Marketing — richiedono consenso</h3>
+    <ul>
+      <li><strong>Meta Pixel (_fbp, _fbc, fr):</strong> tracciano le azioni per ottimizzare campagne su Facebook e Instagram. Durata: fino a 3 mesi. Provider: Meta Platforms Ireland Ltd</li>
+      <li><strong>Google Ads (IDE, _gcl_au):</strong> misurano le conversioni e permettono il remarketing. Durata: fino a 13 mesi. Provider: Google LLC</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Tabella Riepilogativa dei Cookie</h2>
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Finalità</th>
+          <th>Durata</th>
+          <th>Provider</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PHPSESSID</td>
+          <td>Sessione utente</td>
+          <td>Sessione</td>
+          <td>Parrucchiere Power</td>
+          <td><span class="badge badge-green">Tecnico</span></td>
+        </tr>
+        <tr>
+          <td>XSRF-TOKEN</td>
+          <td>Sicurezza form</td>
+          <td>Sessione</td>
+          <td>Parrucchiere Power</td>
+          <td><span class="badge badge-green">Tecnico</span></td>
+        </tr>
+        <tr>
+          <td>cookie_consent</td>
+          <td>Preferenze cookie</td>
+          <td>12 mesi</td>
+          <td>Parrucchiere Power</td>
+          <td><span class="badge badge-green">Tecnico</span></td>
+        </tr>
+        <tr>
+          <td>_ga</td>
+          <td>Identificazione sessione GA4</td>
+          <td>26 mesi</td>
+          <td>Google LLC</td>
+          <td><span class="badge badge-yellow">Analitico</span></td>
+        </tr>
+        <tr>
+          <td>_ga_[ID]</td>
+          <td>Stato sessione GA4</td>
+          <td>26 mesi</td>
+          <td>Google LLC</td>
+          <td><span class="badge badge-yellow">Analitico</span></td>
+        </tr>
+        <tr>
+          <td>_gid</td>
+          <td>Distinzione utenti GA4</td>
+          <td>24 ore</td>
+          <td>Google LLC</td>
+          <td><span class="badge badge-yellow">Analitico</span></td>
+        </tr>
+        <tr>
+          <td>_fbp</td>
+          <td>Tracciamento conversioni Meta</td>
+          <td>3 mesi</td>
+          <td>Meta Platforms</td>
+          <td><span class="badge badge-red">Marketing</span></td>
+        </tr>
+        <tr>
+          <td>_fbc</td>
+          <td>Tracciamento click Meta Ads</td>
+          <td>3 mesi</td>
+          <td>Meta Platforms</td>
+          <td><span class="badge badge-red">Marketing</span></td>
+        </tr>
+        <tr>
+          <td>fr</td>
+          <td>Annunci pertinenti su Meta</td>
+          <td>3 mesi</td>
+          <td>Meta Platforms</td>
+          <td><span class="badge badge-red">Marketing</span></td>
+        </tr>
+        <tr>
+          <td>_gcl_au</td>
+          <td>Conversioni Google Ads</td>
+          <td>90 giorni</td>
+          <td>Google LLC</td>
+          <td><span class="badge badge-red">Marketing</span></td>
+        </tr>
+        <tr>
+          <td>IDE</td>
+          <td>Remarketing Google Display</td>
+          <td>13 mesi</td>
+          <td>Google LLC</td>
+          <td><span class="badge badge-red">Marketing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Consent Mode V2</h2>
+    <p>Il sito implementa il Consent Mode v2 di Google, che adatta il comportamento dei tag Google in base allo stato del consenso. In assenza di consenso, Google utilizza la modellazione delle conversioni in forma aggregata e anonima, senza tracciare l'utente individualmente.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Gestione del Consenso</h2>
+    <p>Al primo accesso, viene mostrato un banner per il consenso ai cookie non tecnici. L'utente può:</p>
+    <ul>
+      <li>Accettare tutti i cookie cliccando "Accetta tutti"</li>
+      <li>Rifiutare tutti i cookie non tecnici cliccando "Rifiuta"</li>
+      <li>Personalizzare le proprie scelte categoria per categoria cliccando "Personalizza"</li>
+    </ul>
+    <p>Il consenso è libero, specifico, informato, inequivocabile e revocabile in qualsiasi momento.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Come Disabilitare i Cookie dal Browser</h2>
+    <ul>
+      <li><strong>Google Chrome:</strong> Impostazioni &gt; Privacy e sicurezza &gt; Cookie e altri dati dei siti</li>
+      <li><strong>Mozilla Firefox:</strong> Opzioni &gt; Privacy e sicurezza &gt; Cookie e dati dei siti</li>
+      <li><strong>Apple Safari:</strong> Preferenze &gt; Privacy &gt; Gestisci dati siti web</li>
+      <li><strong>Microsoft Edge:</strong> Impostazioni &gt; Cookie e autorizzazioni sito</li>
+    </ul>
+    <p>La disabilitazione totale dei cookie potrebbe compromettere il corretto funzionamento di alcune funzionalità del sito.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Cookie di Terze Parti</h2>
+    <p>Per informazioni sui cookie di terze parti si rimanda alle informative di ciascun provider:</p>
+    <ul>
+      <li>Google: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+      <li>Meta: <a href="https://www.facebook.com/privacy/policy/" target="_blank">facebook.com/privacy/policy</a></li>
+    </ul>
+    <p>Il Titolare non ha controllo diretto sui cookie di terze parti e non risponde del loro utilizzo.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Aggiornamenti</h2>
+    <p>La presente Cookie Policy può essere aggiornata per riflettere modifiche tecniche, normative o di servizio. In caso di modifiche sostanziali, il Titolare richiederà nuovamente il consenso tramite il banner. Versione in vigore: <a href="https://www.parrucchierepower.it/cookie-policy.html">www.parrucchierepower.it/cookie-policy.html</a></p>
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  <p>Parrucchiere Power Srl — © 2026 Tutti i diritti riservati</p>
+  <div style="margin-top: 1.2rem;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/termini-e-condizioni.html">Termini e Condizioni</a>
+    <a href="/gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>
