@@ -100,8 +100,8 @@
     .member-highlight { border-left: 3px solid var(--gold); padding: 20px 24px; background: var(--gold-pale); margin-top: 24px; }
     .member-highlight p { font-family: var(--serif); font-size: 16px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.5; }
 
-    /* ── MEMBER — JUNIOR VARIANT ── */
-    .team-junior { display: grid; grid-template-columns: 320px 1fr; align-items: stretch; border-bottom: 1px solid var(--gold-line); background: var(--dark-3); }
+    /* ── MEMBER — JUNIOR VARIANT (foto a destra) ── */
+    .team-junior { display: grid; grid-template-columns: 1fr 320px; align-items: stretch; border-bottom: 1px solid var(--gold-line); background: var(--dark-3); }
     .junior-photo-wrap { position: relative; overflow: hidden; min-height: 420px; }
     .junior-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(20%) contrast(1.05); }
     .junior-content { padding: 60px 70px; display: flex; flex-direction: column; justify-content: center; }
@@ -165,7 +165,7 @@
       .member-photo-wrap { min-height: 400px; }
       .member-content { padding: 48px 36px; }
       .team-junior { grid-template-columns: 1fr; }
-      .junior-photo-wrap { min-height: 340px; }
+      .junior-photo-wrap { min-height: 340px; order: -1; }
       .junior-content { padding: 48px 36px; }
       .dna-section { padding: 70px 36px; }
       .dna-grid { grid-template-columns: 1fr; }
@@ -294,11 +294,8 @@
   </div>
 </div>
 
-<!-- ══ NATHAN MASALA — junior variant ══ -->
+<!-- ══ NATHAN MASALA — foto a destra ══ -->
 <div class="team-junior">
-  <div class="junior-photo-wrap">
-    <img src="Nathan_Masala.jpeg" alt="Nathan Masala — Grafico Parrucchiere Power">
-  </div>
   <div class="junior-content">
     <p class="member-role-tag">Grafico</p>
     <h2 class="member-name" style="font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 24px;">Nathan Masala</h2>
@@ -308,6 +305,9 @@
     <div class="member-highlight" style="margin-top: 24px;">
       <p>"In Parrucchiere Power anche la grafica deve vendere. Non decorare — vendere."</p>
     </div>
+  </div>
+  <div class="junior-photo-wrap">
+    <img src="Nathan_Masala.jpeg" alt="Nathan Masala — Grafico Parrucchiere Power">
   </div>
 </div>
 
