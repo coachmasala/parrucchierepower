@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termini e Condizioni — Parrucchiere Power Srl</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e0c278;
+    --gold-line: rgba(201,168,76,0.2);
+    --bg: #0d0d0d;
+    --bg2: #111111;
+    --text: #e8e0d0;
+    --mid: rgba(232,224,208,0.65);
+    --faint: rgba(232,224,208,0.38);
+    --serif: 'Playfair Display', serif;
+    --sans: 'Barlow', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; border-bottom: 0.5px solid var(--gold-line); background: rgba(13,13,13,0.97); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .topbar-brand { font-family: var(--condensed); font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+  .topbar-back { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); text-decoration: none; transition: color 0.2s; }
+  .topbar-back:hover { color: var(--gold); }
+  .doc-hero { padding: 5rem 3rem 3rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-eyebrow { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .doc-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+  .doc-meta { font-size: 12px; color: var(--faint); letter-spacing: 0.5px; }
+  .doc-body { max-width: 820px; margin: 0 auto; padding: 4rem 3rem 6rem; }
+  .doc-section { margin-bottom: 3.5rem; }
+  .doc-section h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-section h3 { font-family: var(--condensed); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin: 1.8rem 0 0.8rem; }
+  .doc-section p { font-size: 14px; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
+  .doc-section p strong { color: var(--text); font-weight: 500; }
+  .doc-section ul, .doc-section ol { list-style: none; margin: 0.5rem 0 1rem 0; }
+  .doc-section ul li { font-size: 14px; color: var(--mid); line-height: 1.8; padding: 0.3rem 0 0.3rem 1.4rem; position: relative; }
+  .doc-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; }
+  .doc-section ol { counter-reset: ol-counter; }
+  .doc-section ol li { font-size: 14px; color: var(--mid); line-height: 1.8; padding: 0.4rem 0 0.4rem 2rem; position: relative; counter-increment: ol-counter; }
+  .doc-section ol li::before { content: counter(ol-counter) "."; position: absolute; left: 0; color: var(--gold); font-family: var(--condensed); font-weight: 600; font-size: 12px; }
+  .doc-section a { color: var(--gold); text-decoration: none; border-bottom: 0.5px solid rgba(201,168,76,0.3); transition: border-color 0.2s; }
+  .doc-section a:hover { border-color: var(--gold); }
+  .highlight-box { border-left: 2px solid var(--gold); padding: 1rem 1.5rem; background: rgba(201,168,76,0.04); margin: 1.5rem 0; }
+  .highlight-box p { margin-bottom: 0; }
+  .warning-box { border-left: 2px solid rgba(226,75,74,0.5); padding: 1rem 1.5rem; background: rgba(226,75,74,0.04); margin: 1.5rem 0; }
+  .warning-box p { margin-bottom: 0; color: var(--mid); }
+  .doc-footer { border-top: 0.5px solid var(--gold-line); padding: 3rem; text-align: center; }
+  .doc-footer p { font-size: 11px; color: var(--faint); margin-bottom: 0.5rem; }
+  .doc-footer a { color: var(--gold); text-decoration: none; font-family: var(--condensed); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 12px; }
+  @media (max-width: 640px) {
+    .topbar { padding: 1rem 1.5rem; }
+    .doc-hero, .doc-body, .doc-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://parrucchierepower.it" class="topbar-brand">Parrucchiere Power</a>
+  <a href="https://parrucchierepower.it" class="topbar-back">← Home</a>
+</div>
+
+<div class="doc-hero">
+  <div class="doc-eyebrow">Ai sensi degli artt. 1341-1342 c.c. e D.Lgs. 206/2005</div>
+  <h1 class="doc-title">Termini e Condizioni d'Uso</h1>
+  <p class="doc-meta">Parrucchiere Power Srl &nbsp;·&nbsp; Ultimo aggiornamento: 25 marzo 2026</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <h2>1. Definizioni</h2>
+    <ul>
+      <li><strong>"Parrucchiere Power" o "Società":</strong> Parrucchiere Power Srl, titolare del sito www.parrucchierepower.it</li>
+      <li><strong>"Sito":</strong> il sito web www.parrucchierepower.it e tutte le sue sotto-pagine</li>
+      <li><strong>"Utente":</strong> qualsiasi persona fisica o giuridica che accede al Sito o utilizza i Servizi</li>
+      <li><strong>"Cliente":</strong> l'Utente che conclude un contratto di acquisto con Parrucchiere Power</li>
+      <li><strong>"Consumatore":</strong> la persona fisica che agisce per scopi estranei all'attività imprenditoriale (art. 3 D.Lgs. 206/2005)</li>
+      <li><strong>"Professionista":</strong> la persona fisica o giuridica che agisce nell'ambito della propria attività imprenditoriale</li>
+      <li><strong>"Servizi":</strong> prestazioni di formazione, consulenza, coaching e attività correlate</li>
+      <li><strong>"Prodotti Fisici":</strong> beni materiali (libri, kit formativi, materiali didattici)</li>
+      <li><strong>"Prodotti Digitali":</strong> beni digitali (corsi online, video, ebook, software, template, accessi a piattaforme)</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Accettazione dei Termini</h2>
+    <p>L'accesso e l'utilizzo del Sito, nonché l'acquisto di Servizi, Prodotti Fisici o Prodotti Digitali, implica la lettura, la comprensione e l'accettazione integrale dei presenti Termini e Condizioni, dell'Informativa Privacy e della Cookie Policy.</p>
+    <p>Parrucchiere Power si riserva il diritto di modificare i presenti Termini in qualsiasi momento. Le modifiche saranno efficaci dalla data di pubblicazione sul Sito. I contratti già conclusi non vengono modificati retroattivamente.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Descrizione dei Servizi</h2>
+    <h3>3.1 Servizi di Formazione e Consulenza</h3>
+    <p>Parrucchiere Power Srl eroga servizi professionali di formazione aziendale e consulenza strategica destinati a titolari e gestori di saloni di acconciatura. I servizi includono:</p>
+    <ul>
+      <li>Percorsi di consulenza individuale e di gruppo</li>
+      <li>Programmi di coaching per imprenditori del settore</li>
+      <li>Formazione in aula, online e ibrida</li>
+      <li>Audit aziendali e analisi organizzative</li>
+      <li>Affiancamento operativo</li>
+    </ul>
+    <h3>3.2 Prodotti Fisici</h3>
+    <p>La vendita di prodotti fisici è disciplinata dalle norme del Codice del Consumo (D.Lgs. 206/2005). I prezzi si intendono IVA inclusa salvo diversa indicazione.</p>
+    <h3>3.3 Prodotti Digitali</h3>
+    <p>Completando l'acquisto di un prodotto digitale, il Consumatore accetta espressamente che Parrucchiere Power inizi l'esecuzione del contratto prima della scadenza del periodo di recesso, con conseguente perdita del diritto di recesso una volta che il contenuto digitale sia stato reso accessibile.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Procedura di Acquisto</h2>
+    <ol>
+      <li>Selezionare il prodotto o il servizio desiderato</li>
+      <li>Aggiungere al carrello o procedere direttamente all'acquisto</li>
+      <li>Fornire i dati di fatturazione e spedizione richiesti</li>
+      <li>Scegliere il metodo di pagamento</li>
+      <li>Verificare il riepilogo dell'ordine</li>
+      <li>Confermare l'acquisto</li>
+    </ol>
+    <p>Il contratto si perfeziona nel momento in cui Parrucchiere Power invia all'indirizzo email dell'Utente la conferma d'ordine. Parrucchiere Power si riserva il diritto di rifiutare ordini in caso di esaurimento scorte, errori di prezzo, sospetta frode o violazione dei presenti Termini.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Prezzi e Pagamenti</h2>
+    <p>Tutti i prezzi pubblicati sul Sito si intendono comprensivi di IVA (salvo ove diversamente indicato). Parrucchiere Power si riserva il diritto di modificare i prezzi in qualsiasi momento; la modifica non avrà effetto sugli ordini già confermati.</p>
+    <p>I metodi di pagamento accettati sono:</p>
+    <ul>
+      <li>Carta di credito/debito (Visa, Mastercard, American Express)</li>
+      <li>Bonifico bancario</li>
+      <li>PayPal o altri sistemi di pagamento digitale indicati al checkout</li>
+      <li>Rateizzazione tramite provider finanziari accreditati (ove disponibile)</li>
+    </ul>
+    <p>I dati di pagamento sono trattati esclusivamente dai provider certificati. Parrucchiere Power non conserva dati di carte di credito.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Consegna — Prodotti Fisici</h2>
+    <p>La consegna avviene tramite corrieri selezionati. I tempi di consegna sono indicativi e soggetti a variazioni per cause indipendenti dalla volontà di Parrucchiere Power. Il rischio di perdita o deterioramento dei beni si trasferisce all'Utente al momento della consegna. In caso di mancata consegna imputabile al corriere, Parrucchiere Power provvederà alla sostituzione o al rimborso.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Diritto di Recesso</h2>
+    <h3>7.1 Consumatori — Prodotti Fisici</h3>
+    <p>Ai sensi dell'art. 52 D.Lgs. 206/2005, il Consumatore ha diritto di recedere entro <strong>14 giorni</strong> dalla data di ricezione del bene, senza necessità di fornire alcuna motivazione e senza costi aggiuntivi (fatta eccezione per i costi di restituzione, a carico del Consumatore).</p>
+    <h3>7.2 Consumatori — Prodotti Digitali</h3>
+    <p>Il diritto di recesso è escluso per i contenuti digitali non forniti su supporto materiale (art. 59.1.o D.Lgs. 206/2005) qualora l'esecuzione sia iniziata con l'accordo espresso del Consumatore. Al momento dell'acquisto, il Consumatore accetta espressamente tali condizioni.</p>
+    <h3>7.3 Consumatori — Servizi</h3>
+    <p>Per i contratti di servizi, il Consumatore può recedere entro 14 giorni dalla conclusione del contratto. Il recesso non è esercitabile una volta che il servizio sia stato completamente eseguito.</p>
+    <h3>7.4 Come esercitare il recesso</h3>
+    <div class="highlight-box">
+      <p>Il recesso può essere esercitato inviando comunicazione a: <a href="mailto:recesso@parrucchierepower.it">recesso@parrucchierepower.it</a><br>
+      Il rimborso avviene entro 14 giorni dalla ricezione della comunicazione di recesso, con il medesimo mezzo di pagamento usato dal Consumatore.</p>
+    </div>
+    <h3>7.5 Professionisti</h3>
+    <p>I Professionisti che acquistano nell'ambito della propria attività non beneficiano del diritto di recesso di cui agli artt. 52 ss. D.Lgs. 206/2005, salvo diversa pattuizione contrattuale.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Garanzie — Prodotti Fisici</h2>
+    <p>I prodotti fisici sono coperti dalla garanzia legale di conformità ai sensi degli artt. 128 ss. D.Lgs. 206/2005 (per i Consumatori). In caso di difetto di conformità, il Consumatore può richiedere la riparazione o la sostituzione del bene, ovvero la riduzione del prezzo o la risoluzione del contratto.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Proprietà Intellettuale</h2>
+    <p>Tutti i contenuti presenti sul Sito — testi, video, immagini, framework, checklist, matrici, strumenti di analisi, corsi, ebook, template, software e materiali didattici — sono di proprietà esclusiva di Parrucchiere Power Srl, protetti dalla L. 633/1941 e dal D.Lgs. 30/2005.</p>
+    <p>All'Utente è concessa una licenza personale, non esclusiva, non trasferibile e revocabile per uso personale e professionale interno. È espressamente vietato:</p>
+    <ul>
+      <li>Riprodurre, distribuire o pubblicare i contenuti senza autorizzazione scritta</li>
+      <li>Vendere, sublicenziare o cedere i materiali a terzi</li>
+      <li>Modificare, adattare, decompilare o creare opere derivate</li>
+      <li>Utilizzare i materiali per finalità concorrenziali non autorizzate</li>
+    </ul>
+    <div class="warning-box">
+      <p>La violazione di quanto sopra espone il trasgressore a responsabilità civile e penale. Parrucchiere Power si riserva il diritto di agire in sede giudiziale per la tutela dei propri diritti di proprietà intellettuale.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>10. Riservatezza dei Metodi e Know-How</h2>
+    <p>I metodi formativi, i framework strategici, le matrici di analisi e i sistemi di vendita sviluppati da Parrucchiere Power costituiscono know-how riservato e segreto commerciale ai sensi dell'art. 98 del D.Lgs. 30/2005 e della Direttiva UE 2016/943 (recepita con D.Lgs. 63/2018). L'Utente si impegna alla più rigorosa riservatezza e a non divulgare tali contenuti a terzi.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>11. Limitazione di Responsabilità</h2>
+    <h3>11.1 Responsabilità di Parrucchiere Power</h3>
+    <p>Parrucchiere Power si impegna a erogare i propri servizi con diligenza professionale. In considerazione della natura consulenziale e formativa, Parrucchiere Power non garantisce specifici risultati economici o di business, che dipendono in misura determinante dall'impegno e dall'applicazione del Cliente.</p>
+    <h3>11.2 Esclusioni di responsabilità</h3>
+    <p>Nei limiti consentiti dalla legge, Parrucchiere Power non è responsabile per:</p>
+    <ul>
+      <li>Danni indiretti, perdita di profitto o interruzione dell'attività</li>
+      <li>Malfunzionamenti tecnici del Sito dovuti a cause di forza maggiore</li>
+      <li>Risultati economici non raggiunti nonostante l'applicazione dei metodi formativi</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>12. Condotta dell'Utente</h2>
+    <p>È fatto divieto all'Utente di:</p>
+    <ul>
+      <li>Utilizzare il Sito per finalità illegali o non autorizzate</li>
+      <li>Tentare di accedere non autorizzato ai sistemi informatici</li>
+      <li>Effettuare scraping o raccolta automatizzata di dati dal Sito</li>
+      <li>Rivendere o cedere a terzi le credenziali di accesso ai corsi</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>13. Legge Applicabile e Foro Competente</h2>
+    <h3>13.1 Per i Consumatori</h3>
+    <p>Per le controversie che coinvolgono Consumatori, è competente il tribunale del luogo di residenza o domicilio elettivo del Consumatore. È possibile ricorrere agli organismi ADR/ODR: <a href="https://ec.europa.eu/consumers/odr" target="_blank">ec.europa.eu/consumers/odr</a></p>
+    <h3>13.2 Per i Professionisti</h3>
+    <p>Per le controversie tra Parrucchiere Power e i Professionisti è competente in via esclusiva il Tribunale indicato nella sede legale della Società. Si applica la legge italiana.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>14. Contatti</h2>
+    <div class="highlight-box">
+      <p><strong>Parrucchiere Power Srl</strong><br>
+      Email: <a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a><br>
+      Sito: <a href="https://www.parrucchierepower.it">www.parrucchierepower.it</a></p>
+    </div>
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  <p>Parrucchiere Power Srl — © 2026 Tutti i diritti riservati</p>
+  <div style="margin-top: 1.2rem;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/termini-e-condizioni.html">Termini e Condizioni</a>
+    <a href="/gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>
