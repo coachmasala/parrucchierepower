@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDPR — Diritti degli Interessati | Parrucchiere Power Srl</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e0c278;
+    --gold-line: rgba(201,168,76,0.2);
+    --bg: #0d0d0d;
+    --bg2: #111111;
+    --text: #e8e0d0;
+    --mid: rgba(232,224,208,0.65);
+    --faint: rgba(232,224,208,0.38);
+    --serif: 'Playfair Display', serif;
+    --sans: 'Barlow', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; border-bottom: 0.5px solid var(--gold-line); background: rgba(13,13,13,0.97); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .topbar-brand { font-family: var(--condensed); font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+  .topbar-back { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); text-decoration: none; transition: color 0.2s; }
+  .topbar-back:hover { color: var(--gold); }
+  .doc-hero { padding: 5rem 3rem 3rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-eyebrow { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .doc-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+  .doc-meta { font-size: 12px; color: var(--faint); letter-spacing: 0.5px; }
+  .doc-body { max-width: 820px; margin: 0 auto; padding: 4rem 3rem 6rem; }
+  .doc-section { margin-bottom: 3.5rem; }
+  .doc-section h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 0.5px solid var(--gold-line); }
+  .doc-section h3 { font-family: var(--condensed); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin: 1.8rem 0 0.8rem; }
+  .doc-section p { font-size: 14px; color: var(--mid); line-height: 1.85; margin-bottom: 1rem; }
+  .doc-section p strong { color: var(--text); font-weight: 500; }
+  .doc-section a { color: var(--gold); text-decoration: none; border-bottom: 0.5px solid rgba(201,168,76,0.3); transition: border-color 0.2s; }
+  .doc-section a:hover { border-color: var(--gold); }
+  .highlight-box { border-left: 2px solid var(--gold); padding: 1rem 1.5rem; background: rgba(201,168,76,0.04); margin: 1.5rem 0; }
+  .highlight-box p { margin-bottom: 0; }
+
+  /* DIRITTI GRID */
+  .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--gold-line); margin: 2rem 0; }
+  .right-card { background: var(--bg2); padding: 1.8rem; }
+  .right-num { font-family: var(--condensed); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 0.6rem; }
+  .right-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+  .right-desc { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+  .doc-footer { border-top: 0.5px solid var(--gold-line); padding: 3rem; text-align: center; }
+  .doc-footer p { font-size: 11px; color: var(--faint); margin-bottom: 0.5rem; }
+  .doc-footer a { color: var(--gold); text-decoration: none; font-family: var(--condensed); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 12px; }
+  @media (max-width: 640px) {
+    .topbar { padding: 1rem 1.5rem; }
+    .doc-hero, .doc-body, .doc-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .rights-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://parrucchierepower.it" class="topbar-brand">Parrucchiere Power</a>
+  <a href="https://parrucchierepower.it" class="topbar-back">← Home</a>
+</div>
+
+<div class="doc-hero">
+  <div class="doc-eyebrow">Regolamento UE 2016/679 — GDPR</div>
+  <h1 class="doc-title">I tuoi diritti sulla Privacy</h1>
+  <p class="doc-meta">Parrucchiere Power Srl &nbsp;·&nbsp; Ultimo aggiornamento: 25 marzo 2026</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="doc-section">
+    <h2>Titolare del Trattamento</h2>
+    <div class="highlight-box">
+      <p><strong>Parrucchiere Power Srl</strong><br>
+      Titolare del trattamento dei dati personali ai sensi del Reg. UE 2016/679 (GDPR)<br>
+      Email privacy: <a href="mailto:privacy@parrucchierepower.it">privacy@parrucchierepower.it</a><br>
+      Sito: <a href="https://www.parrucchierepower.it">www.parrucchierepower.it</a></p>
+    </div>
+    <p>Per l'informativa completa sul trattamento dei dati personali consulta la nostra <a href="/privacy-policy.html">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>I tuoi Diritti ai sensi degli artt. 15–22 GDPR</h2>
+    <p>In qualità di Interessato, hai il pieno diritto di esercitare in qualsiasi momento i seguenti diritti nei confronti di Parrucchiere Power Srl:</p>
+
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-num">Art. 15 GDPR</div>
+        <div class="right-title">Diritto di Accesso</div>
+        <div class="right-desc">Ottenere conferma che sia in corso un trattamento di dati che ti riguardano e accedere alle relative informazioni: finalità, categorie di dati, destinatari, periodo di conservazione.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 16 GDPR</div>
+        <div class="right-title">Diritto di Rettifica</div>
+        <div class="right-desc">Ottenere la correzione di dati personali inesatti o incompleti che ti riguardano, senza ingiustificato ritardo.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 17 GDPR</div>
+        <div class="right-title">Diritto alla Cancellazione</div>
+        <div class="right-desc">Ottenere la cancellazione dei tuoi dati personali ("diritto all'oblio") nei casi previsti dalla norma, ad esempio quando i dati non sono più necessari per le finalità per cui sono stati raccolti.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 18 GDPR</div>
+        <div class="right-title">Diritto di Limitazione</div>
+        <div class="right-desc">Ottenere la limitazione del trattamento dei tuoi dati in determinate circostanze, ad esempio durante la verifica dell'esattezza dei dati o in caso di opposizione al trattamento.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 20 GDPR</div>
+        <div class="right-title">Diritto alla Portabilità</div>
+        <div class="right-desc">Ricevere i tuoi dati personali in formato strutturato, di uso comune e leggibile da dispositivo automatico, e trasmetterli a un altro titolare del trattamento.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 21 GDPR</div>
+        <div class="right-title">Diritto di Opposizione</div>
+        <div class="right-desc">Opporti in qualsiasi momento al trattamento dei tuoi dati personali per finalità di marketing diretto, inclusa la profilazione nella misura in cui sia connessa a tale marketing.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 7 GDPR</div>
+        <div class="right-title">Revoca del Consenso</div>
+        <div class="right-desc">Revocare in qualsiasi momento il consenso precedentemente prestato, senza che ciò pregiudichi la liceità del trattamento basato sul consenso prima della revoca.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-num">Art. 77 GDPR</div>
+        <div class="right-title">Diritto di Reclamo</div>
+        <div class="right-desc">Proporre reclamo al Garante per la Protezione dei Dati Personali se ritieni che il trattamento dei tuoi dati violi il GDPR: <a href="https://www.garanteprivacy.it" target="_blank">www.garanteprivacy.it</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>Come Esercitare i tuoi Diritti</h2>
+    <p>Per esercitare uno qualsiasi dei diritti sopra elencati, invia una richiesta scritta al Titolare del trattamento:</p>
+    <div class="highlight-box">
+      <p>📧 Email: <a href="mailto:privacy@parrucchierepower.it">privacy@parrucchierepower.it</a><br><br>
+      Il Titolare risponde entro <strong>30 giorni</strong> dalla ricezione della richiesta, prorogabili di ulteriori 60 giorni in caso di particolare complessità. La risposta è gratuita.</p>
+    </div>
+    <p>La richiesta deve contenere: nome, cognome, indirizzo email o recapito, descrizione del diritto che si intende esercitare. In caso di dubbio sull'identità del richiedente, il Titolare può richiedere informazioni aggiuntive necessarie a confermarla.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Basi Giuridiche del Trattamento</h2>
+    <p>Parrucchiere Power Srl tratta i tuoi dati personali sulla base delle seguenti basi giuridiche:</p>
+    <p><strong>Esecuzione contrattuale (art. 6.1.b):</strong> per erogare i servizi acquistati e gestire il rapporto contrattuale.</p>
+    <p><strong>Obbligo legale (art. 6.1.c):</strong> per adempiere agli obblighi fiscali, contabili e normativi vigenti.</p>
+    <p><strong>Legittimo interesse (art. 6.1.f):</strong> per la sicurezza informatica, la tutela legale dei diritti e le analisi statistiche aggregate.</p>
+    <p><strong>Consenso (art. 6.1.a):</strong> per l'invio di newsletter, la profilazione marketing e l'installazione di cookie non tecnici — consenso revocabile in qualsiasi momento.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Sicurezza dei Dati</h2>
+    <p>Adottiamo misure tecniche e organizzative adeguate per proteggere i tuoi dati personali, tra cui: cifratura SSL/TLS in transito, accesso limitato per ruolo, backup giornaliero, autenticazione a 2 fattori per i sistemi critici e procedure di gestione dei data breach con notifica entro 72 ore al Garante.</p>
+    <p>Per l'informativa completa consulta la nostra <a href="/privacy-policy.html">Privacy Policy</a> e la <a href="/cookie-policy.html">Cookie Policy</a>.</p>
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  <p>Parrucchiere Power Srl — © 2026 Tutti i diritti riservati</p>
+  <div style="margin-top: 1.2rem;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/termini-e-condizioni.html">Termini e Condizioni</a>
+    <a href="/gdpr.html">GDPR</a>
+  </div>
+</div>
+
+</body>
+</html>
