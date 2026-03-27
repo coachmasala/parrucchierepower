@@ -50,73 +50,31 @@
     body { background: var(--dark); color: var(--white); font-family: var(--sans); line-height: 1.6; font-weight: 300; overflow-x: hidden; }
 
     /* ── MENU ── */
-    .menu-toggle {
-      position: fixed; top: 40px; right: 40px; width: 44px; height: 44px;
-      background: none; border: none; cursor: pointer; z-index: 1000;
-      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; padding: 0;
-    }
+    .menu-toggle { position: fixed; top: 40px; right: 40px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; padding: 0; }
     .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s ease; }
     .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-
-    .menu-overlay {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(13,13,13,0.95); backdrop-filter: blur(8px);
-      z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
+    .menu-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
     .menu-overlay.active { opacity: 1; visibility: visible; }
-
-    .menu-panel {
-      position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100vh;
-      background: var(--dark); border-left: 1px solid var(--gold-line); z-index: 1001;
-      transform: translateX(100%); transition: transform 0.3s ease;
-      display: flex; flex-direction: column; padding: 100px 40px 40px; overflow-y: auto;
-    }
+    .menu-panel { position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100vh; background: var(--dark); border-left: 1px solid var(--gold-line); z-index: 1001; transform: translateX(100%); transition: transform 0.3s ease; display: flex; flex-direction: column; padding: 100px 40px 40px; overflow-y: auto; }
     .menu-panel.active { transform: translateX(0); }
-
     .menu-list { list-style: none; display: flex; flex-direction: column; }
     .menu-item { border-bottom: 1px solid var(--gold-line); padding: 24px 0; }
     .menu-item:first-child { border-top: 1px solid var(--gold-line); }
-    .menu-link {
-      font-family: var(--serif); font-size: 24px; font-weight: 700;
-      color: var(--white); text-decoration: none; display: block; transition: color 0.2s ease;
-    }
+    .menu-link { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--white); text-decoration: none; display: block; transition: color 0.2s ease; }
     .menu-link:hover { color: var(--gold); }
-
-    .menu-footer {
-      margin-top: auto; padding-top: 40px; border-top: 1px solid var(--gold-line);
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .menu-footer-link {
-      font-family: var(--condensed); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold); text-decoration: none; transition: color 0.2s ease;
-    }
+    .menu-footer { margin-top: auto; padding-top: 40px; border-top: 1px solid var(--gold-line); display: flex; flex-direction: column; gap: 16px; }
+    .menu-footer-link { font-family: var(--condensed); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: color 0.2s ease; }
     .menu-footer-link:hover { color: var(--gold-light); }
 
     /* ── HERO ── */
-    .hero {
-      min-height: 100vh; padding: 100px; display: flex; flex-direction: column; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%;
-      background: linear-gradient(135deg, #111 0%, #000 100%);
-      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0;
-    }
-    .hero-tag {
-      font-family: var(--condensed); font-size: 11px; font-weight: 600; letter-spacing: 4px;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 40px; position: relative; z-index: 1;
-    }
-    .hero h1 {
-      font-family: var(--serif); font-size: clamp(52px, 7.5vw, 96px); font-weight: 900; line-height: 1.05;
-      margin-bottom: 20px; color: #fff; position: relative; z-index: 1;
-    }
+    .hero { min-height: 100vh; padding: 100px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(135deg, #111 0%, #000 100%); clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0; }
+    .hero-tag { font-family: var(--condensed); font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; position: relative; z-index: 1; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(52px, 7.5vw, 96px); font-weight: 900; line-height: 1.05; margin-bottom: 20px; color: #fff; position: relative; z-index: 1; }
     .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub {
-      font-family: var(--serif); font-size: clamp(18px, 2.5vw, 28px); font-style: italic;
-      color: var(--mid); max-width: 680px; margin-bottom: 60px; position: relative; z-index: 1;
-    }
+    .hero-sub { font-family: var(--serif); font-size: clamp(18px, 2.5vw, 28px); font-style: italic; color: var(--mid); max-width: 680px; margin-bottom: 60px; position: relative; z-index: 1; }
     .hero-rule { width: 80px; height: 1px; background: var(--gold); margin-bottom: 60px; position: relative; z-index: 1; }
     .hero-meta { display: flex; gap: 60px; flex-wrap: wrap; position: relative; z-index: 1; }
     .meta-item label { display: block; font-family: var(--condensed); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 600; }
@@ -126,23 +84,11 @@
     /* ── PHOTO BLOCKS ── */
     .photo-overlay-block { position: relative; height: 500px; overflow: hidden; border: 1px solid var(--gold-line); }
     .photo-overlay-block img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) contrast(1.05); }
-    .photo-overlay-block .overlay-text {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(13,13,13,0.92) 0%, transparent 100%);
-      padding: 60px 60px 50px;
-    }
-    .photo-overlay-block .overlay-text p {
-      font-family: var(--serif); font-size: 26px; font-weight: 700; font-style: italic;
-      color: #fff; line-height: 1.4; max-width: 680px;
-    }
-    .photo-overlay-block .overlay-text small {
-      display: block; margin-top: 12px; font-family: var(--condensed);
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600;
-    }
-
+    .photo-overlay-block .overlay-text { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,13,13,0.92) 0%, transparent 100%); padding: 60px 60px 50px; }
+    .photo-overlay-block .overlay-text p { font-family: var(--serif); font-size: 26px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.4; max-width: 680px; }
+    .photo-overlay-block .overlay-text small { display: block; margin-top: 12px; font-family: var(--condensed); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
     .photo-strip img { width: 100%; height: 380px; object-fit: cover; display: block; filter: grayscale(15%) contrast(1.05); }
-
     .photo-aside { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
     .photo-aside img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%); }
     .photo-aside-text { background: var(--dark-2); padding: 70px 60px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--gold-line); }
@@ -154,27 +100,16 @@
     .section--dark { background: var(--dark); }
     .section--light { background: var(--dark-2); }
     .section--white { background: var(--dark-3); }
-
-    .section-label {
-      font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px; font-weight: 600;
-      display: flex; align-items: center; gap: 16px;
-    }
+    .section-label { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; display: flex; align-items: center; gap: 16px; }
     .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
-
     h2 { font-family: var(--serif); font-size: clamp(36px, 4vw, 58px); font-weight: 900; line-height: 1.1; margin-bottom: 32px; color: #fff; }
     h2 em { font-style: italic; color: var(--gold); }
-
     .lead { font-size: 18px; line-height: 1.8; color: var(--mid); max-width: 720px; font-weight: 300; margin-bottom: 40px; }
-
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
     .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
 
     /* ── CALLOUT ── */
-    .callout {
-      border-left: 3px solid var(--gold); padding: 28px 32px;
-      background: var(--gold-pale); margin-bottom: 32px;
-    }
+    .callout { border-left: 3px solid var(--gold); padding: 28px 32px; background: var(--gold-pale); margin-bottom: 32px; }
     .callout p { font-family: var(--serif); font-size: 20px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.45; }
 
     /* ── STATS ── */
@@ -226,16 +161,9 @@
 
     /* ── LEAD MAGNET ── */
     .leadmagnet { background: var(--dark-3); padding: 100px; border-top: 1px solid var(--gold-line); position: relative; overflow: hidden; }
-    .leadmagnet::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.05) 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .leadmagnet::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.05) 0%, transparent 65%); pointer-events: none; }
     .leadmagnet-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-    .leadmagnet-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid var(--gold-line); padding: 6px 16px; margin-bottom: 28px;
-    }
+    .leadmagnet-badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold-line); padding: 6px 16px; margin-bottom: 28px; }
     .leadmagnet-badge span { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
     .leadmagnet h2 { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 50px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
     .leadmagnet h2 em { font-style: italic; color: var(--gold); }
@@ -251,21 +179,11 @@
     .lm-form-sub { font-size: 13px; color: var(--mid); margin-bottom: 32px; letter-spacing: 0.3px; }
     .lm-field { margin-bottom: 20px; }
     .lm-field label { display: block; font-family: var(--condensed); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
-    .lm-field input, .lm-field select {
-      width: 100%; background: rgba(255,255,255,0.04);
-      border: 1px solid var(--gold-line); border-radius: 0;
-      padding: 14px 16px; font-size: 14px; color: var(--white);
-      font-family: var(--sans); outline: none; transition: border-color 0.2s;
-    }
+    .lm-field input, .lm-field select { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid var(--gold-line); border-radius: 0; padding: 14px 16px; font-size: 14px; color: var(--white); font-family: var(--sans); outline: none; transition: border-color 0.2s; }
     .lm-field input:focus { border-color: var(--gold); }
     .lm-field input::placeholder { color: rgba(232,224,208,0.2); }
     .form-row { display: grid; grid-template-columns: 100px 1fr; gap: 10px; }
-    .lm-submit {
-      width: 100%; background: var(--gold); border: none; cursor: pointer;
-      padding: 18px; font-family: var(--condensed); font-size: 13px; letter-spacing: 3px;
-      text-transform: uppercase; font-weight: 700; color: var(--dark);
-      margin-top: 8px; transition: background 0.2s;
-    }
+    .lm-submit { width: 100%; background: var(--gold); border: none; cursor: pointer; padding: 18px; font-family: var(--condensed); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--dark); margin-top: 8px; transition: background 0.2s; }
     .lm-submit:hover { background: var(--gold-light); }
     .lm-submit:disabled { opacity: 0.5; cursor: not-allowed; }
     .lm-msg { display: none; margin-top: 16px; padding: 14px 16px; font-size: 13px; line-height: 1.5; }
@@ -285,19 +203,13 @@
     .closing-logo { font-family: var(--serif); font-size: 80px; font-weight: 900; color: rgba(201,168,76,0.06); line-height: 1; text-align: right; align-self: end; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--dark); padding: 80px 100px 60px;
-      border-top: 1px solid var(--gold-line); text-align: center;
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-      text-align: left; max-width: 1100px; margin: 0 auto 60px;
-    }
-    .footer-item label {
-      display: block; font-family: var(--condensed); font-size: 10px;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 10px; font-weight: 600;
-    }
+    footer { background: var(--dark); padding: 80px 100px 60px; border-top: 1px solid var(--gold-line); text-align: center; }
+    .footer-author { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--gold-line); }
+    .footer-author-img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold); flex-shrink: 0; }
+    .footer-author-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--white); text-align: left; }
+    .footer-author-role { font-family: var(--condensed); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(201,168,76,0.55); text-align: left; margin-top: 3px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: left; max-width: 1100px; margin: 0 auto 60px; }
+    .footer-item label { display: block; font-family: var(--condensed); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 600; }
     .footer-item span { font-family: var(--serif); font-size: 17px; color: #fff; font-weight: 300; }
     .footer-item a { font-family: var(--serif); font-size: 17px; color: #fff; text-decoration: none; font-weight: 300; transition: color 0.2s; }
     .footer-item a:hover { color: var(--gold); }
@@ -385,12 +297,9 @@
   <p class="section-label">Identità</p>
   <h2>Non vendiamo corsi.<br><em>Costruiamo macchine economiche.</em></h2>
   <p class="lead">Parrucchiere Power Srl è la società di consulenza strategica e formazione commerciale che ha ridefinito gli standard di performance nel settore dell'acconciatura professionale italiana. Il nostro metodo trasforma saloni tecnicamente eccellenti ma economicamente inespressi in strutture che generano ricchezza prevedibile, misurabile e scalabile.</p>
-
   <div class="two-col">
     <div>
-      <div class="callout">
-        <p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p>
-      </div>
+      <div class="callout"><p>"Il problema non è mai la qualità tecnica del tuo staff. È l'assenza di un sistema commerciale che la converta in fatturato."</p></div>
       <p style="font-size:15px;color:var(--mid);line-height:1.75;margin-top:32px;">Operiamo esclusivamente con titolari che hanno già dimostrato di saper fare impresa — fatturati tra i 100k e i 350k annui, staff formato, clientela consolidata — ma che si trovano intrappolati in quella che definiamo <strong style="color:#fff;font-weight:500">la zona grigia della competenza</strong>: troppo grandi per accontentarsi, troppo piccoli per dominare.</p>
     </div>
     <div>
@@ -422,24 +331,11 @@
   <p class="section-label">Il Problema</p>
   <h2>Il potenziale economico che<br><em>scompare ogni giorno</em></h2>
   <p class="lead">In un salone medio con 3 collaboratori e 21 clienti/giorno, esistono 5 momenti commerciali critici che vengono sistematicamente sprecati. Il costo di questa inefficienza è misurabile al centesimo.</p>
-
   <div class="stats-grid">
-    <div class="stat-box">
-      <span class="stat-number">37</span>
-      <span class="stat-label">Micro-decisioni<br>commerciali per cliente</span>
-    </div>
-    <div class="stat-box">
-      <span class="stat-number">60%</span>
-      <span class="stat-label">Fatturato potenziale<br>non realizzato</span>
-    </div>
-    <div class="stat-box">
-      <span class="stat-number">90'</span>
-      <span class="stat-label">Tempo di contatto<br>esclusivo per cliente</span>
-    </div>
-    <div class="stat-box">
-      <span class="stat-number">€0</span>
-      <span class="stat-label">Costo marginale della<br>vendita in salone</span>
-    </div>
+    <div class="stat-box"><span class="stat-number">37</span><span class="stat-label">Micro-decisioni<br>commerciali per cliente</span></div>
+    <div class="stat-box"><span class="stat-number">60%</span><span class="stat-label">Fatturato potenziale<br>non realizzato</span></div>
+    <div class="stat-box"><span class="stat-number">90'</span><span class="stat-label">Tempo di contatto<br>esclusivo per cliente</span></div>
+    <div class="stat-box"><span class="stat-number">€0</span><span class="stat-label">Costo marginale della<br>vendita in salone</span></div>
   </div>
 </section>
 
@@ -457,43 +353,12 @@
   <p class="section-label">Il Metodo</p>
   <h2>L'architettura della<br><em>performance</em></h2>
   <p class="lead">Da tecnico a consulente di bellezza. In 90 giorni. Un framework in 5 fasi, costruito su oltre 50 saloni, replicabile e misurabile.</p>
-
   <div class="framework-steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-content">
-        <h3>Mappatura Asimmetrica</h3>
-        <p>Analisi profonda dei flussi di cassa e identificazione dei "buchi neri" dove il margine scompare. Misuriamo scientificamente la baseline: scontrino medio, conversione retail, rebook e retention. I KPI diventano il punto di partenza incontestabile.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-content">
-        <h3>Ingegneria del Listino</h3>
-        <p>Ristrutturazione completa dei prezzi basata sulla psicologia del valore e sulla saturazione delle ore. Eliminiamo i servizi a basso margine. I prezzi vengono ricostruiti sulla marginalità reale, non sulla concorrenza.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-content">
-        <h3>Protocolli di Conversione</h3>
-        <p>Installazione di script e sequenze operative che lo staff deve eseguire ad ogni contatto. Costruiamo framework flessibili per ogni momento di vendita. I prodotti si vendono attraverso sistemi di consulenza ad inversione, non push di cassa.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <div class="step-content">
-        <h3>Training Operativo &amp; Role-Play</h3>
-        <p>Pratica intensiva con simulazioni reali e feedback immediato. Certifichiamo il collaboratore a operare in autonomia in meno di 7 sedute. Strutturiamo sistemi di premio sui risultati reali: trasformiamo la resistenza in entusiasmo quando i risultati appaiono in busta paga.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">05</div>
-      <div class="step-content">
-        <h3>Saturazione Prevedibile &amp; Dashboard</h3>
-        <p>Sistemi di rebooking e acquisizione clienti alto-spendenti per garantire che l'agenda sia piena di margini elevati, non solo di "teste". Tracking settimanale e coaching 1-on-1 per un processo di miglioramento continuo.</p>
-      </div>
-    </div>
+    <div class="step"><div class="step-num">01</div><div class="step-content"><h3>Mappatura Asimmetrica</h3><p>Analisi profonda dei flussi di cassa e identificazione dei "buchi neri" dove il margine scompare. Misuriamo scientificamente la baseline: scontrino medio, conversione retail, rebook e retention. I KPI diventano il punto di partenza incontestabile.</p></div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-content"><h3>Ingegneria del Listino</h3><p>Ristrutturazione completa dei prezzi basata sulla psicologia del valore e sulla saturazione delle ore. Eliminiamo i servizi a basso margine. I prezzi vengono ricostruiti sulla marginalità reale, non sulla concorrenza.</p></div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-content"><h3>Protocolli di Conversione</h3><p>Installazione di script e sequenze operative che lo staff deve eseguire ad ogni contatto. Costruiamo framework flessibili per ogni momento di vendita. I prodotti si vendono attraverso sistemi di consulenza ad inversione, non push di cassa.</p></div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-content"><h3>Training Operativo &amp; Role-Play</h3><p>Pratica intensiva con simulazioni reali e feedback immediato. Certifichiamo il collaboratore a operare in autonomia in meno di 7 sedute. Strutturiamo sistemi di premio sui risultati reali: trasformiamo la resistenza in entusiasmo quando i risultati appaiono in busta paga.</p></div></div>
+    <div class="step"><div class="step-num">05</div><div class="step-content"><h3>Saturazione Prevedibile &amp; Dashboard</h3><p>Sistemi di rebooking e acquisizione clienti alto-spendenti per garantire che l'agenda sia piena di margini elevati, non solo di "teste". Tracking settimanale e coaching 1-on-1 per un processo di miglioramento continuo.</p></div></div>
   </div>
 </section>
 
@@ -502,24 +367,11 @@
   <p class="section-label">Strumenti</p>
   <h2>Architettura proprietaria.<br><em>Non si trova altrove.</em></h2>
   <p class="lead">Ogni tool è stato sviluppato in-house su dati reali. Non esistono versioni analoghe sul mercato dell'acconciatura italiana.</p>
-
   <div class="tool-grid">
-    <div class="tool-card">
-      <h4>Matrice Clienti Asimmetrica</h4>
-      <p>Classificazione per marginalità e frequenza: Asset Primario, Potenziale Latente, Trappola dell'Agenda, Peso Morto. Trasforma la gestione dell'agenda in leva economica.</p>
-    </div>
-    <div class="tool-card">
-      <h4>12 Card Tattiche Operative</h4>
-      <p>Dalla Fidelizzazione alla Deselection. Script precisi e azioni concrete per ogni scenario commerciale: lo staff non deve capire, deve eseguire.</p>
-    </div>
-    <div class="tool-card">
-      <h4>Ingegneria degli Abbonamenti</h4>
-      <p>Trasforma la visita occasionale in entrata prevedibile. Una tecnologia che protegge il fatturato anche in tempi di crisi — dimostrata durante il lockdown Covid.</p>
-    </div>
-    <div class="tool-card">
-      <h4>Boot Camp Residenziale</h4>
-      <p>Un'immersione operativa riservata esclusivamente ai titolari selezionati. Si costruisce, si testa e si porta a casa il sistema completo in un format intensivo.</p>
-    </div>
+    <div class="tool-card"><h4>Matrice Clienti Asimmetrica</h4><p>Classificazione per marginalità e frequenza: Asset Primario, Potenziale Latente, Trappola dell'Agenda, Peso Morto. Trasforma la gestione dell'agenda in leva economica.</p></div>
+    <div class="tool-card"><h4>12 Card Tattiche Operative</h4><p>Dalla Fidelizzazione alla Deselection. Script precisi e azioni concrete per ogni scenario commerciale: lo staff non deve capire, deve eseguire.</p></div>
+    <div class="tool-card"><h4>Ingegneria degli Abbonamenti</h4><p>Trasforma la visita occasionale in entrata prevedibile. Una tecnologia che protegge il fatturato anche in tempi di crisi — dimostrata durante il lockdown Covid.</p></div>
+    <div class="tool-card"><h4>Boot Camp Residenziale</h4><p>Un'immersione operativa riservata esclusivamente ai titolari selezionati. Si costruisce, si testa e si porta a casa il sistema completo in un format intensivo.</p></div>
   </div>
 </section>
 
@@ -528,7 +380,6 @@
   <p class="section-label">Prove di Mercato</p>
   <h2>Tre saloni. Tre storie. <em>Un solo metodo.</em></h2>
 
-  <!-- CASO 1 -->
   <div class="case-card">
     <div class="case-number">01</div>
     <p class="case-location">Salerno — Salone Storico</p>
@@ -550,7 +401,6 @@
     </div>
   </div>
 
-  <!-- CASO 2 -->
   <div class="case-card">
     <div class="case-number">02</div>
     <p class="case-location">Venezia — Apertura</p>
@@ -573,7 +423,6 @@
     </div>
   </div>
 
-  <!-- CASO 3 -->
   <div class="case-card">
     <div class="case-number">03</div>
     <p class="case-location">Chignolo d'Isola — Salone Premium</p>
@@ -614,20 +463,10 @@
   <p class="section-label">Selezione</p>
   <h2>Non per tutti.<br><em>Per chi è pronto.</em></h2>
   <p class="lead">Questa trasparenza è deliberata: non cerchiamo clienti, cerchiamo partner di crescita. Il nostro approccio non funziona per tutti, e lo diciamo senza imbarazzo.</p>
-
   <div class="selection-cols">
-    <div>
-      <p class="selection-col-label">Profilo target</p>
-      <p class="selection-col-text">Titolari con fatturati tra €100k e €350k annui, staff formato, reputazione consolidata. Chi si trova nella zona grigia della competenza e sa che potrebbe fare molto di più.</p>
-    </div>
-    <div>
-      <p class="selection-col-label">Prerequisiti</p>
-      <p class="selection-col-text">Intelligenza strategica, energia sostenuta, disciplina esecutiva, ossessione per l'eccellenza, propensione al rischio calcolato, fame autentica. Se anche uno solo di questi elementi manca, la nostra società non è per te.</p>
-    </div>
-    <div>
-      <p class="selection-col-label">Cosa offriamo</p>
-      <p class="selection-col-text">Un sistema replicabile che trasforma il talento dello staff in fatturato prevedibile, con garanzia contrattuale sui risultati e skin in the game reale da parte nostra.</p>
-    </div>
+    <div><p class="selection-col-label">Profilo target</p><p class="selection-col-text">Titolari con fatturati tra €100k e €350k annui, staff formato, reputazione consolidata. Chi si trova nella zona grigia della competenza e sa che potrebbe fare molto di più.</p></div>
+    <div><p class="selection-col-label">Prerequisiti</p><p class="selection-col-text">Intelligenza strategica, energia sostenuta, disciplina esecutiva, ossessione per l'eccellenza, propensione al rischio calcolato, fame autentica. Se anche uno solo di questi elementi manca, la nostra società non è per te.</p></div>
+    <div><p class="selection-col-label">Cosa offriamo</p><p class="selection-col-text">Un sistema replicabile che trasforma il talento dello staff in fatturato prevedibile, con garanzia contrattuale sui risultati e skin in the game reale da parte nostra.</p></div>
   </div>
 </section>
 
@@ -635,15 +474,9 @@
 <section class="leadmagnet" id="guida-gratuita">
   <div class="leadmagnet-inner">
     <div>
-      <div class="leadmagnet-badge">
-        <span>Download gratuito</span>
-      </div>
+      <div class="leadmagnet-badge"><span>Download gratuito</span></div>
       <h2>7 Errori che<br>costano <em>margine</em><br>al tuo salone.</h2>
-      <p class="leadmagnet-desc">
-        Una guida diretta per titolari strutturati con fatturato tra 100k e 350k annui.
-        Non consigli generici: i pattern sistemici che abbiamo identificato su oltre 50 saloni
-        italiani — e che si traducono in decine di migliaia di euro di margine non espresso.
-      </p>
+      <p class="leadmagnet-desc">Una guida diretta per titolari strutturati con fatturato tra 100k e 350k annui. Non consigli generici: i pattern sistemici che abbiamo identificato su oltre 50 saloni italiani — e che si traducono in decine di migliaia di euro di margine non espresso.</p>
       <ul class="leadmagnet-bullets">
         <li>Listino costruito sul costo invece che sul valore percepito</li>
         <li>Staff che lavora bene ma non vende</li>
@@ -652,27 +485,16 @@
         <li>+ 3 altri errori che il conto economico non mostra in superficie</li>
       </ul>
     </div>
-
     <div class="leadmagnet-form-wrap">
       <p class="lm-form-title">Scarica la guida gratuita</p>
       <p class="lm-form-sub">Accesso immediato. Nessuno spam.</p>
       <form id="lmForm">
-        <div class="lm-field">
-          <label for="lm-nome">Nome</label>
-          <input type="text" id="lm-nome" placeholder="Il tuo nome" autocomplete="given-name" required>
-        </div>
-        <div class="lm-field">
-          <label for="lm-email">Email Professionale</label>
-          <input type="email" id="lm-email" placeholder="la-tua@email.it" autocomplete="email" required>
-        </div>
+        <div class="lm-field"><label for="lm-nome">Nome</label><input type="text" id="lm-nome" placeholder="Il tuo nome" autocomplete="given-name" required></div>
+        <div class="lm-field"><label for="lm-email">Email Professionale</label><input type="email" id="lm-email" placeholder="la-tua@email.it" autocomplete="email" required></div>
         <div class="lm-field">
           <label for="lm-tel">Telefono</label>
           <div class="form-row">
-            <select id="lm-prefix" required>
-              <option value="+39" selected>+39 (IT)</option>
-              <option value="+41">+41 (CH)</option>
-              <option value="+378">+378 (SM)</option>
-            </select>
+            <select id="lm-prefix" required><option value="+39" selected>+39 (IT)</option><option value="+41">+41 (CH)</option><option value="+378">+378 (SM)</option></select>
             <input type="tel" id="lm-tel" placeholder="Numero" required>
           </div>
         </div>
@@ -702,61 +524,41 @@
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-item">
-      <label>Email</label>
-      <span><a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a></span>
-    </div>
-    <div class="footer-item">
-      <label>Brand</label>
-      <span>Parrucchiere Power Srl</span>
-    </div>
-    <div class="footer-item">
-      <label>Fondatore</label>
-      <span>Coach Masala</span>
-    </div>
-    <div class="footer-item">
-      <label>Mercato</label>
-      <span>Italia — Nord, Centro, Sud</span>
+  <div class="footer-author">
+    <img src="Coach_Masala.jpeg" alt="Coach Masala" class="footer-author-img">
+    <div>
+      <div class="footer-author-name">Emanuele Masala</div>
+      <div class="footer-author-role">Coach Masala · Parrucchiere Power Srl</div>
     </div>
   </div>
-
+  <div class="footer-grid">
+    <div class="footer-item"><label>Email</label><span><a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a></span></div>
+    <div class="footer-item"><label>Brand</label><span>Parrucchiere Power Srl</span></div>
+    <div class="footer-item"><label>Fondatore</label><span>Coach Masala</span></div>
+    <div class="footer-item"><label>Mercato</label><span>Italia — Nord, Centro, Sud</span></div>
+  </div>
   <div class="footer-divider"></div>
-
   <div class="footer-social">
     <a href="https://wa.me/393936645260" class="social-link" target="_blank">WhatsApp</a>
     <a href="https://www.linkedin.com/company/parrucchiere-power-srl/" class="social-link" target="_blank">LinkedIn</a>
   </div>
-
   <p class="footer-legal">Parrucchiere Power Srl — © 2026 Tutti i diritti riservati</p>
-  <p class="footer-copyright">
-    È <strong>ESPRESSAMENTE PROIBITA</strong> qualsiasi riproduzione, anche parziale, dei contenuti di <strong>parrucchierepower.it</strong> e sue sottopagine. Si applicano le sanzioni ex L. 633/1941 e ss.mm.ii.
-  </p>
+  <p class="footer-copyright">È <strong>ESPRESSAMENTE PROIBITA</strong> qualsiasi riproduzione, anche parziale, dei contenuti di <strong>parrucchierepower.it</strong> e sue sottopagine. Si applicano le sanzioni ex L. 633/1941 e ss.mm.ii.</p>
   <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Termini e Condizioni</a>
-    <a href="#">GDPR</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/termini-e-condizioni.html">Termini e Condizioni</a>
+    <a href="/gdpr.html">GDPR</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
   </div>
 </footer>
 
 <script>
-  // ── MENU ──
   const menuToggle = document.getElementById('menuToggle');
   const menuOverlay = document.getElementById('menuOverlay');
   const menuPanel = document.getElementById('menuPanel');
+  menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); menuOverlay.classList.toggle('active'); menuPanel.classList.toggle('active'); });
+  menuOverlay.addEventListener('click', () => { menuToggle.classList.remove('active'); menuOverlay.classList.remove('active'); menuPanel.classList.remove('active'); });
 
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    menuPanel.classList.toggle('active');
-  });
-  menuOverlay.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    menuPanel.classList.remove('active');
-  });
-
-  // ── FORM — Netlify function (Brevo) ──
   document.getElementById('lmForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const nome   = document.getElementById('lm-nome').value.trim();
@@ -764,40 +566,18 @@
     const prefix = document.getElementById('lm-prefix').value;
     const tel    = document.getElementById('lm-tel').value.trim();
     const btn    = document.getElementById('lm-btn');
-
     if (!nome || !email) { showMsg('Inserisci nome e email per continuare.', 'error'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Indirizzo email non valido.', 'error'); return; }
-
     btn.disabled = true;
     btn.textContent = 'Invio in corso...';
-
     try {
-      const res = await fetch('/.netlify/functions/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, email, telefono: prefix + tel })
-      });
+      const res = await fetch('/.netlify/functions/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nome, email, telefono: prefix + tel }) });
       const data = await res.json();
-
-      if (res.ok && data.success) {
-        showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success');
-        btn.textContent = 'Inviato ✓';
-      } else {
-        throw new Error(data.message || 'Errore');
-      }
-    } catch(err) {
-      btn.disabled = false;
-      btn.textContent = 'Scarica ora — gratis';
-      showMsg("C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error');
-    }
+      if (res.ok && data.success) { showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success'); btn.textContent = 'Inviato \u2713'; }
+      else { throw new Error(data.message || 'Errore'); }
+    } catch(err) { btn.disabled = false; btn.textContent = 'Scarica ora — gratis'; showMsg("C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error'); }
   });
-
-  function showMsg(text, type) {
-    const msg = document.getElementById('lm-msg');
-    msg.textContent = text;
-    msg.className = 'lm-msg ' + type;
-    msg.style.display = 'block';
-  }
+  function showMsg(text, type) { const msg = document.getElementById('lm-msg'); msg.textContent = text; msg.className = 'lm-msg ' + type; msg.style.display = 'block'; }
 </script>
 
 </body>
