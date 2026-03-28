@@ -1177,77 +1177,56 @@ document.querySelectorAll('.modal-agent-img, #agent-photo-main').forEach(img => 
   if(AGENT_PHOTO_URL !== 'https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png') img.src = AGENT_PHOTO_URL;
 });
 
-// ── Form submit → Brevo API ──
+// ── Form submit → Netlify function → Brevo lista 7 ──
 document.getElementById('lead-form').addEventListener('submit', async function(e){
   e.preventDefault();
-  const btn = document.getElementById('submit-btn');
+  const btn    = document.getElementById('submit-btn');
   const errBox = document.getElementById('form-error');
-  errBox.style.display='none';
+  errBox.style.display = 'none';
 
-  const nome     = document.getElementById('f-nome').value.trim();
-  const cognome  = document.getElementById('f-cognome').value.trim();
-  const email    = document.getElementById('f-email').value.trim();
-  const telefono = document.getElementById('f-tel').value.trim();
-  const salone   = document.getElementById('f-salone').value.trim();
-  const indirizzo= document.getElementById('f-indirizzo').value.trim();
+  const nome      = document.getElementById('f-nome').value.trim();
+  const cognome   = document.getElementById('f-cognome').value.trim();
+  const email     = document.getElementById('f-email').value.trim();
+  const telefono  = document.getElementById('f-tel').value.trim();
+  const salone    = document.getElementById('f-salone').value.trim();
+  const indirizzo = document.getElementById('f-indirizzo').value.trim();
 
   if(!nome||!cognome||!email||!telefono||!salone||!indirizzo){
-    errBox.textContent='Compila tutti i campi obbligatori prima di procedere.';
-    errBox.style.display='block';
+    errBox.textContent = 'Compila tutti i campi obbligatori prima di procedere.';
+    errBox.style.display = 'block';
     return;
   }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    errBox.textContent='Inserisci un indirizzo email valido.';
-    errBox.style.display='block';
+    errBox.textContent = 'Inserisci un indirizzo email valido.';
+    errBox.style.display = 'block';
     return;
   }
 
-  btn.textContent='Invio in corso...';
-  btn.disabled=true;
+  btn.textContent = 'Invio in corso...';
+  btn.disabled = true;
 
   try {
-    // ══════════════════════════════════════════════════════
-    // ISTRUZIONE TECNICA BREVO:
-    // 1. Creare una nuova lista in Brevo dedicata a "Agente — Visite Salone"
-    // 2. Sostituire BREVO_LIST_ID_PLACEHOLDER con l'ID numerico di quella lista
-    // 3. Sostituire BREVO_API_KEY_PLACEHOLDER con la API key Brevo
-    //    (meglio gestirla tramite Netlify function per non esporla nel frontend)
-    // Struttura consigliata: Netlify Function /subscribe-agente.js
-    // ══════════════════════════════════════════════════════
-    const payload = {
-      email: `${nome.toLowerCase()}.${cognome.toLowerCase()}@noreply.parrucchierepower.it`,
-      firstName: nome,
-      lastName: cognome,
-      attributes: {
-        TELEFONO: telefono,
-        NOME_SALONE: salone,
-        INDIRIZZO_SALONE: indirizzo
-      },
-      listIds: [/* BREVO_LIST_ID_PLACEHOLDER */],
-      updateEnabled: true
-    };
-
-    // Chiamata alla Netlify function (da creare: /netlify/functions/subscribe-agente.js)
     const res = await fetch('/.netlify/functions/subscribe-agente', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({nome, cognome, email, telefono, salone, indirizzo})
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, cognome, email, telefono, salone, indirizzo })
     });
 
     if(res.ok){
-      document.getElementById('lead-form').style.display='none';
-      document.getElementById('form-success').style.display='block';
+      document.getElementById('lead-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
     } else {
-      throw new Error('Server error '+res.status);
+      const data = await res.json().catch(() => ({}));
+      errBox.textContent = data.error || 'Errore durante l'invio. Riprova o scrivi a info@parrucchierepower.it';
+      errBox.style.display = 'block';
+      btn.textContent = 'Richiedi la visita in salone';
+      btn.disabled = false;
     }
   } catch(err){
-    // Fallback: mostra messaggio di successo anche se la chiamata fallisce
-    // (per non bloccare l'esperienza utente — rivedere in produzione)
-    console.error('Form error:', err);
-    document.getElementById('lead-form').style.display='none';
-    document.getElementById('form-success').style.display='block';
-  } finally {
-    btn.disabled=false;
+    errBox.textContent = 'Connessione interrotta. Riprova o scrivi a info@parrucchierepower.it';
+    errBox.style.display = 'block';
+    btn.textContent = 'Richiedi la visita in salone';
+    btn.disabled = false;
   }
 });
 
