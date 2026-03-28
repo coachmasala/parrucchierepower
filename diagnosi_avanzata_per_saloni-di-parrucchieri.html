@@ -169,26 +169,8 @@
   .author-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
   .author-role { font-size: 12px; color: var(--text-faint); margin-bottom: 0.8rem; }
   .author-bio { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 540px; }
-  @media (max-width: 960px) {
-    .audit-grid { grid-template-columns: repeat(3, 1fr); }
-    .package-grid { grid-template-columns: 1fr; }
-    .objections-grid { grid-template-columns: 1fr; }
-    .costs-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    nav, .hero, section, .quote-block, .cta-section, footer, .author-section, .ps-block { padding-left: 1.5rem; padding-right: 1.5rem; }
-    nav { padding-right: 70px; }
-    .divider { margin: 0 1.5rem; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .audit-grid { grid-template-columns: 1fr 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    h1 { letter-spacing: -0.5px; }
-    .form-row { grid-template-columns: 1fr; }
-    .author-section { grid-template-columns: 1fr; }
-    .nav-right .nav-price-tag { display: none; }
-    .urgency-bar { padding: 0.6rem 1.5rem; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 960px) { .audit-grid { grid-template-columns: repeat(3, 1fr); } .package-grid { grid-template-columns: 1fr; } .objections-grid { grid-template-columns: 1fr; } .costs-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { nav, .hero, section, .quote-block, .cta-section, footer, .author-section, .ps-block { padding-left: 1.5rem; padding-right: 1.5rem; } nav { padding-right: 70px; } .divider { margin: 0 1.5rem; } .problem-grid { grid-template-columns: 1fr; } .audit-grid { grid-template-columns: 1fr 1fr; } .testimonials-grid { grid-template-columns: 1fr; } h1 { letter-spacing: -0.5px; } .form-row { grid-template-columns: 1fr; } .author-section { grid-template-columns: 1fr; } .nav-right .nav-price-tag { display: none; } .urgency-bar { padding: 0.6rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 400px) { .audit-grid { grid-template-columns: 1fr; } }
   .menu-toggle { position: fixed; top: 20px; right: 30px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; z-index: 1200; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; padding: 0; }
   .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s ease; }
@@ -238,10 +220,7 @@
   .footer-links { display: flex; justify-content: center; gap: 30px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
   .footer-links a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--gold-light); }
-  @media (max-width: 640px) {
-    .form-phone-row { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 640px) { .form-phone-row { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -322,7 +301,7 @@
   <h2>I 5 costi <span class="accent-red">invisibili</span> che ti rubano fatturato ogni settimana</h2>
   <p class="section-body">Non sono uscite in bilancio. Non le vedi nel gestionale. Ma esistono, sono misurabili, e si sommano ogni settimana senza che tu te ne accorga.</p>
   <div class="costs-grid">
-    <div class="cost-card"><div class="cost-icon">Costo #1</div><div class="cost-title">L’ambiente che non vende</div><div class="cost-desc">Capelli sul pavimento. Specchi con aloni. Musica casuale da radio. Neon anni ’90. Il tuo salone comunica &quot;artigianale&quot; prima ancora che apra la bocca. E le clienti premium non entrano — o non tornano.</div></div>
+    <div class="cost-card"><div class="cost-icon">Costo #1</div><div class="cost-title">L’ambiente che non vende</div><div class="cost-desc">Capelli sul pavimento. Specchi con aloni. Musica casuale da radio. Neon anni &apos;90. Il tuo salone comunica &quot;artigianale&quot; prima ancora che apra la bocca. E le clienti premium non entrano — o non tornano.</div></div>
     <div class="cost-card dark"><div class="cost-icon">Costo #2</div><div class="cost-title">I micro-momenti distrutti</div><div class="cost-desc">Nessun saluto entro 5 secondi. Nessun prossimo appuntamento preso prima dell’uscita. Nessun follow-up a 48 ore. Ogni cliente che esce senza data di rientro è una cliente che forse non torna. &quot;Forse&quot; si paga caro.</div></div>
     <div class="cost-card dark"><div class="cost-icon">Costo #3</div><div class="cost-title">I sistemi improvvisati</div><div class="cost-desc">Agende parallele. No-show non tracciati. Conferme manuali (o inesistenti). Ogni appuntamento saltato è fatturato sparito. Il 30-50% dei no-show si elimina con un promemoria automatico il giorno prima. Non lo hai ancora attivato.</div></div>
     <div class="cost-card"><div class="cost-icon">Costo #4</div><div class="cost-title">I numeri che non conosci</div><div class="cost-desc">Non sai quali servizi ti fanno guadagnare di più. Non sai quali clienti valgono di più nel tempo. Non sai quanto ti costa acquisire una cliente nuova. Stai guidando a 120 km/h con il parabrezza opaco.</div></div>
