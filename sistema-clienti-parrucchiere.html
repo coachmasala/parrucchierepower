@@ -1217,7 +1217,7 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
       document.getElementById('form-success').style.display = 'block';
     } else {
       const data = await res.json().catch(() => ({}));
-      errBox.textContent = data.error || 'Errore durante l'invio. Riprova o scrivi a info@parrucchierepower.it';
+      errBox.textContent = data.error || 'Errore durante l invio. Riprova o scrivi a info@parrucchierepower.it';
       errBox.style.display = 'block';
       btn.textContent = 'Richiedi la visita in salone';
       btn.disabled = false;
