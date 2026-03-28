@@ -4,6 +4,7 @@
   <!-- ══ SEO & Social Meta Tags ══ -->
   <title>Parrucchiere Power Srl — L'Unica Consulenza con Garanzia di Risultato in Italia</title>
   <meta name="description" content="L'unica società di consulenza in Italia che garantisce risultati economici per contratto. Sistemi di vendita, gestione staff e crescita del margine per saloni con fatturato tra 100k e 350k annui.">
+  <meta name="google-site-verification" content="949ca29f529f784f" />
   <link rel="canonical" href="https://parrucchierepower.it">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -575,7 +576,7 @@
     try {
       const res = await fetch('/.netlify/functions/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nome, email, telefono: prefix + tel }) });
       const data = await res.json();
-      if (res.ok && data.success) { showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success'); btn.textContent = 'Inviato \u2713'; }
+      if (res.ok && data.success) { showMsg('Perfetto ' + nome + '. Controlla la tua email — la guida è in arrivo.', 'success'); btn.textContent = 'Inviato ✓'; }
       else { throw new Error(data.message || 'Errore'); }
     } catch(err) { btn.disabled = false; btn.textContent = 'Scarica ora — gratis'; showMsg("C'è stato un imprevisto. Scrivi a info@parrucchierepower.it o clicca su WhatsApp in fondo alla pagina.", 'error'); }
   });
