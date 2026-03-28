@@ -371,7 +371,7 @@ footer a:hover{color:var(--gold)}
     <div class="modal-body">
       <div class="modal-agent-strip">
         <img class="modal-agent-img" id="modal-agent-photo"
-          src="https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png"
+          src="/images/Andrea_Costanzo.png"
           alt="Costanzo agente Parrucchiere Power"
           onerror="this.style.display='none';document.getElementById('modal-agent-ph').style.display='flex'">
         <div class="modal-agent-img-ph" id="modal-agent-ph" style="display:none">C</div>
@@ -970,7 +970,7 @@ footer a:hover{color:var(--gold)}
       <div class="agent-photo-wrap">
         <div class="agent-photo-frame">
           <!-- ══════════════════════════════════════════════════════
-               ISTRUZIONE TECNICA: sostituire https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png
+               ISTRUZIONE TECNICA: sostituire /images/Andrea_Costanzo.png
                con il percorso GitHub raw della foto di Costanzo.
                Esempio:
                https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/assets/costanzo.jpg
@@ -979,7 +979,7 @@ footer a:hover{color:var(--gold)}
                ══════════════════════════════════════════════════════ -->
           <img
             class="agent-photo"
-            src="https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png"
+            src="/images/Andrea_Costanzo.png"
             alt="Costanzo — Agente Parrucchiere Power"
             id="agent-photo-main"
             onerror="this.style.display='none';document.getElementById('agent-photo-placeholder').style.display='flex'">
@@ -1209,10 +1209,10 @@ document.addEventListener('keydown',function(e){
 // ── Sync agent photo from main page to modal ──
 // When the page loads, try to set the photo URL from GitHub
 // REPLACE THIS URL with the actual raw GitHub URL of Costanzo's photo
-const AGENT_PHOTO_URL = 'https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png';
+const AGENT_PHOTO_URL = '/images/Andrea_Costanzo.png';
 // e.g.: 'https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/assets/costanzo.jpg'
 document.querySelectorAll('.modal-agent-img, #agent-photo-main').forEach(img => {
-  if(AGENT_PHOTO_URL !== 'https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/Andrea_Costanzo.png') img.src = AGENT_PHOTO_URL;
+  if(AGENT_PHOTO_URL !== '/images/Andrea_Costanzo.png') img.src = AGENT_PHOTO_URL;
 });
 
 // ── Form submit → Netlify function → Brevo lista 7 ──
