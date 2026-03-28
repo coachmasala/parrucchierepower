@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /sistema-clienti-parrucchiere
+Disallow: /gdpr
+
+Sitemap: https://parrucchierepower.it/sitemap.xml
