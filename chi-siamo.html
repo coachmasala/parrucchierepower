@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4M1P1DBMYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4M1P1DBMYR');
+  </script>
   <title>Chi Siamo — Parrucchiere Power Srl</title>
   <meta name="description" content="Il team dietro l'unica consulenza per saloni con garanzia di risultato in Italia. Emanuele Masala, Andrea Costanzo, Mauro Ferraro, Nathan Masala.">
   <link rel="canonical" href="https://parrucchierepower.it/chi-siamo.html">
@@ -40,7 +48,6 @@
     html { font-size: 16px; scroll-behavior: smooth; }
     body { background: var(--dark); color: var(--white); font-family: var(--sans); line-height: 1.6; font-weight: 300; overflow-x: hidden; }
 
-    /* ── MENU ── */
     .menu-toggle { position: fixed; top: 40px; right: 40px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6px; padding: 0; }
     .menu-toggle span { display: block; width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s ease; }
     .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
@@ -59,7 +66,6 @@
     .menu-footer-link { font-family: var(--condensed); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: color 0.2s ease; }
     .menu-footer-link:hover { color: var(--gold-light); }
 
-    /* ── HERO ── */
     .hero { min-height: 75vh; padding: 120px 100px 80px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; border-bottom: 1px solid var(--gold-line); }
     .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%; background: linear-gradient(135deg, #111 0%, #000 100%); clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0; }
     .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%); pointer-events: none; z-index: 0; }
@@ -70,27 +76,22 @@
     .hero-sub { font-family: var(--serif); font-size: clamp(17px, 2vw, 22px); font-style: italic; color: var(--mid); max-width: 600px; position: relative; z-index: 1; }
     .hero-wordmark { position: absolute; top: 80px; right: 100px; font-family: var(--serif); font-size: 200px; font-weight: 900; color: rgba(201,168,76,0.03); line-height: 1; z-index: 0; pointer-events: none; letter-spacing: -10px; }
 
-    /* ── INTRO BAND ── */
     .intro-band { background: var(--dark-2); border-bottom: 1px solid var(--gold-line); padding: 60px 100px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; }
     .intro-stat { border-left: 1px solid var(--gold-line); padding-left: 32px; }
     .intro-stat span { display: block; font-family: var(--serif); font-size: 42px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 10px; }
     .intro-stat p { font-family: var(--condensed); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); font-weight: 600; line-height: 1.5; }
 
-    /* ── MEMBER CARDS — FULL BLEED ── */
     .team-member { display: grid; align-items: stretch; border-bottom: 1px solid var(--gold-line); }
     .team-member--left { grid-template-columns: 480px 1fr; }
     .team-member--right { grid-template-columns: 1fr 480px; }
-
     .member-photo-wrap { position: relative; overflow: hidden; min-height: 560px; }
     .member-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%) contrast(1.05); transition: transform 0.6s ease; }
     .member-photo-wrap:hover img { transform: scale(1.03); }
     .member-photo-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, transparent 50%); padding: 40px 36px 32px; }
     .member-year { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-
     .member-content { padding: 70px 80px; display: flex; flex-direction: column; justify-content: center; background: var(--dark); position: relative; }
     .member-content::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.4s; }
     .team-member:hover .member-content::before { opacity: 1; }
-
     .member-role-tag { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
     .member-role-tag::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.4; }
     .member-name { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 52px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 8px; }
@@ -100,13 +101,11 @@
     .member-highlight { border-left: 3px solid var(--gold); padding: 20px 24px; background: var(--gold-pale); margin-top: 24px; }
     .member-highlight p { font-family: var(--serif); font-size: 16px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.5; }
 
-    /* ── MEMBER — JUNIOR VARIANT (foto a destra) ── */
     .team-junior { display: grid; grid-template-columns: 1fr 320px; align-items: stretch; border-bottom: 1px solid var(--gold-line); background: var(--dark-3); }
     .junior-photo-wrap { position: relative; overflow: hidden; min-height: 420px; }
     .junior-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: grayscale(20%) contrast(1.05); }
     .junior-content { padding: 60px 70px; display: flex; flex-direction: column; justify-content: center; }
 
-    /* ── COMPANY DNA ── */
     .dna-section { background: var(--dark-2); padding: 100px; border-bottom: 1px solid var(--gold-line); }
     .dna-label { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; display: flex; align-items: center; gap: 16px; }
     .dna-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
@@ -118,7 +117,6 @@
     .dna-cell h4 { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 14px; }
     .dna-cell p { font-size: 14px; color: var(--mid); line-height: 1.75; }
 
-    /* ── CTA ── */
     .cta-strip { background: var(--dark-3); border-top: 1px solid var(--gold-line); padding: 80px 100px; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
     .cta-strip h3 { font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); font-weight: 900; color: #fff; line-height: 1.2; }
     .cta-strip h3 em { font-style: italic; color: var(--gold); }
@@ -129,7 +127,6 @@
     .btn-ghost { display: inline-block; border: 1px solid var(--gold-line); padding: 17px 36px; font-family: var(--condensed); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--gold); text-decoration: none; transition: all 0.2s; white-space: nowrap; }
     .btn-ghost:hover { border-color: var(--gold); background: var(--gold-pale); }
 
-    /* ── FOOTER ── */
     footer { background: var(--dark); padding: 80px 100px 60px; border-top: 1px solid var(--gold-line); text-align: center; }
     .footer-author { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--gold-line); }
     .footer-author-img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold); flex-shrink: 0; }
@@ -150,45 +147,13 @@
     .footer-links a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold-light); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
-      .hero, .intro-band, .dna-section, .cta-strip, footer { padding-left: 60px; padding-right: 60px; }
-      .team-member--left { grid-template-columns: 380px 1fr; }
-      .team-member--right { grid-template-columns: 1fr 380px; }
-      .member-content { padding: 50px 56px; }
-    }
-    @media (max-width: 900px) {
-      .hero { padding: 100px 36px 60px; min-height: 60vh; }
-      .intro-band { grid-template-columns: 1fr; padding: 48px 36px; gap: 32px; }
-      .team-member--left, .team-member--right { grid-template-columns: 1fr; }
-      .team-member--right .member-photo-wrap { order: -1; }
-      .member-photo-wrap { min-height: 400px; }
-      .member-content { padding: 48px 36px; }
-      .team-junior { grid-template-columns: 1fr; }
-      .junior-photo-wrap { min-height: 340px; order: -1; }
-      .junior-content { padding: 48px 36px; }
-      .dna-section { padding: 70px 36px; }
-      .dna-grid { grid-template-columns: 1fr; }
-      .cta-strip { grid-template-columns: 1fr; padding: 60px 36px; gap: 40px; }
-      .cta-buttons { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-      footer { padding: 60px 36px 40px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .hero-wordmark { display: none; }
-    }
-    @media (max-width: 600px) {
-      .hero { padding: 90px 20px 48px; }
-      .intro-band, .dna-section, .cta-strip, footer { padding-left: 20px; padding-right: 20px; }
-      .member-content { padding: 36px 20px; }
-      .junior-content { padding: 36px 20px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .cta-buttons { flex-direction: column; }
-      .btn-primary, .btn-ghost { width: 100%; text-align: center; }
-    }
+    @media (max-width: 1100px) { .hero, .intro-band, .dna-section, .cta-strip, footer { padding-left: 60px; padding-right: 60px; } .team-member--left { grid-template-columns: 380px 1fr; } .team-member--right { grid-template-columns: 1fr 380px; } .member-content { padding: 50px 56px; } }
+    @media (max-width: 900px) { .hero { padding: 100px 36px 60px; min-height: 60vh; } .intro-band { grid-template-columns: 1fr; padding: 48px 36px; gap: 32px; } .team-member--left, .team-member--right { grid-template-columns: 1fr; } .team-member--right .member-photo-wrap { order: -1; } .member-photo-wrap { min-height: 400px; } .member-content { padding: 48px 36px; } .team-junior { grid-template-columns: 1fr; } .junior-photo-wrap { min-height: 340px; order: -1; } .junior-content { padding: 48px 36px; } .dna-section { padding: 70px 36px; } .dna-grid { grid-template-columns: 1fr; } .cta-strip { grid-template-columns: 1fr; padding: 60px 36px; gap: 40px; } .cta-buttons { align-items: flex-start; flex-direction: row; flex-wrap: wrap; } footer { padding: 60px 36px 40px; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } .hero-wordmark { display: none; } }
+    @media (max-width: 600px) { .hero { padding: 90px 20px 48px; } .intro-band, .dna-section, .cta-strip, footer { padding-left: 20px; padding-right: 20px; } .member-content { padding: 36px 20px; } .junior-content { padding: 36px 20px; } .footer-grid { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; } .btn-primary, .btn-ghost { width: 100%; text-align: center; } }
   </style>
 </head>
 <body>
 
-<!-- ══ MENU ══ -->
 <div class="menu-overlay" id="menuOverlay"></div>
 <nav class="menu-panel" id="menuPanel">
   <ul class="menu-list">
@@ -207,7 +172,6 @@
   <span></span><span></span><span></span>
 </button>
 
-<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-tag">Parrucchiere Power Srl — Il Team</div>
   <h1>Le persone dietro<br>la <em>garanzia.</em></h1>
@@ -215,29 +179,16 @@
   <div class="hero-wordmark">PP</div>
 </section>
 
-<!-- ══ INTRO BAND ══ -->
 <div class="intro-band">
-  <div class="intro-stat">
-    <span>50+</span>
-    <p>Titolari formati<br>e seguiti in tutta Italia</p>
-  </div>
-  <div class="intro-stat">
-    <span>€10M+</span>
-    <p>Fatturato generato<br>nei saloni del network</p>
-  </div>
-  <div class="intro-stat">
-    <span>3</span>
-    <p>Saloni gestiti<br>direttamente dal fondatore</p>
-  </div>
+  <div class="intro-stat"><span>50+</span><p>Titolari formati<br>e seguiti in tutta Italia</p></div>
+  <div class="intro-stat"><span>€10M+</span><p>Fatturato generato<br>nei saloni del network</p></div>
+  <div class="intro-stat"><span>3</span><p>Saloni gestiti<br>direttamente dal fondatore</p></div>
 </div>
 
-<!-- ══ EMANUELE MASALA ══ -->
 <div class="team-member team-member--left">
   <div class="member-photo-wrap">
     <img src="/images/Coach_Masala.jpeg" alt="Emanuele Masala — Coach Masala, Fondatore Parrucchiere Power">
-    <div class="member-photo-overlay">
-      <span class="member-year">Classe '83 — Fondatore &amp; Beauty Manager</span>
-    </div>
+    <div class="member-photo-overlay"><span class="member-year">Classe '83 — Fondatore &amp; Beauty Manager</span></div>
   </div>
   <div class="member-content">
     <p class="member-role-tag">Fondatore &amp; Beauty Manager</p>
@@ -247,13 +198,10 @@
     <p class="member-bio">Perito industriale pentito. Parrucchiere qualificato. Ha gestito 3 saloni in prima persona prima di decidere che il problema più grande del settore non era tecnico — era sistemico.</p>
     <p class="member-bio" style="margin-top: 16px;">Ha formato oltre 50 titolari e i rispettivi staff, costruendo da zero i protocolli commerciali che nessun corso di settore aveva mai osato proporre: dall'ingegneria del listino agli script di consulenza, dagli abbonamenti VIP ai sistemi di rebooking prevedibile.</p>
     <p class="member-bio" style="margin-top: 16px;">Ha fondato Parrucchiere Power Srl portando nell'acconciatura professionale italiana strumenti di crescita aziendale che il settore non aveva mai visto prima. E ha messo la garanzia del risultato nel contratto — non come promessa di marketing, ma come impegno legale.</p>
-    <div class="member-highlight">
-      <p>"Il salone non è un luogo di lavoro. È un'unità di produzione di profitto che deve funzionare anche senza la tua presenza tecnica."</p>
-    </div>
+    <div class="member-highlight"><p>"Il salone non è un luogo di lavoro. È un'unità di produzione di profitto che deve funzionare anche senza la tua presenza tecnica."</p></div>
   </div>
 </div>
 
-<!-- ══ ANDREA COSTANZO ══ -->
 <div class="team-member team-member--right">
   <div class="member-content" style="background: var(--dark-2);">
     <p class="member-role-tag">Direttore Generale</p>
@@ -262,25 +210,18 @@
     <p class="member-bio">Classe '85. Andrea ha quel talento raro di rendere comprensibili — e soprattutto replicabili — le meccaniche alla base della comunicazione mirata alla vendita di servizi.</p>
     <p class="member-bio" style="margin-top: 16px;">Ha formato decine di parrucchieri nella gestione della consulenza al banco, trasformando collaboratori tecnici in venditori consapevoli. Il risultato è misurabile: oltre <strong style="color: #fff; font-weight: 500;">10 milioni di euro</strong> di fatturato generato nel network dei saloni seguiti.</p>
     <p class="member-bio" style="margin-top: 16px;">Guida le operazioni quotidiane di Parrucchiere Power con la stessa logica che insegna ai titolari: sistemi, sequenze, misurazione. Niente improvvisazione.</p>
-    <div class="member-highlight">
-      <p>"Puoi avere i collaboratori più bravi d'Italia. Se non sai come farli vendere, stai lasciando soldi sul tavolo ogni giorno."</p>
-    </div>
+    <div class="member-highlight"><p>"Puoi avere i collaboratori più bravi d'Italia. Se non sai come farli vendere, stai lasciando soldi sul tavolo ogni giorno."</p></div>
   </div>
   <div class="member-photo-wrap">
     <img src="/images/Andrea_Costanzo.png" alt="Andrea Costanzo — Direttore Generale Parrucchiere Power">
-    <div class="member-photo-overlay">
-      <span class="member-year">Classe '85 — Direttore Generale</span>
-    </div>
+    <div class="member-photo-overlay"><span class="member-year">Classe '85 — Direttore Generale</span></div>
   </div>
 </div>
 
-<!-- ══ MAURO FERRARO ══ -->
 <div class="team-member team-member--left">
   <div class="member-photo-wrap">
     <img src="/images/Mauro_Ferraro.png" alt="Dott. Mauro Ferraro — Co-Fondatore Parrucchiere Power">
-    <div class="member-photo-overlay">
-      <span class="member-year">Classe '85 — Co-Fondatore</span>
-    </div>
+    <div class="member-photo-overlay"><span class="member-year">Classe '85 — Co-Fondatore</span></div>
   </div>
   <div class="member-content">
     <p class="member-role-tag">Co-Fondatore</p>
@@ -289,13 +230,10 @@
     <p class="member-bio">Classe '85. Mauro porta in Parrucchiere Power competenze comprovate nella gestione delle pubbliche relazioni — una dimensione che nel settore dell'acconciatura viene costantemente sottovalutata e quasi mai monetizzata correttamente.</p>
     <p class="member-bio" style="margin-top: 16px;">La sua visione: la reputazione di un salone non si costruisce solo dentro le quattro mura. Si costruisce nel modo in cui il titolare comunica all'esterno, gestisce le crisi, presidia il territorio e si posiziona nella percezione della comunità locale.</p>
     <p class="member-bio" style="margin-top: 16px;">Co-fondatore della società, supervisiona le strategie di posizionamento e le relazioni istituzionali del network.</p>
-    <div class="member-highlight">
-      <p>"La qualità tecnica che non viene percepita non esiste. Le relazioni pubbliche non sono un lusso — sono un moltiplicatore di fatturato."</p>
-    </div>
+    <div class="member-highlight"><p>"La qualità tecnica che non viene percepita non esiste. Le relazioni pubbliche non sono un lusso — sono un moltiplicatore di fatturato."</p></div>
   </div>
 </div>
 
-<!-- ══ NATHAN MASALA — foto a destra ══ -->
 <div class="team-junior">
   <div class="junior-content">
     <p class="member-role-tag">Grafico</p>
@@ -303,40 +241,24 @@
     <div class="member-rule"></div>
     <p class="member-bio">Classe 2010. Per le mani di Nathan passa al vaglio tutto il materiale grafico che poi mandiamo in stampa: dalle card operative ai materiali del Boot Camp, dalle copertine delle guide alle grafiche digitali.</p>
     <p class="member-bio" style="margin-top: 16px;">Occhio affilato, zero compromessi. Ogni pezzo deve reggere il livello premium del brand — e Nathan lo sa meglio di chiunque altro.</p>
-    <div class="member-highlight" style="margin-top: 24px;">
-      <p>"In Parrucchiere Power anche la grafica deve vendere. Non decorare — vendere."</p>
-    </div>
+    <div class="member-highlight" style="margin-top: 24px;"><p>"In Parrucchiere Power anche la grafica deve vendere. Non decorare — vendere."</p></div>
   </div>
   <div class="junior-photo-wrap">
     <img src="/images/Nathan_Masala.jpeg" alt="Nathan Masala — Grafico Parrucchiere Power">
   </div>
 </div>
 
-<!-- ══ DNA AZIENDALE ══ -->
 <section class="dna-section">
   <p class="dna-label">Cultura</p>
   <h2>Cosa ci unisce.<br><em>Cosa ci distingue.</em></h2>
   <p style="font-size: 16px; color: var(--mid); line-height: 1.85; max-width: 680px; margin-bottom: 0;">Non siamo un'agenzia di formazione. Non siamo un'accademia. Siamo una società di consulenza strategica che ha scelto di operare in un settore in cui nessuno prima aveva osato mettere la garanzia del risultato per contratto.</p>
   <div class="dna-grid">
-    <div class="dna-cell">
-      <div class="dna-cell-num">01</div>
-      <h4>Skin in the Game</h4>
-      <p>Lavoriamo ad oltranza, a spese nostre, fino al raggiungimento dell'obiettivo concordato. Questo livello di esposizione richiede certezza assoluta nel sistema — e noi quella certezza la abbiamo.</p>
-    </div>
-    <div class="dna-cell">
-      <div class="dna-cell-num">02</div>
-      <h4>Dati, non opinioni</h4>
-      <p>Ogni intervento parte da una baseline misurabile: scontrino medio, conversione retail, tasso di rebook, CAC. I KPI sono l'unico linguaggio che non mente.</p>
-    </div>
-    <div class="dna-cell">
-      <div class="dna-cell-num">03</div>
-      <h4>Selezione, non vendita</h4>
-      <p>Non cerchiamo clienti. Selezioniamo partner di crescita. Se la compatibilità strategica non c'è, lo diciamo con franchezza — prima di iniziare, non dopo.</p>
-    </div>
+    <div class="dna-cell"><div class="dna-cell-num">01</div><h4>Skin in the Game</h4><p>Lavoriamo ad oltranza, a spese nostre, fino al raggiungimento dell'obiettivo concordato. Questo livello di esposizione richiede certezza assoluta nel sistema — e noi quella certezza la abbiamo.</p></div>
+    <div class="dna-cell"><div class="dna-cell-num">02</div><h4>Dati, non opinioni</h4><p>Ogni intervento parte da una baseline misurabile: scontrino medio, conversione retail, tasso di rebook, CAC. I KPI sono l'unico linguaggio che non mente.</p></div>
+    <div class="dna-cell"><div class="dna-cell-num">03</div><h4>Selezione, non vendita</h4><p>Non cerchiamo clienti. Selezioniamo partner di crescita. Se la compatibilità strategica non c'è, lo diciamo con franchezza — prima di iniziare, non dopo.</p></div>
   </div>
 </section>
 
-<!-- ══ CTA ══ -->
 <div class="cta-strip">
   <div>
     <h3>Se quello che hai letto<br>risuona con la tua <em>visione.</em></h3>
@@ -348,7 +270,6 @@
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-author">
     <img src="/images/Coach_Masala.jpeg" alt="Coach Masala" class="footer-author-img">
