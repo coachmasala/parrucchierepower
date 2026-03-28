@@ -1,13 +1,6 @@
 // netlify/functions/subscribe-agente.js
-//
-// Variabili d'ambiente Netlify (aggiungere nel dashboard):
-//   BREVO_API_KEY_AGENTE  → API key Brevo
-//   BREVO_LIST_ID_AGENTE  → 7
-//
-// Attributi Brevo da creare (Impostazioni → Attributi contatto):
-//   NOME_SALONE       → Testo
-//   INDIRIZZO_SALONE  → Testo
-//   SMS               → già presente di default
+// Lista Brevo: BREVO_LIST_ID_AGENTE (7)
+// API key:     BREVO_API_KEY_AGENTE
 
 const BREVO_API = 'https://api.brevo.com/v3/contacts';
 
@@ -29,10 +22,7 @@ exports.handler = async function (event) {
   const missing = ['nome', 'cognome', 'email', 'telefono', 'salone', 'indirizzo']
     .filter(k => !data[k] || !String(data[k]).trim());
   if (missing.length) {
-    return {
-      statusCode: 422,
-      body: JSON.stringify({ error: 'Campi obbligatori mancanti', fields: missing }),
-    };
+    return { statusCode: 422, body: JSON.stringify({ error: 'Campi obbligatori mancanti', fields: missing }) };
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
@@ -43,21 +33,28 @@ exports.handler = async function (event) {
   const listId = parseInt(process.env.BREVO_LIST_ID_AGENTE, 10);
 
   if (!apiKey || !listId) {
-    console.error('Variabili d\'ambiente mancanti: BREVO_API_KEY_AGENTE o BREVO_LIST_ID_AGENTE');
+    console.error('Variabili ambiente mancanti: BREVO_API_KEY_AGENTE o BREVO_LIST_ID_AGENTE');
     return { statusCode: 500, body: JSON.stringify({ error: 'Configurazione server mancante' }) };
   }
+
+  // Normalizza telefono: rimuove spazi e trattini, aggiunge +39 se manca
+  const telClean = telefono.trim().replace(/[\s\-\.]/g, '');
+  const telNorm  = telClean.startsWith('+') ? telClean : '+39' + telClean.replace(/^0039/, '');
 
   const headers = {
     'Content-Type': 'application/json',
     'api-key': apiKey,
   };
 
+  // Brevo vuole firstName/lastName come campi top-level E dentro attributes
   const payload = {
-    email: email.trim().toLowerCase(),
+    email:     email.trim().toLowerCase(),
+    firstName: nome.trim(),
+    lastName:  cognome.trim(),
     attributes: {
       FIRSTNAME:        nome.trim(),
       LASTNAME:         cognome.trim(),
-      SMS:              telefono.trim(),
+      SMS:              telNorm,
       NOME_SALONE:      salone.trim(),
       INDIRIZZO_SALONE: indirizzo.trim(),
     },
@@ -77,7 +74,7 @@ exports.handler = async function (event) {
     if (res.status === 400) {
       const err = await res.json().catch(() => ({}));
       if (err.code === 'duplicate_parameter') {
-        return await updateContact(payload.email, payload.attributes, listId, headers);
+        return await updateContact(payload.email, payload.firstName, payload.lastName, payload.attributes, listId, headers);
       }
       console.error('Brevo 400:', JSON.stringify(err));
       return serverError(JSON.stringify(err));
@@ -93,13 +90,13 @@ exports.handler = async function (event) {
   }
 };
 
-async function updateContact(email, attributes, listId, headers) {
+async function updateContact(email, firstName, lastName, attributes, listId, headers) {
   const res = await fetch(
     `https://api.brevo.com/v3/contacts/${encodeURIComponent(email)}`,
     {
       method: 'PUT',
       headers,
-      body: JSON.stringify({ attributes, listIds: [listId] }),
+      body: JSON.stringify({ firstName, lastName, attributes, listIds: [listId] }),
     }
   );
   if (res.status === 204) return ok();
@@ -108,10 +105,5 @@ async function updateContact(email, attributes, listId, headers) {
   return serverError(body);
 }
 
-function ok() {
-  return { statusCode: 200, body: JSON.stringify({ success: true }) };
-}
-
-function serverError(detail) {
-  return { statusCode: 500, body: JSON.stringify({ error: 'Errore server', detail }) };
-}
+function ok()           { return { statusCode: 200, body: JSON.stringify({ success: true }) }; }
+function serverError(d) { return { statusCode: 500, body: JSON.stringify({ error: 'Errore server', detail: d }) }; }
