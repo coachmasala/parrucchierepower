@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assetto — Parrucchiere Power</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nero: #0a0a0a;
+    --bianco: #f5f2ec;
+    --accento: #c8a84b;
+    --accento-scuro: #9e8238;
+    --grigio: #2a2a2a;
+    --grigio-testo: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--nero);
+    color: var(--bianco);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #1e1e1e;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.15em;
+    color: var(--accento);
+    text-decoration: none;
+  }
+
+  .header-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grigio-testo);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: 'ASSETTO';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-display);
+    font-size: clamp(120px, 22vw, 280px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,168,75,0.08);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-pre {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accento);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 12vw, 160px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s forwards;
+  }
+
+  .hero h1 span {
+    color: var(--accento);
+    display: block;
+  }
+
+  .hero-sub {
+    margin-top: 40px;
+    max-width: 580px;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: #c5c0b8;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  .hero-cta {
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.6s forwards;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accento);
+    color: var(--nero);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accento-scuro);
+    transform: translateY(-2px);
+  }
+
+  .hero-price {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--bianco);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-price small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grigio-testo);
+    margin-top: 2px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accento), transparent);
+    margin: 0 40px;
+    opacity: 0.3;
+  }
+
+  /* ─── SEZIONE PROBLEMA ─── */
+  .section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accento);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accento);
+    opacity: 0.5;
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.0;
+    letter-spacing: 0.03em;
+    margin-bottom: 36px;
+  }
+
+  .section h2 em {
+    font-style: normal;
+    color: var(--accento);
+  }
+
+  .text-large {
+    font-size: 1.18rem;
+    font-weight: 300;
+    color: #c5c0b8;
+    max-width: 680px;
+    line-height: 1.75;
+  }
+
+  /* ─── LISTA PROBLEMI ─── */
+  .problema-list {
+    margin-top: 48px;
+    display: grid;
+    gap: 20px;
+  }
+
+  .problema-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 32px;
+    border: 1px solid #1e1e1e;
+    background: #0f0f0f;
+    transition: border-color 0.2s;
+  }
+
+  .problema-item:hover {
+    border-color: #333;
+  }
+
+  .problema-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--accento);
+    opacity: 0.35;
+    line-height: 1;
+    min-width: 52px;
+  }
+
+  .problema-text strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+  }
+
+  .problema-text p {
+    font-weight: 300;
+    color: #999;
+    font-size: 0.95rem;
+  }
+
+  /* ─── COSA INCLUDE ─── */
+  .include-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    background: #1a1a1a;
+  }
+
+  .include-card {
+    background: var(--nero);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .include-card:hover {
+    background: #0f0f0f;
+  }
+
+  .include-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accento);
+    transition: height 0.3s ease;
+  }
+
+  .include-card:hover::before {
+    height: 100%;
+  }
+
+  .include-icon {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .include-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+    color: var(--bianco);
+  }
+
+  .include-card p {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  .include-card .tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accento);
+    border: 1px solid rgba(200,168,75,0.3);
+    padding: 4px 10px;
+  }
+
+  /* ─── PER CHI È ─── */
+  .per-chi {
+    background: #0c0c0c;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 100px 40px;
+  }
+
+  .per-chi-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .check-list {
+    list-style: none;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.98rem;
+    font-weight: 300;
+    color: #bbb;
+    line-height: 1.5;
+  }
+
+  .check-list li::before {
+    content: '→';
+    color: var(--accento);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cross-list li::before {
+    content: '✕';
+    color: #555;
+  }
+
+  /* ─── COME FUNZIONA ─── */
+  .steps {
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accento), transparent);
+    opacity: 0.25;
+  }
+
+  .step {
+    display: flex;
+    gap: 36px;
+    padding: 32px 0;
+    border-bottom: 1px solid #161616;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--accento);
+    line-height: 1;
+    min-width: 58px;
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  .step h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  /* ─── BLOCCO PREZZO ─── */
+  .pricing-block {
+    background: #0c0c0c;
+    border: 1px solid #222;
+    padding: 64px 52px;
+    max-width: 700px;
+    margin: 60px auto 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: var(--accento);
+  }
+
+  .pricing-block h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    color: var(--grigio-testo);
+    margin-bottom: 20px;
+  }
+
+  .price-big {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 12vw, 110px);
+    color: var(--bianco);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .price-big span {
+    color: var(--accento);
+  }
+
+  .pricing-items {
+    list-style: none;
+    margin: 36px 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pricing-items li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #bbb;
+    font-weight: 300;
+  }
+
+  .pricing-items li::before {
+    content: '—';
+    color: var(--accento);
+    font-weight: 500;
+  }
+
+  .pricing-note {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--grigio-testo);
+    letter-spacing: 0.05em;
+    font-style: italic;
+  }
+
+  /* ─── CTA FINALE ─── */
+  .cta-finale {
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-finale::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,168,75,0.05) 0%, transparent 70%);
+  }
+
+  .cta-finale h2 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: 1.0;
+    letter-spacing: 0.03em;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .cta-finale p {
+    max-width: 520px;
+    margin: 0 auto 48px;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #999;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid #1a1a1a;
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: var(--grigio-testo);
+    letter-spacing: 0.05em;
+  }
+
+  footer a {
+    color: var(--grigio-testo);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--accento); }
+
+  /* ─── ANIMAZIONI ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    header { padding: 20px 24px; }
+    .hero { padding: 60px 24px 50px; }
+    .section { padding: 70px 24px; }
+    .per-chi { padding: 70px 24px; }
+    .per-chi-inner { grid-template-columns: 1fr; gap: 50px; }
+    .pricing-block { padding: 44px 28px; }
+    .cta-finale { padding: 80px 24px; }
+    footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+    .hero::after { display: none; }
+    .include-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="/" class="logo">Parrucchiere Power</a>
+  <span class="header-tag">Consulenza per saloni strutturati</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-pre">Intervento operativo · €670</p>
+  <h1>ASSETTO<span>SALONE.</span></h1>
+  <p class="hero-sub">
+    Prima di spingere sull'acceleratore, il tuo salone deve essere calibrato.
+    Struttura, presenza digitale, sistema di prenotazione — tutto allineato 
+    e pronto a lavorare per te.
+  </p>
+  <div class="hero-cta">
+    <a href="#acquista" class="btn-primary">Prenota il tuo Assetto</a>
+    <div class="hero-price">
+      €670
+      <small>pagamento unico · IVA inclusa</small>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IL PROBLEMA -->
+<section class="section reveal">
+  <p class="section-label">Il problema</p>
+  <h2>Stai lavorando<br>su un salone<em> storto.</em></h2>
+  <p class="text-large">
+    Non mancano i clienti. Mancano i clienti giusti, nel momento giusto, 
+    trovati nel modo giusto. E intanto il calendario si riempie 
+    di lavoro che non porta margine.
+  </p>
+
+  <div class="problema-list">
+    <div class="problema-item reveal">
+      <span class="problema-num">01</span>
+      <div class="problema-text">
+        <strong>Nessuna presenza digitale che converte</strong>
+        <p>Il profilo Instagram è fermo. Il sito non esiste o non fa niente. Chi ti cerca online non ti trova, o non capisce perché dovrebbe sceglierti.</p>
+      </div>
+    </div>
+    <div class="problema-item reveal">
+      <span class="problema-num">02</span>
+      <div class="problema-text">
+        <strong>L'agenda la gestisci ancora a voce</strong>
+        <p>Telefonate, messaggi WhatsApp, no-show senza preavviso. Ogni buco nell'agenda è margine perso che non torni mai indietro.</p>
+      </div>
+    </div>
+    <div class="problema-item reveal">
+      <span class="problema-num">03</span>
+      <div class="problema-text">
+        <strong>Non sai dove stai perdendo soldi</strong>
+        <p>Hai un'idea vaga, ma nessuna analisi concreta. Lavori molto, tieni poco. E non sai da dove cominciare a sistemare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COSA INCLUDE -->
+<section class="section reveal">
+  <p class="section-label">Cosa include</p>
+  <h2>Cinque<br>interventi<em> reali.</em></h2>
+  <p class="text-large">Non slide, non video da guardare da soli. Lavoriamo insieme, sul tuo salone, con risultati consegnati.</p>
+
+  <div class="include-grid">
+    <div class="include-card reveal">
+      <span class="include-icon">◈</span>
+      <h3>Audit del Salone</h3>
+      <p>Analisi diretta della tua realtà operativa: flusso clienti, composizione del portafoglio, margine per servizio, punti di perdita. In presenza o in remoto, a seconda della zona.</p>
+      <span class="tag">In presenza / Remoto</span>
+    </div>
+    <div class="include-card reveal">
+      <span class="include-icon">◈</span>
+      <h3>Allineamento Social</h3>
+      <p>Revisione del profilo Instagram e Facebook. Strategia editoriale calibrata sul tuo posizionamento. 30 giorni di caption e post già pronti, scritti per attrarre clienti ad alto margine.</p>
+      <span class="tag">30 giorni di contenuti</span>
+    </div>
+    <div class="include-card reveal">
+      <span class="include-icon">◈</span>
+      <h3>Landing Page</h3>
+      <p>Una pagina professionale costruita per convertire. Headline, offerta, call to action, sistema di prenotazione integrato. Non un sito vetrina: una macchina da appuntamenti.</p>
+      <span class="tag">Pronta in 7 giorni</span>
+    </div>
+    <div class="include-card reveal">
+      <span class="include-icon">◈</span>
+      <h3>Agenda Online</h3>
+      <p>Sistema di prenotazione collegato alla landing page. I clienti prenotano direttamente, tu ricevi conferma automatica. Fine delle telefonate sprecate.</p>
+      <span class="tag">Integrata e attiva</span>
+    </div>
+    <div class="include-card reveal">
+      <span class="include-icon">◈</span>
+      <h3>Sessione Strategica</h3>
+      <p>60 minuti con Emanuele Masala per leggere insieme i dati dell'audit e definire le priorità operative dei 90 giorni successivi. Non teoria: un piano d'azione specifico per il tuo salone.</p>
+      <span class="tag">60 min · 1:1</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PER CHI È -->
+<section class="per-chi">
+  <div class="per-chi-inner">
+    <div class="reveal">
+      <p class="section-label">Per chi è</p>
+      <h2 style="font-family:var(--font-display); font-size:clamp(36px,5vw,58px); line-height:1.05; letter-spacing:0.03em; margin-bottom:12px;">
+        Assetto è<br>per te <em style="font-style:normal; color:var(--accento)">se —</em>
+      </h2>
+      <ul class="check-list">
+        <li>Hai già un salone avviato con clienti e fatturato reale</li>
+        <li>Sei stanco di lavorare tanto e tenere poco</li>
+        <li>Vuoi capire dove perdi margine prima di investire altro</li>
+        <li>Non hai ancora una presenza digitale che lavora per te</li>
+        <li>Stai valutando il Sistema Clienti ma vuoi prima vedere come lavoriamo</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <p class="section-label">Non è per te</p>
+      <h2 style="font-family:var(--font-display); font-size:clamp(36px,5vw,58px); line-height:1.05; letter-spacing:0.03em; margin-bottom:12px;">
+        Salta questo<br>se <em style="font-style:normal; color:#555">stai ancora —</em>
+      </h2>
+      <ul class="check-list cross-list">
+        <li>Aprendo il salone (prima costruisci la base clienti)</li>
+        <li>Cercando scorciatoie senza voler cambiare nulla</li>
+        <li>Aspettandoti risultati senza implementare niente</li>
+        <li>Lavorando meno di 5 giorni a settimana per scelta</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="section reveal">
+  <p class="section-label">Come funziona</p>
+  <h2>Dalla prenotazione<br>ai<em> risultati.</em></h2>
+
+  <div class="steps">
+    <div class="step reveal">
+      <span class="step-num">1</span>
+      <div>
+        <h3>Acquisti e prenoti</h3>
+        <p>Dopo il pagamento ricevi subito il link per prenotare la data dell'audit e della sessione strategica. Nessuna attesa, nessun imbuto commerciale.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">2</span>
+      <div>
+        <h3>Audit del tuo salone</h3>
+        <p>In presenza o da remoto, analizziamo insieme la situazione reale: clienti, agenda, prezzi, servizi, perdite di margine. Niente domande generiche — entriamo nel vivo dei numeri.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">3</span>
+      <div>
+        <h3>Consegna degli asset digitali</h3>
+        <p>Landing page attiva, agenda collegata, 30 giorni di contenuti social pronti. Tutto consegnato entro 7 giorni lavorativi dall'audit.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">4</span>
+      <div>
+        <h3>Sessione strategica 1:1</h3>
+        <p>60 minuti per definire le priorità operative dei prossimi 90 giorni. Esci con un piano chiaro, non con un elenco di buone intenzioni.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PREZZO -->
+<section id="acquista" class="section" style="padding-top:80px; padding-bottom:120px;">
+  <p class="section-label reveal">Investi nel tuo salone</p>
+  <h2 class="reveal">Un prezzo netto.<br>Nessuna<em> sorpresa.</em></h2>
+
+  <div class="pricing-block reveal">
+    <h3>ASSETTO SALONE</h3>
+    <div class="price-big"><span>€</span>670</div>
+    <ul class="pricing-items">
+      <li>Audit operativo in presenza o remoto</li>
+      <li>Allineamento social + 30 giorni di contenuti</li>
+      <li>Landing page professionale con agenda integrata</li>
+      <li>Sessione strategica 1:1 da 60 minuti</li>
+    </ul>
+    <a href="https://wa.me/TUONUMERO?text=Voglio%20prenotare%20Assetto%20Salone" class="btn-primary" style="display:inline-block; margin-top:8px;">
+      Prenota ora su WhatsApp
+    </a>
+    <p class="pricing-note">Pagamento unico · IVA inclusa · Disponibilità limitata</p>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section class="cta-finale">
+  <h2 class="reveal">Il salone non<br>si aggiusta da solo.</h2>
+  <p class="reveal">Ogni settimana che passa senza struttura è margine che non torni. Assetto è il primo passo concreto per cambiare la rotta.</p>
+  <a href="https://wa.me/TUONUMERO?text=Voglio%20prenotare%20Assetto%20Salone" class="btn-primary reveal">
+    Inizia ora
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Parrucchiere Power Srl — P.IVA IT03XXXXXXXX</p>
+  <div style="display:flex; gap:24px; flex-wrap:wrap;">
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/cookie-policy.html">Cookie Policy</a>
+    <a href="/termini-e-condizioni.html">T&C</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
