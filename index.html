@@ -186,6 +186,11 @@
     .lm-msg.success { background: rgba(201,168,76,0.1); border: 1px solid var(--gold-line); color: var(--gold); }
     .lm-msg.error { background: rgba(200,80,60,0.08); border: 1px solid rgba(200,80,60,0.25); color: #E08070; font-size: 12px; }
     .lm-privacy { font-size: 11px; color: rgba(232,224,208,0.25); margin-top: 16px; line-height: 1.6; }
+    .consent-row { display:flex; align-items:flex-start; gap:10px; margin-top:14px; margin-bottom:4px; }
+    .consent-row input[type=checkbox] { flex-shrink:0; width:16px; height:16px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+    .consent-row label { font-size:11px; color:var(--mid); line-height:1.6; cursor:pointer; font-family:var(--sans); font-weight:300; text-transform:none; letter-spacing:0; }
+    .consent-row a { color:var(--gold); text-decoration:none; }
+    .consent-row a:hover { text-decoration:underline; }
 
     .closing { padding: 100px; background: var(--dark); display: grid; grid-template-columns: 1fr 1fr; gap: 100px; border-top: 1px solid var(--gold-line); }
     .closing h2 { color: #fff; }
@@ -377,10 +382,14 @@
         <div class="lm-field"><label for="lm-nome">Nome</label><input type="text" id="lm-nome" placeholder="Il tuo nome" autocomplete="given-name" required></div>
         <div class="lm-field"><label for="lm-email">Email Professionale</label><input type="email" id="lm-email" placeholder="la-tua@email.it" autocomplete="email" required></div>
         <div class="lm-field"><label for="lm-tel">Telefono</label><div class="form-row"><select id="lm-prefix" required><option value="+39" selected>+39 (IT)</option><option value="+41">+41 (CH)</option><option value="+378">+378 (SM)</option></select><input type="tel" id="lm-tel" placeholder="Numero" required></div></div>
+        <div class="consent-row">
+          <input type="checkbox" id="lm-consent" required>
+          <label for="lm-consent">Ho letto e accetto la <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 679/2016 (GDPR) per ricevere comunicazioni da Parrucchiere Power Srl.</label>
+        </div>
         <button type="submit" class="lm-submit" id="lm-btn">Scarica ora — gratis</button>
       </form>
       <div class="lm-msg" id="lm-msg"></div>
-      <p class="lm-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato viene ceduto a terzi. Cancellazione immediata in qualsiasi momento.</p>
+      <p class="lm-privacy">Nessun dato viene ceduto a terzi. Cancellazione immediata in qualsiasi momento.</p>
     </div>
   </div>
 </section>
@@ -444,6 +453,7 @@
     const btn = document.getElementById('lm-btn');
     if (!nome || !email) { showMsg('Inserisci nome e email per continuare.', 'error'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg('Indirizzo email non valido.', 'error'); return; }
+    if (!document.getElementById('lm-consent').checked) { showMsg('Devi accettare la Privacy Policy per continuare.', 'error'); return; }
     btn.disabled = true; btn.textContent = 'Invio in corso...';
     try {
       const res = await fetch('/.netlify/functions/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nome, email, telefono: prefix + tel }) });
