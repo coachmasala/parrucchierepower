@@ -296,6 +296,13 @@ footer a:hover{color:var(--gold)}
 .form-success h3{font-family:var(--serif);font-size:24px;color:var(--text);margin-bottom:8px}
 .form-success p{font-size:14px;color:var(--muted);line-height:1.6}
 
+/* consent row — identico a index e landing */
+.consent-row{display:flex;align-items:flex-start;gap:10px;margin-top:14px;margin-bottom:16px}
+.consent-row input[type=checkbox]{flex-shrink:0;width:16px;height:16px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+.consent-row label{font-size:11px;color:var(--muted);line-height:1.6;cursor:pointer;font-family:var(--sans);font-weight:300;text-transform:none;letter-spacing:0}
+.consent-row a{color:var(--gold);text-decoration:none}
+.consent-row a:hover{text-decoration:underline}
+
 /* new services pills */
 .service-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .spill{display:flex;align-items:center;gap:10px;background:var(--dark3);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted);transition:border-color .2s,background .2s}
@@ -389,7 +396,10 @@ footer a:hover{color:var(--gold)}
         <div class="field-row full"><div class="field"><label for="f-email">Email *</label><input type="email" id="f-email" name="email" placeholder="mario@salonedamario.it" required autocomplete="email"></div></div>
         <div class="field-row full"><div class="field"><label for="f-salone">Nome del salone *</label><input type="text" id="f-salone" name="salone" placeholder="Salone da Mario" required></div></div>
         <div class="field-row full"><div class="field"><label for="f-indirizzo">Indirizzo del salone *</label><input type="text" id="f-indirizzo" name="indirizzo" placeholder="Via Roma 1, Milano" required autocomplete="street-address"></div></div>
-        <p class="form-note">I tuoi dati vengono trattati in conformit&agrave; al GDPR e usati esclusivamente per organizzare la visita.</p>
+        <div class="consent-row">
+          <input type="checkbox" id="sc-consent" required>
+          <label for="sc-consent">Ho letto e accetto la <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 679/2016 (GDPR) per ricevere comunicazioni da Parrucchiere Power Srl.</label>
+        </div>
         <button type="submit" class="btn" style="width:100%;justify-content:center;font-size:15px;padding:18px" id="submit-btn">
           Richiedi la visita gratuita in salone
           <svg viewBox="0 0 17 17" fill="none"><path d="M3 8.5h11M10 4.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -769,7 +779,6 @@ footer a:hover{color:var(--gold)}
       <div class="mod"><div class="mod-num">4</div><div class="mod-body"><div class="mod-tag">Kit fisico · Operativo</div><div class="mod-title">Le Card della Magia — 12 card + matrice di segmentazione</div><div class="mod-desc">12 card fisiche stampate + matrice. Ogni card: regola d'oro, errori da non fare, script pronti per stilista/receptionist/titolare, lista di azioni concrete con caselle di spunta. Da plastificare e usare ogni giorno.</div></div></div>
       <div class="mod"><div class="mod-num">5</div><div class="mod-body"><div class="mod-tag">Report personalizzato</div><div class="mod-title">Report 15 pagine — margine sbloccabile nel tuo salone specifico</div><div class="mod-desc">Non un documento generico: analisi dei 7 errori rilevati nel tuo salone, stima del margine non realizzato, piano di priorità con sequenza degli interventi e impatto economico atteso mese per mese.</div></div></div>
       <div class="mod"><div class="mod-num">6</div><div class="mod-body"><div class="mod-tag">Presenza fisica · 3 visite</div><div class="mod-title">1 visita diagnosi + 2 visite formazione in salone</div><div class="mod-desc">Coach Masala viene da te. Prima visita: osservazione diretta e raccolta dati invisibili dal report. Seconda e terza: formazione operativa del team su card, protocolli e script con simulazioni reali per ogni quadrante.</div></div></div>
-
       <div class="mod"><div class="mod-num">8</div><div class="mod-body"><div class="mod-tag">Operatività · Standard</div><div class="mod-title">Protocolli di lavoro codificati per ogni ruolo</div><div class="mod-desc">Procedure scritte e testate per ogni ruolo del salone — stilista, receptionist, titolare. Niente viene lasciato all'improvvisazione: ogni interazione con il cliente ha una sequenza definita, misurabile e ripetibile.</div></div></div>
       <div class="mod"><div class="mod-num">9</div><div class="mod-body"><div class="mod-tag">App proprietaria · CAC per zona</div><div class="mod-title">Calcolo del costo di acquisizione cliente geolocalizzato</div><div class="mod-desc">Accesso all'app esclusiva Parrucchiere Power che calcola il tuo CAC reale in base alla zona geografica, alla concorrenza locale e al mix di servizi. Sai esattamente quanto ti costa ogni nuovo cliente — e se le campagne sono sostenibili.</div></div></div>
       <div class="mod"><div class="mod-num">10</div><div class="mod-body"><div class="mod-tag">Automazione · Gestione clientela</div><div class="mod-title">Automatismi di gestione clientela e follow-up</div><div class="mod-desc">Setup di sequenze automatiche per recall Q2, promemoria appuntamenti personalizzati per quadrante, messaggi di follow-up post-visita e avvisi di rinnovo abbonamento. Il salone lavora anche quando sei in poltrona.</div></div></div>
@@ -969,14 +978,6 @@ footer a:hover{color:var(--gold)}
     <div class="agent-block rv">
       <div class="agent-photo-wrap">
         <div class="agent-photo-frame">
-          <!-- ══════════════════════════════════════════════════════
-               ISTRUZIONE TECNICA: sostituire /images/Andrea_Costanzo.png
-               con il percorso GitHub raw della foto di Costanzo.
-               Esempio:
-               https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/assets/costanzo.jpg
-               Oppure usare il path relativo se ospitata su Netlify:
-               /assets/costanzo.jpg
-               ══════════════════════════════════════════════════════ -->
           <img
             class="agent-photo"
             src="/images/Andrea_Costanzo.png"
@@ -1092,7 +1093,6 @@ footer a:hover{color:var(--gold)}
           Richiedi la visita in salone — gratuita e senza impegno
           <svg viewBox="0 0 17 17" fill="none"><path d="M3 8.5h11M10 4.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        
       </div>
     </div>
 
@@ -1142,7 +1142,7 @@ footer a:hover{color:var(--gold)}
     <a href="https://parrucchierepower.it/cookie-policy" style="margin-right:20px">Cookie Policy</a>
     <a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a>
   </div>
-  <div style="font-size:12px">© 2025 Parrucchiere Power Srl</div>
+  <div style="font-size:12px">© 2026 Parrucchiere Power Srl</div>
 </footer>
 
 <script>
@@ -1206,11 +1206,8 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape') closeModal();
 });
 
-// ── Sync agent photo from main page to modal ──
-// When the page loads, try to set the photo URL from GitHub
-// REPLACE THIS URL with the actual raw GitHub URL of Costanzo's photo
+// ── Sync agent photo ──
 const AGENT_PHOTO_URL = '/images/Andrea_Costanzo.png';
-// e.g.: 'https://raw.githubusercontent.com/coachmasala/parrucchierepower/main/assets/costanzo.jpg'
 document.querySelectorAll('.modal-agent-img, #agent-photo-main').forEach(img => {
   if(AGENT_PHOTO_URL !== '/images/Andrea_Costanzo.png') img.src = AGENT_PHOTO_URL;
 });
@@ -1236,6 +1233,11 @@ document.getElementById('lead-form').addEventListener('submit', async function(e
   }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     errBox.textContent = 'Inserisci un indirizzo email valido.';
+    errBox.style.display = 'block';
+    return;
+  }
+  if(!document.getElementById('sc-consent').checked){
+    errBox.textContent = 'Devi accettare la Privacy Policy per continuare.';
     errBox.style.display = 'block';
     return;
   }
