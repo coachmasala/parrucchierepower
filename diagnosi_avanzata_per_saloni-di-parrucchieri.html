@@ -451,6 +451,7 @@
             <input type="tel" name="telefono" placeholder="Numero di telefono *" required autocomplete="tel-national">
           </div>
           <input type="text" name="salone" placeholder="Nome del salone *" required>
+          <input type="text" name="indirizzo" placeholder="Indirizzo di spedizione (via, città, CAP) *" required autocomplete="street-address">
         </div>
         <div class="consent-row">
           <input type="checkbox" id="audit-consent" required>
@@ -566,7 +567,14 @@
     btn.textContent = 'Invio in corso…';
     const prefisso = this.prefisso.value;
     const tel = this.telefono.value.trim().replace(/\s+/g, '');
-    const payload = { nome: this.nome.value.trim(), cognome: this.cognome.value.trim(), email: this.email.value.trim(), telefono: prefisso + tel, salone: this.salone.value.trim() };
+    const payload = {
+      nome: this.nome.value.trim(),
+      cognome: this.cognome.value.trim(),
+      email: this.email.value.trim(),
+      telefono: prefisso + tel,
+      salone: this.salone.value.trim(),
+      indirizzo: this.indirizzo.value.trim()
+    };
     try {
       const res = await fetch('/.netlify/functions/audit_final', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       const data = await res.json();
