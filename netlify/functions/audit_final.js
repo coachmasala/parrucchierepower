@@ -3,19 +3,20 @@ exports.handler = async function(event) {
     return { statusCode: 405, body: JSON.stringify({ success: false, message: 'Method not allowed' }) };
   }
 
-  let nome, cognome, email, telefono, salone;
+  let nome, cognome, email, telefono, salone, indirizzo;
   try {
     const body = JSON.parse(event.body);
-    nome     = (body.nome     || '').trim();
-    cognome  = (body.cognome  || '').trim();
-    email    = (body.email    || '').trim().toLowerCase();
-    telefono = (body.telefono || '').trim().replace(/\s+/g, '');
-    salone   = (body.salone   || '').trim();
+    nome      = (body.nome      || '').trim();
+    cognome   = (body.cognome   || '').trim();
+    email     = (body.email     || '').trim().toLowerCase();
+    telefono  = (body.telefono  || '').trim().replace(/\s+/g, '');
+    salone    = (body.salone    || '').trim();
+    indirizzo = (body.indirizzo || '').trim();
   } catch(e) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Dati non validi' }) };
   }
 
-  if (!nome || !email || !cognome || !telefono || !salone) {
+  if (!nome || !email || !cognome || !telefono || !salone || !indirizzo) {
     return { statusCode: 400, body: JSON.stringify({ success: false, message: 'Tutti i campi sono obbligatori' }) };
   }
 
@@ -28,7 +29,6 @@ exports.handler = async function(event) {
   // 1. Tentativo aggiunta contatto a Brevo (Lista 6)
   if (BREVO_KEY) {
     try {
-      // Assicuriamoci che il telefono abbia il prefisso +39 se manca (doppio controllo lato server)
       let formattedPhone = telefono;
       if (!formattedPhone.startsWith('+')) {
         if (formattedPhone.startsWith('00')) {
@@ -44,7 +44,8 @@ exports.handler = async function(event) {
           NOME: nome, 
           COGNOME: cognome, 
           SMS: formattedPhone, 
-          JOB_TITLE: salone 
+          JOB_TITLE: salone,
+          INDIRIZZO_SPEDIZIONE: indirizzo
         },
         listIds: [6],
         updateEnabled: true
@@ -84,6 +85,7 @@ exports.handler = async function(event) {
               <p><strong>Email:</strong> ${email}</p>
               <p><strong>Telefono:</strong> ${telefono}</p>
               <p><strong>Salone (JOB_TITLE):</strong> ${salone}</p>
+              <p><strong>Indirizzo spedizione:</strong> ${indirizzo}</p>
             </div>
           `
         })
