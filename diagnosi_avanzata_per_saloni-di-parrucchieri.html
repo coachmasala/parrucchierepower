@@ -177,6 +177,11 @@
   .author-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
   .author-role { font-size: 12px; color: var(--text-faint); margin-bottom: 0.8rem; }
   .author-bio { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 540px; }
+  .consent-row { display:flex; align-items:flex-start; gap:10px; margin-top:14px; margin-bottom:4px; }
+  .consent-row input[type=checkbox] { flex-shrink:0; width:16px; height:16px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+  .consent-row label { font-size:11px; color:var(--text-muted); line-height:1.6; cursor:pointer; font-family:'Barlow',sans-serif; font-weight:300; text-transform:none; letter-spacing:0; }
+  .consent-row a { color:var(--gold); text-decoration:none; }
+  .consent-row a:hover { text-decoration:underline; }
   @media (max-width: 960px) { .audit-grid { grid-template-columns: repeat(3, 1fr); } .package-grid { grid-template-columns: 1fr; } .objections-grid { grid-template-columns: 1fr; } .costs-grid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { nav, .hero, section, .quote-block, .cta-section, footer, .author-section, .ps-block { padding-left: 1.5rem; padding-right: 1.5rem; } nav { padding-right: 70px; } .divider { margin: 0 1.5rem; } .problem-grid { grid-template-columns: 1fr; } .audit-grid { grid-template-columns: 1fr 1fr; } .testimonials-grid { grid-template-columns: 1fr; } h1 { letter-spacing: -0.5px; } .form-row { grid-template-columns: 1fr; } .author-section { grid-template-columns: 1fr; } .nav-right .nav-price-tag { display: none; } .urgency-bar { padding: 0.6rem 1.5rem; } .footer-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 400px) { .audit-grid { grid-template-columns: 1fr; } }
@@ -447,6 +452,10 @@
           </div>
           <input type="text" name="salone" placeholder="Nome del salone *" required>
         </div>
+        <div class="consent-row">
+          <input type="checkbox" id="audit-consent" required>
+          <label for="audit-consent">Ho letto e accetto la <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 679/2016 (GDPR) per ricevere comunicazioni da Parrucchiere Power Srl.</label>
+        </div>
         <button type="submit" class="form-submit" id="submitBtn">Ordina l'Audit — 137€ — Spedizione Gratis →</button>
       </form>
       <div class="form-error-msg" id="formError">C'è stato un imprevisto. Scrivici a <a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a> o clicca il pulsante WhatsApp in fondo alla pagina.</div>
@@ -548,6 +557,11 @@
     const successEl = document.getElementById('form-success');
     const container = document.getElementById('form-container');
     errorEl.style.display = 'none';
+    if (!document.getElementById('audit-consent').checked) {
+      errorEl.textContent = 'Devi accettare la Privacy Policy per continuare.';
+      errorEl.style.display = 'block';
+      return;
+    }
     btn.disabled = true;
     btn.textContent = 'Invio in corso…';
     const prefisso = this.prefisso.value;
@@ -559,6 +573,8 @@
       if (res.ok && data.success) { container.style.display = 'none'; successEl.style.display = 'block'; }
       else { throw new Error(data.message || 'error'); }
     } catch(err) {
+      errorEl.textContent = '';
+      errorEl.innerHTML = 'C\'è stato un imprevisto. Scrivici a <a href="mailto:info@parrucchierepower.it">info@parrucchierepower.it</a> o clicca il pulsante WhatsApp in fondo alla pagina.';
       errorEl.style.display = 'block';
       btn.disabled = false;
       btn.textContent = "Ordina l'Audit — 137€ — Spedizione Gratis →";
