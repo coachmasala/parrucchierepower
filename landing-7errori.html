@@ -76,6 +76,11 @@
     .f-msg.success { border-left: 3px solid var(--gold); background: rgba(201,168,76,0.1); color: #fff; }
     .f-msg.error { border-left: 3px solid #E24B4A; background: rgba(226,75,74,0.08); color: #E08070; font-size: 12px; }
     .f-privacy { font-size: 11px; color: var(--mid); margin-top: 16px; line-height: 1.6; }
+    .consent-row { display:flex; align-items:flex-start; gap:10px; margin-top:14px; margin-bottom:4px; }
+    .consent-row input[type=checkbox] { flex-shrink:0; width:16px; height:16px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+    .consent-row label { font-size:11px; color:var(--mid); line-height:1.6; cursor:pointer; font-family:var(--sans); font-weight:300; text-transform:none; letter-spacing:0; }
+    .consent-row a { color:var(--gold); text-decoration:none; }
+    .consent-row a:hover { text-decoration:underline; }
 
     .errori { padding: 120px 100px; background: var(--dark-2); }
     .section-label { font-family: var(--condensed); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
@@ -182,10 +187,14 @@
             <input type="tel" id="tel" placeholder="Numero" required autocomplete="tel-national">
           </div>
         </div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent1" required>
+          <label for="consent1">Ho letto e accetto la <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 679/2016 (GDPR) per ricevere comunicazioni da Parrucchiere Power Srl.</label>
+        </div>
         <button type="submit" class="f-submit" id="f-btn">Scarica ora — è gratis</button>
       </form>
       <div id="formMsg" class="f-msg"></div>
-      <p class="f-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato ceduto a terzi.</p>
+      <p class="f-privacy">Nessun dato ceduto a terzi. Cancellazione immediata in qualsiasi momento.</p>
     </div>
   </div>
 </section>
@@ -244,10 +253,14 @@
             <input type="tel" id="tel2" placeholder="Numero" required autocomplete="tel-national">
           </div>
         </div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent2" required>
+          <label for="consent2">Ho letto e accetto la <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>. Acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 679/2016 (GDPR) per ricevere comunicazioni da Parrucchiere Power Srl.</label>
+        </div>
         <button type="submit" class="f-submit" id="f-btn2">Scarica ora — è gratis</button>
       </form>
       <div id="formMsg2" class="f-msg"></div>
-      <p class="f-privacy">Iscrivendoti accetti di ricevere comunicazioni da Parrucchiere Power Srl. Nessun dato ceduto a terzi.</p>
+      <p class="f-privacy">Nessun dato ceduto a terzi. Cancellazione immediata in qualsiasi momento.</p>
     </div>
   </div>
 </section>
@@ -288,7 +301,7 @@
   menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); menuOverlay.classList.toggle('active'); menuPanel.classList.toggle('active'); });
   menuOverlay.addEventListener('click', () => { menuToggle.classList.remove('active'); menuOverlay.classList.remove('active'); menuPanel.classList.remove('active'); });
 
-  async function submitForm(formId, nomeId, emailId, prefixId, telId, btnId, msgId) {
+  async function submitForm(formId, nomeId, emailId, prefixId, telId, btnId, msgId, consentId) {
     const nome   = document.getElementById(nomeId).value.trim();
     const email  = document.getElementById(emailId).value.trim();
     const prefix = document.getElementById(prefixId).value;
@@ -296,6 +309,7 @@
     const btn    = document.getElementById(btnId);
     if (!nome || !email) { showMsg(msgId, 'Inserisci nome e email per continuare.', 'error'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showMsg(msgId, 'Indirizzo email non valido.', 'error'); return; }
+    if (!document.getElementById(consentId).checked) { showMsg(msgId, 'Devi accettare la Privacy Policy per continuare.', 'error'); return; }
     btn.disabled = true;
     btn.textContent = 'Invio in corso...';
     try {
@@ -308,8 +322,8 @@
 
   function showMsg(msgId, text, type) { const msg = document.getElementById(msgId); msg.textContent = text; msg.className = 'f-msg ' + type; msg.style.display = 'block'; }
 
-  document.getElementById('landingForm').addEventListener('submit', function(e) { e.preventDefault(); submitForm('landingForm', 'nome', 'email', 'prefix', 'tel', 'f-btn', 'formMsg'); });
-  document.getElementById('landingForm2').addEventListener('submit', function(e) { e.preventDefault(); submitForm('landingForm2', 'nome2', 'email2', 'prefix2', 'tel2', 'f-btn2', 'formMsg2'); });
+  document.getElementById('landingForm').addEventListener('submit', function(e) { e.preventDefault(); submitForm('landingForm', 'nome', 'email', 'prefix', 'tel', 'f-btn', 'formMsg', 'consent1'); });
+  document.getElementById('landingForm2').addEventListener('submit', function(e) { e.preventDefault(); submitForm('landingForm2', 'nome2', 'email2', 'prefix2', 'tel2', 'f-btn2', 'formMsg2', 'consent2'); });
 </script>
 
 </body>
